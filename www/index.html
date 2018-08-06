@@ -1,78 +1,270 @@
 <html>
 <head>
-   <title>The Swing Dance Cooperative</title>
+   <title>The Swing Dance Cooperative | Olympia</title>
    <meta name="description" 
       content="The Swing Dance Cooperative. We swing dance! We're in Olympia! We're an employee-owned cooperative!">
    <meta name="keywords" content="swing dance cooperative olympia">
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-   <meta property="og:title" content="The Swing Dance Cooperative">
+   <meta property="og:title" content="The Swing Dance Cooperative | Olympia">
    <meta property="og:type" content="website">
-   <meta property="og:image" content="http://coop.dance/img/ograph-banner.png">
-   <meta property="og:image:secure_url" content="https://coop.dance/img/ograph-banner.png">
-   <meta property="og:url" content="https://coop.dance/">
+   <meta property="og:image" content="http://swing.dance.coop/img/ograph-banner.png">
+   <meta property="og:image:secure_url" content="https://swing.dance.coop/img/ograph-banner.png">
+   <meta property="og:url" co;ntent="https://swing.dance.coop/">
    <meta property="og:description" 
       content="The Swing Dance Cooperative. We swing dance! We're in Olympia! We're an employee-owned cooperative!">
 
    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
 <style>
 body {
-   background-color: #780103
+   margin: 0;
+   background-color: #282828;
 }
-.soon {
-   margin: auto;
-   margin-top: 8em;
+section {
+   max-width: 625px;
+   background-color: #780103;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 2ex;
+   padding-top: 1ex;
+}
+.section1 {
+   background-color: #560103;
+   padding-top: 0;
+   margin-top: 0;
+}
+.section2 {
+   background-color: #930103;
+}
+
+h3 {
    text-align: center;
 }
-.soon div,
-.soon p {
-   color: #ffc3bb;
-   font-size: 18pt;
-   font-family: "Gloria Hallelujah", "Helvetica Neue", Helvetica, Roboto, Arial;
+ul {
+   list-style: none;
 }
-.intro {
-   margin-bottom: 0.5em;
+
+img.rings {
+   width: 20%;
+   margin-top: 1.5em;
+   margin-bottom: 1.1em;
 }
-p.oly {
-   font-size: 10pt;
-   margin-bottom: 5em;
+.section1 .rings {
+   text-align: center;
+   margin-bottom: 0;
 }
-img {
-   width: 30.5%;
-   margin-bottom: 2em;
+.rings img {
+   width: 20%;
+   margin-top: 1.5em;
+   margin-bottom: 0em;
 }
-.coop {
-   max-width: 625px;
-   text-align: left;
-   margin: auto;
-}
+
 a {
    color: red;
 }
+h1, h2 {
+   font-family: "Gloria Hallelujah", "Helvetica Neue", Helvetica, Roboto, Arial;
+}
+.swing,
+.cooperative {
+   font-family: "Helvetica Neue", Helvetica, Roboto, Arial;
+}
+.swing {
+   color: #ffc3bb;
+}
+.cooperative {
+   color: #780103;
+   background-color: #ffc3bb;
+   padding-top: 0;
+}
+h1 {
+   margin-top: 0;
+   padding-top: 0.8em;
+   text-align: center;
+}
+h2 {
+   text-align: center;
+}
+h4 {
+   margin-bottom: 1em;
+   font-weight: normal;
+}
+.bio {
+    width: 100%;
+    margin: auto;
+    border: solid white 5px;
+}
+
+.lindy-dates img {
+   margin: 3ex;
+   margin-bottom: 0;
+   width: 90%;
+   border: solid 4px rgba(255,255,255,0.6);
+}
+.for-desktop {
+   display: none;
+}
+.close {
+   text-align: center;
+   margin-top: 2em;
+}
+.name {
+   margin-top: 1.2em;
+}
+.credit {
+   text-align: right;
+   margin-top: 0.8ex;
+   margin-right: 1ex;
+}
+
+@media (min-width: 1200px) { 
+   .lindy-dates {
+      display: grid;
+      grid-template-columns: 33% 67%;
+   }
+   .columns {
+      display: grid;
+      grid-template-columns: 50% 50%;
+   }
+   .for-phone {
+      display: none;
+   }
+   .for-desktop {
+      display: inherit;
+   }
+   h1 {
+      font-size: 28pt;
+      margin-top: 0;
+   }
+   .swing h1 {
+      text-align: right;
+   }
+   .cooperative h1 {
+      text-align: left;
+   }
+   section {
+      max-width: inherit;
+      padding: 3ex;
+   }
+}
+
 </style>
 </head>
 <body>
-   <div class="soon">
-      <img src="./img/rings.png"/>
-      <div class="intro">
-         <div>Summer time winds</div>
-         <div>hotjazz on th' street</div>
-         <div>the warm breeze swings</div>
-         <div>makes livin' all reet</div>
-         <div>take me back to Harlem</div>
-         <div>take me back to Harlem</div>
-         <div>take me back to Harlem</div>
-         <div>take me back to Harlem</div> 
-         <div>oh, where livin's all reet</div>
-         <h2>The Swing Dance Cooperative</h2>
+   <div class="columns">
+      <div class="swing">
+         <div class="column">
+            <section class="section1">
+               <div class="rings">
+                  <img src="./img/rings.png" class="for-phone"/>
+               </div>
+               <h1>The Swing Dance<span class="for-phone"> Cooperative</span></h1>
+               <p>We're hosting two classes in September: Partner Charleston and Fun with Lindy Hop.</p> 
+            </section>
+
+            <section>
+               <h2>Partner Charleston, 1930s</h2>
+
+               <p>The Charleston, once the world's biggest dance craze, is fun, easy to pick up,
+               and the perfect way to start swing dancing, with or without a dance partner.</p>
+
+               <p>This class is suitable for anyone who wants to have a good time.</p> 
+
+               <div class="lindy-dates">
+                  <div>
+                     Mondays: 7-8:30 p.m.
+                     <ul>
+                        <li>September 10
+                        <li>September 17
+                        <li>September 24
+                        <li>October 1
+                     </ul>
+
+                     <h4>Venue</h4>
+                     <div>Abigail Stuart House</div>
+                     <div>1002 Washington St SE</div>
+                     <div>Olympia</div>
+                  </div>
+                  <div>
+                     <img src="/img/charleston.jpg"/>
+                     <div class="credit">Photo credit: Martin &amp; Renee Norred</div>
+                  </div>
+               </div>
+            </section>
+
+            <section class="section2">
+               <h2>Fun with Lindy hop</h2>
+
+               <p>Lindy hop, often called the original swing dance, started in the 1920s
+                  in Harlem, and today is danced around the globe. It is a fun and expressive
+                  dance rooted in old jazz and having a good time.</p>
+
+               <p>This class is suitable for most people reading this, especially if you've attended
+                  at least one swing dance in the past year.</p>
+
+               <div class="lindy-dates">
+                  <div>
+                     Wednesdays: 7-8:30 p.m.
+                     <ul>
+                        <li>September 12 
+                        <li>September 19
+                        <li>September 26
+                        <li>October 3
+                     </ul>
+
+                     <h4>Venue</h4>
+                     <div>Abigail Stuart House</div>
+                     <div>1002 Washington St SE</div>
+                     <div>Olympia</div>
+                  </div>
+                  <div>
+                     <img src="/img/philip.jpg"/>
+                     <div class="credit">Photo credit: Martin &amp; Renee Norred</div>
+                  </div>
+               </div>
+            </section>
+
+            <section>
+               <h2>Recommendations</h2>
+
+               <p>If you're wondering if these classes are for you, they probably are. I mean, you're
+                  reading about swing dancing on the internet. Let us know if you have any questions.</p>
+
+               <p>Here's an example of Lindy hop from Denver in 2013:</p>
+
+               <iframe width="100%" height="315" src="https://www.youtube.com/embed/FRIlMpVOH7k?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </section>
+         </div>
       </div>
 
-      <div class="coop">
-         <p>Also, we're a cooperative, and we identify with the 
-            <a href="https://www.ica.coop/en/whats-co-op/co-operative-identity-values-principles">cooperative movement</a> and its values.</p>
+      <section class="cooperative">
+         <div class="column">
+            <h1 class="for-desktop">Cooperative</h1>
+            <h1 class="for-phone">About the co-op</h1>
+            <p>We're a cooperative, and we identify with the 
+               <a href="https://www.ica.coop/en/whats-co-op/co-operative-identity-values-principles">cooperative movement</a> and its values.</p>
 
-         <p>We're in Olympia, Washington. Coming soon.</p> 
-      </div>
+            <p>We'll be talking more about this later, but half of what we're doing is encouraging other 
+               organizations to become cooperatives.</p>
+
+            <div class="close">
+               <div>Summer time winds!</div>
+               <div>hotjazz on th' street</div>
+               <div>the warm breeze swings</div>
+               <div>makes livin' all reet</div>
+               <div>take me back to Harlem</div>
+               <div>take me back to Harlem</div>
+               <div>take me back to Harlem</div>
+               <div>take me back to Harlem</div> 
+               <div>oh, where livin's all reet</div>
+
+               <div class="name">The Swing Dance Cooperative</div>
+               <div>Olympia, Washington.</div> 
+
+               <img src="./img/rings.png" class="rings"/>
+            </div>
+         </div>
+      </section>
    </div>
 </body>
 </html>
