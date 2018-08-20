@@ -1,0 +1,27 @@
+{
+  "name": "dance.coop.reservations",
+  "version": "1.0.0",
+  "description": "/reservations endpoint",
+  "main": "server.js",
+  "scripts": {
+    "start": "micro",
+    "dev": "micro-dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swingcoop/coop.dance.git"
+  },
+  "author": "Philip Manijak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/swingcoop/coop.dance/issues"
+  },
+  "homepage": "https://github.com/swingcoop/coop.dance#readme",
+  "dependencies": {
+    "micro": "^9.3.3"
+  },
+  "devDependencies": {
+    "micro-dev": "^3.0.0"
+  }
+}
