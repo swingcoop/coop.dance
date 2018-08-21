@@ -1,0 +1,6 @@
+{
+  "rules": [
+    { "pathname": "/api/reservations", "method": ["POST"], "dest": "api-reservations.dance.coop" },
+    { "dest": "webwebweb.dance.coop" }
+  ]
+}
