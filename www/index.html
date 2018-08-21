@@ -270,7 +270,8 @@ h4 {
             <section class="rsvp">
                <h2>RSVP</h2>
 
-               <p>To take a course, please reserve a spot.</p>
+               <p>To take a course, please reserve a spot. Also these courses are 
+                  being offered with no enrollment fee / aka for free.</p>
                <form v-on:submit.prevent="rsvp">
                   <label>
                      <div>Name</div>
@@ -307,7 +308,7 @@ h4 {
                   </div>
                   
                   <div v-else>
-                     Thank you!
+                     <p>Thank you! You're in. We'll email you today or tomorrow to confirm your enrollment. &mdash; P</p>
                   </div>
 
                   <p v-if="error" v-cloak>
