@@ -125,9 +125,41 @@ h4 {
 #mc_embed_signup .button {
    background-color: #560103 !important;
 }
+#mc_embed_signup input {
+   background-color: #fdd;
+}
+.v-cloak {
+   display: none;
+}
+.rsvp input,
+.rsvp textarea,
+.rsvp select {
+   padding: 1ex;
+   font-size: 0.8em;
+   border-radius: 5px;
+   margin-top: 0.5ex;
+   margin-bottom: 2.25ex;
+   width: 100%;
+   background-color: #fdd;
+}
+.rsvp select {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   padding: 1ex;
+}
+.rsvp button {
+   padding: 1ex;
+   padding-left: 5ex;
+   padding-right: 5ex;
+   font-size: 0.8em;
+   border-radius: 5px;
+   margin-top: 0.5ex;
+   margin-bottom: 1.5ex;
+}
 
 @media (min-width: 1200px) { 
-   .lindy-dates {
+   /*.lindy-dates {
       display: grid;
       grid-template-columns: 33% 67%;
    }
@@ -154,20 +186,23 @@ h4 {
    section {
       max-width: inherit;
       padding: 3ex;
-   }
+   }*/
 }
 
 </style>
+<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css"> -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-   <div class="columns">
+   <div id="app">
       <div class="swing">
          <div class="column">
             <section class="section1">
                <div class="rings">
                   <img src="./img/rings.png" class="for-phone"/>
                </div>
-               <h1>The Swing Dance<span class="for-phone"> Cooperative</span></h1>
+               <h1 class="title">The Swing Dance<span class="for-phone"> Cooperative</span></h1>
                <p>We're hosting two classes in September: Partner Charleston and Fun with Lindy Hop.</p> 
             </section>
 
@@ -208,8 +243,7 @@ h4 {
                   in Harlem, and today is danced around the globe. It is a fun and expressive
                   dance rooted in old jazz and having a good time.</p>
 
-               <p>This class is suitable for most people reading this, especially if you've attended
-                  at least one swing dance in the past year.</p>
+               <p>This class is suitable for most people reading this. To attend, we ask that you've been to at least one swing dance (anywhere) in the past year.</p>
 
                <div class="lindy-dates">
                   <div>
@@ -233,7 +267,55 @@ h4 {
                </div>
             </section>
 
-            <section>
+            <section class="rsvp">
+               <h2>RSVP</h2>
+
+               <p>To take a course, please reserve a spot.</p>
+               <form v-on:submit.prevent="rsvp">
+                  <label>
+                     <div>Name</div>
+                     <input type="text" v-model="name"/>
+                  </label>
+
+                  <div>Which course would you like to take?</div>
+                  <select v-model="course">
+                     <option value="null">&ndash; Please select &ndash;</option>
+                     <option value="Charleston">Charleston</option>
+                     <option value="Lindy hop">Lindy hop</option>
+                     <option value="Both">Both courses, please</option>
+                  </select>
+
+                  <div>What dance role would you like to have for this course?</div>
+                  <select v-model="role">
+                     <option value="null">&ndash; Please select &ndash;</option>
+                     <option value="Follow">Follow</option>
+                     <option value="Lead">Lead</option>
+                     <option value="Either">Either Follow or Lead</option>
+                  </select>
+
+                  <div>What's your zip code?</div>
+                  <input type="text" v-model="zip"/>
+
+                  <div>And your email address?</div>
+                  <input type="text" v-model="email"/>
+
+                  <div>Anything else you'd like to share?</div>
+                  <textarea rows="4" v-model="comments"></textarea>
+
+                  <div v-if="!submitted">
+                     <button type="submit" :disabled="sending">RSVP</button>
+                  </div>
+                  
+                  <div v-else>
+                     Thank you!
+                  </div>
+
+                  <p v-if="error" v-cloak>
+                     Sorry, there was an error when we tried to submit your form.
+                     Please let us know at info@coop.dance?
+                  </p>
+               </form>
+
                <h2>Recommendations</h2>
 
                <p>If you're wondering if these classes are for you, they probably are. I mean, you're
@@ -315,5 +397,45 @@ h4 {
          </div>
       </section>
    </div>
+   <script>
+new Vue({
+  el: '#app',
+  data: {
+    name: null,
+    course: null,
+    role: null,
+    zip: null,
+    email: null,
+    comments: null,
+    submitted: false,
+    error: false,
+    sending: false
+  },
+  methods: {
+    rsvp: function () {
+      this.sending = true;
+      var data = {
+         name: this.name,
+         course: this.course,
+         role: this.role,
+         zip: this.zip,
+         email: this.email,
+         comments: this.comments,
+      };
+      axios.post('/api/reservations', data)
+      .then(() => {
+         this.submitted = true;
+         this.sending = false;
+         // console.log(data);
+      })
+      .catch(() => {
+         this.error = true;
+         this.sending = false;
+      });
+    }
+  }
+})
+</script>
+
 </body>
 </html>
