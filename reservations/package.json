@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/swingcoop/coop.dance#readme",
   "dependencies": {
-    "micro": "^9.3.3"
+    "micro": "^9.3.3",
+    "r2": "^2.0.1"
   },
   "devDependencies": {
     "micro-dev": "^3.0.0"
