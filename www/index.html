@@ -224,11 +224,24 @@ textarea {
                </div>
                <h1 class="title">The Swing Dance<span class="for-phone"> Cooperative</span></h1>
 
+               <p>Good {{greeting}} and salutations,</p>
+
                <p>
-                  We swing dance in Olympia, and we're an employee-owned cooperative focused on hosting classes and a few dances.
+                  We're a new organization, here to share our favorite activty &ndash; swing dancing &ndash; 
+                  with Olympia. We're also here to be a part of the 
+                  <a href="https://www.ica.coop/en/whats-co-op/co-operative-identity-values-principles">cooperative movement</a>, but more on that later. Let's start
+                  with our classes:
                </p>
 
-               <p>We have two classes in October: Partner Charleston and Fun with Lindy Hop.</p> 
+               <p>
+                  Our inagural classes begin in October: Partner Charleston 
+                  and Fun with Lindy Hop.</p>
+
+               <p>Please find their descriptions below
+                  and join us for our opening month of fun and good times.
+                  To help anyone attend these first classes, they
+                  are being offered for free.
+               </p> 
             </section>
 
             <section>
@@ -237,7 +250,9 @@ textarea {
                <p>The Charleston, once the world's biggest dance craze, is fun, easy to pick up,
                and the perfect way to start swing dancing, with or without a dance partner.</p>
 
-               <p>This class is suitable for anyone who wants to have a good time.</p> 
+               <p>
+                  This class is suitable for anyone who wants to have a good time, and has
+                  no prerequisite for attendance, though a reservation is required.</p> 
 
                <div class="lindy-dates">
                   <div>
@@ -436,7 +451,21 @@ new Vue({
     comments: null,
     submitted: false,
     error: false,
-    sending: false
+    sending: false,
+    hour: new Date().getHours()
+  },
+  computed: {
+    greeting() {
+      if (this.hour < 3)
+         return "evening"
+      if (this.hour < 6) 
+         return "... morning?"
+      if (this.hour < 12)
+         return "morning"
+      if (this.hour < 17)
+         return "afternoon"
+      return "evening"
+    }
   },
   methods: {
     rsvp: function () {
