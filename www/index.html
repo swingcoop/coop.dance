@@ -33,7 +33,8 @@ section {
    padding-top: 0;
    margin-top: 0;
 }
-.section2 {
+.section2,
+.teachers {
    background-color: #930103;
 }
 
@@ -93,11 +94,6 @@ h4 {
    margin-bottom: 1em;
    font-size: 1.3em;
    font-weight: normal;
-}
-.bio {
-    width: 100%;
-    margin: auto;
-    border: solid white 5px;
 }
 
 .fun-times img {
@@ -159,6 +155,23 @@ h4 {
    margin-bottom: 1.5ex;
    background-color: white;
 }
+
+.bio {
+   display: grid;
+   grid-template-columns: 66% 33%;
+}
+.bio .content {
+   margin-top: 0;
+   padding-right: 2ex;
+}
+.bio .content p {
+   margin-top: 0;
+}
+.bio .photo img {
+   width: 100%;
+   border: solid 4px rgba(255,255,255,0.6);
+}
+
 input[type="color"],
 input[type="date"],
 input[type="datetime"],
@@ -387,7 +400,48 @@ textarea {
                      Please let us know at info@coop.dance?
                   </p>
                </form>
+            </section>
 
+            <section class="teachers">
+               <h2>Teachers</h2>
+               <h4>Gabrielle</h4>
+
+               <div class="bio">
+                  <div class="content">
+                     <p>Dancing has been part of her life for as long as she can remember. From little pink slippers to her suede soled heels, expressing herself through dance is one of her greatest passions. Her dance philosophy is that as long as you're smiling, you're doing something right.</p>
+
+                     <p>With over 15 years of experience, Gabrielle has been teaching in Washington and learning all over the States. Despite knowing many styles of dance, Lindy hop is her first love. The pure energy of Lindy is hard to match!</p>
+
+                     <p>She lives for creating solid connections on the dance floor. Her favorite move is a well-executed outside turn, simple but so good!</p>
+                  </div>
+                  <div class="photo">
+                     <img src="./img/gabrielle-bio.jpg"/>
+                  </div>
+               </div>
+
+               <h4>Philip</h4>
+               <div class="bio">
+                  <div class="content">
+                     <p>
+                        He took his first dance class to confront his greatest 
+                        social fear, dancing in a public space. Philip is a co-founder 
+                        of the Corvallis Swing Dance Society, where, among other things,
+                        he developed their class
+                        curriculum. He has taught for over 10 years, helping thousands 
+                        of people discover swing dance in that time.
+                     </p>
+
+                     <p>
+                        Philip loves old jazz, and the people who created it. He enjoys creating spaces where people feel comfortable expressing themselves, and his favorite move is hopping around.
+                     </p>
+                  </div>
+                  <div class="photo">
+                     <img src="./img/philip-bio.jpg"/>
+                  </div>
+               </div>
+            </section>
+
+            <section>
                <h2>Recommendations</h2>
 
                <p>If you're wondering if these classes are for you, they probably are. I mean, you're
