@@ -156,20 +156,18 @@ h4 {
    background-color: white;
 }
 
-.bio {
-   display: grid;
-   grid-template-columns: 66% 33%;
-}
-.bio .content {
-   margin-top: 0;
-   padding-right: 2ex;
-}
 .bio .content p {
    margin-top: 0;
 }
-.bio .photo img {
+.bio .photo img,
+.bio .photo-lg img {
    width: 100%;
    border: solid 4px rgba(255,255,255,0.6);
+   margin-bottom: 1em;
+}
+.bio .photo-lg img {
+   margin: 0;
+   display: none;
 }
 
 input[type="color"],
@@ -192,7 +190,23 @@ textarea {
   font-size: 16px;
 }
 
-@media (min-width: 1200px) { 
+@media (min-width: 525px) { 
+   .bio .photo img {
+      display: none;
+   }
+   .bio .photo-lg img {
+      display: inline-block;
+   }
+   .bio {
+      display: grid;
+      grid-template-columns: 66% 33%;
+   }
+   .bio .content {
+      margin-top: 0;
+      padding-right: 2ex;
+   }
+
+
    /*.lindy-dates {
       display: grid;
       grid-template-columns: 33% 67%;
@@ -410,11 +424,15 @@ textarea {
                   <div class="content">
                      <p>Dancing has been part of her life for as long as she can remember. From little pink slippers to her suede soled heels, expressing herself through dance is one of her greatest passions. Her dance philosophy is that as long as you're smiling, you're doing something right.</p>
 
+                     <div class="photo">
+                        <img src="./img/gabrielle-bio.jpg"/>
+                     </div>
+
                      <p>With over 15 years of experience, Gabrielle has been teaching in Washington and learning all over the States. Despite knowing many styles of dance, Lindy hop is her first love. The pure energy of Lindy is hard to match!</p>
 
                      <p>She lives for creating solid connections on the dance floor. Her favorite move is a well-executed outside turn, simple but so good!</p>
                   </div>
-                  <div class="photo">
+                  <div class="photo-lg">
                      <img src="./img/gabrielle-bio.jpg"/>
                   </div>
                </div>
@@ -431,11 +449,15 @@ textarea {
                         of people discover swing dance in that time.
                      </p>
 
+                     <div class="photo">
+                        <img src="./img/philip-bio.jpg"/>
+                     </div>
+
                      <p>
                         Philip loves old jazz, and the people who created it. He enjoys creating spaces where people feel comfortable expressing themselves, and his favorite move is hopping around.
                      </p>
                   </div>
-                  <div class="photo">
+                  <div class="photo-lg">
                      <img src="./img/philip-bio.jpg"/>
                   </div>
                </div>
