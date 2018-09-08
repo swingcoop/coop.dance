@@ -298,6 +298,8 @@ textarea {
                   This class has no prerequisite for attendance, though a reservation is required.
                </p> 
 
+               <p><strong>Please note:</strong> 'Follow' spots are sold out for the Charleston class.</p>
+
                <div class="lindy-dates">
                   <div class="when-where">
                      <div>
@@ -370,6 +372,15 @@ textarea {
                <p>To take a course, please reserve a spot. Also these courses are 
                   being offered with no enrollment fee / aka for free.</p>
 
+               <p><strong>Please note:</strong> The classes are close to being sold out,
+                  so if they are when you register, we'll add you to the waitlist and
+                  let you know.
+               </p>
+
+               <p>
+                  Currently the 'follows' half of the Charleston class is sold out.
+               </p>
+
                <form v-on:submit.prevent="rsvp">
                   <label>
                      <div>Name</div>
@@ -406,7 +417,10 @@ textarea {
                   </div>
                   
                   <div v-else>
-                     <p>Thank you! You're in. We'll email you today or tomorrow to confirm your enrollment. &mdash; P</p>
+                     <p>
+                        Thank you! We'll email you this week to confirm your enrollment. 
+                        The courses are close to being full, so if there's no room we'll add your
+                        name to the waitlist. &mdash; P</p>
                   </div>
 
                   <p v-if="error" v-cloak>
