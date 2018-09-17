@@ -374,8 +374,8 @@ textarea {
                <p>To take a course, please reserve a spot. Also these courses are 
                   being offered with no enrollment fee / aka for free.</p>
 
-               <p><strong>Please note:</strong> Both classes are sold out, except for one 
-                  lead spot in the Lindy hop course.
+               <p><strong>Please note:</strong> Both classes are sold out. We can
+                  add you to the waitlist if you'd like.
                </p>
 
                <form v-on:submit.prevent="rsvp">
@@ -388,16 +388,16 @@ textarea {
                   <select v-model="course">
                      <option value="null">&ndash; Please select &ndash;</option>
                      <option value="Charleston">Charleston - Sold out</option>
-                     <option value="Lindy hop">Lindy hop</option>
-                     <option value="Both">Both courses, please</option>
+                     <option value="Lindy hop">Lindy hop - Sold out</option>
+                     <option value="Both">Both courses, please - Sold out</option>
                   </select>
 
                   <div>What dance role would you like to have for this course?</div>
                   <select v-model="role">
                      <option value="null">&ndash; Please select &ndash;</option>
                      <option value="Follow - Waitlist">Follow - Waitlist</option>
-                     <option value="Lead">Lead</option>
-                     <option value="Either">Either Follow or Lead</option>
+                     <option value="Lead">Lead - Waitlist</option>
+                     <option value="Either">Either Follow or Lead - Waitlist</option>
                   </select>
 
                   <div>What's your zip code?</div>
