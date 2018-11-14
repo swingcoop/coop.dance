@@ -1,0 +1,223 @@
+body {
+   margin: 0;
+   background-color: #282828;
+}
+section {
+   max-width: 625px;
+   background-color: #780103;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 2ex;
+   padding-top: 1ex;
+}
+.section1 {
+   padding-top: 0;
+   margin-top: 0;
+}
+.section1,
+.contact {
+   background-color: #560103;
+}
+.section2,
+.recommendations {
+   background-color: #930103;
+}
+
+h3 {
+   text-align: center;
+}
+
+img.rings {
+   width: 20%;
+   margin-top: 1.5em;
+   margin-bottom: 1.1em;
+}
+.section1 .rings {
+   text-align: center;
+   margin-bottom: 0;
+}
+.rings img {
+   width: 20%;
+   margin-top: 1.5em;
+   margin-bottom: 0em;
+}
+
+a {
+   color: red;
+}
+h1, h2, h4 {
+   font-family: "Satisfy", "Helvetica Neue", Helvetica, Roboto, Arial;
+}
+.swing,
+.cooperative {
+   font-family: "Helvetica Neue", Helvetica, Roboto, Arial;
+}
+.swing {
+   color: #ffc3bb;
+}
+.cooperative {
+   color: #780103;
+   background-color: #ffc3bb;
+   padding-top: 0;
+}
+.cooperative form {
+   background-color: #ffc3bb;
+}
+.cooperative form h2 {
+   font-size: 24px !important;
+}
+h1 {
+   margin-top: 0;
+   padding-top: 0.8em;
+   text-align: center;
+   font-size: 2em;
+}
+h2 {
+   text-align: center;
+}
+h4 {
+   margin-bottom: 1em;
+   font-size: 1.3em;
+   font-weight: normal;
+}
+
+.fun-times img {
+   margin: 3ex;
+   margin-bottom: 0;
+   width: 90%;
+   border: solid 4px rgba(255,255,255,0.6);
+}
+.venue-content {
+   margin-left: 4.5ex;
+}
+.for-desktop {
+   display: none;
+}
+.close {
+   text-align: center;
+   margin-top: 2em;
+}
+.name {
+   margin-top: 1.2em;
+}
+.credit {
+   text-align: right;
+   margin-top: 0.8ex;
+   margin-right: 1ex;
+}
+#mc_embed_signup .button {
+   background-color: #560103 !important;
+}
+#mc_embed_signup input {
+   background-color: #fdd;
+}
+.v-cloak {
+   display: none;
+}
+.rsvp input,
+.rsvp textarea,
+.rsvp select {
+   padding: 1ex;
+   border-radius: 5px;
+   margin-top: 0.5ex;
+   margin-bottom: 2.25ex;
+   width: 100%;
+   background-color: #fdd;
+}
+.rsvp select {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   padding: 1ex;
+}
+.rsvp button {
+   padding: 1ex;
+   padding-left: 5ex;
+   padding-right: 5ex;
+   font-size: 0.8em;
+   border-radius: 5px;
+   margin-top: 0.5ex;
+   margin-bottom: 1.5ex;
+   background-color: white;
+}
+
+.bio .content p {
+   margin-top: 0;
+}
+.bio .photo img,
+.bio .photo-lg img {
+   width: 100%;
+   border: solid 4px rgba(255,255,255,0.6);
+   margin-bottom: 1em;
+}
+.bio .photo-lg img {
+   margin: 0;
+   display: none;
+}
+
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select,
+select:focus,
+textarea {
+  font-size: 16px;
+}
+
+@media (min-width: 525px) { 
+   .bio .photo img {
+      display: none;
+   }
+   .bio .photo-lg img {
+      display: inline-block;
+   }
+   .bio {
+      display: grid;
+      grid-template-columns: 66% 33%;
+   }
+   .bio .content {
+      margin-top: 0;
+      padding-right: 2ex;
+   }
+
+
+   /*.lindy-dates {
+      display: grid;
+      grid-template-columns: 33% 67%;
+   }
+   .columns {
+      display: grid;
+      grid-template-columns: 50% 50%;
+   }
+   .for-phone {
+      display: none;
+   }
+   .for-desktop {
+      display: inherit;
+   }
+   h1 {
+      font-size: 28pt;
+      margin-top: 0;
+   }
+   .swing h1 {
+      text-align: right;
+   }
+   .cooperative h1 {
+      text-align: left;
+   }
+   section {
+      max-width: inherit;
+      padding: 3ex;
+   }*/
+}
