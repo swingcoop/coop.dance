@@ -18,7 +18,17 @@
    <link href="https://cdnjs.cloudflare.com/ajax/libs/Buttons/2.0.0/css/buttons.min.css" rel="stylesheet">
 
    <link href="/style/main.css" rel="stylesheet">
-<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css"> -->
+   <style>
+   .rsvp .agreement input {
+      width: inherit;
+      margin-right: 1.5ex;
+   }
+   .agreement {
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+   }
+   </style>
+
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
@@ -271,10 +281,71 @@
 
                      <div>
                         <h4>To attend</h4>
-                        <div class="venue-content">
-                           <p>To pre-register, please email us at rsvp@dance.coop.</p> 
+                        <div class="venue-content rsvp">
+                           <p>Please reserve your spot by submitting this form, and we'll see you on December&nbsp;3rd at 7 p.m. at the Abigail Stuart House!
 
-                           <p>We're setting up a proper reservation form, and we'll contact you once everything is up, which should be within the week. The class itself is free, but there will be a cancellation fee of $20 for those who miss the first session or the second session.</p>
+                           <p>Because there's no admission cost for the
+                           Starter Kit, we do have a $20 fee for cancellations 
+                           made after November 24. Missing the first session or 
+                           the second session is considered a cancellation in this series.</p>
+
+                           <form v-on:submit.prevent="rsvp">
+                              <label>
+                                 <div>Name</div>
+                                 <input type="text" v-model="name"/>
+                              </label>
+
+                              <div class="agreement">
+                                 <div style="margin-bottom: 0.5ex">Please confirm your availability:</div>
+                                 <input id="agreed" type="checkbox" v-model="agreed">
+                                 <label for="agreed">I will be at the first session and
+                                 the second session.</label></input>
+                              </div>
+
+<!--                               <div>Which course would you like to take?</div>
+                              <select v-model="course">
+                                 <option value="null">&ndash; Please select &ndash;</option>
+                                 <option value="Starter Kit">Starter Kit</option>
+                              </select>
+ -->
+                              <div>What dance role would you like to have during Swing Dance Starter Kit?</div>
+                              <select v-model="role">
+                                 <option value="null">&ndash; Please select &ndash;</option>
+                                 <option value="Follow">Follow</option>
+                                 <option value="Lead">Lead</option>
+                                 <option value="Any">Any</option>
+                              </select>
+
+                              <div>What's your zip code?</div>
+                              <input type="text" v-model="zip"/>
+
+                              <div>And your email address?</div>
+                              <input type="text" v-model="email"/>
+
+                              <div>Anything else you'd like to share?</div>
+                              <textarea rows="4" v-model="comments"></textarea>
+
+                              <div v-if="!submitted">
+                                 <button type="submit" :disabled="sending">RSVP</button>
+                              </div>
+                              
+                              <div v-else>
+                                 <p>
+                                    Thank you! You should receive an email within a few minutes to
+                                    confirm that everything went through. &mdash; P</p>
+                              </div>
+
+                              <p v-if="error" v-cloak>
+                                 Sorry, there was an error when we tried to submit your form.
+                                 Please let us know at rsvp@dance.coop?
+                              </p>
+
+                              <p v-if="needAgreement" class="need-agreement">
+                                 <strong>Attention:</strong> To RSVP, please mark that you can attend the first class and the second class, above, and try submitting the form again.
+                              </p>
+
+                           </form>
+
                         </div>
                      </div>
                   </div>
@@ -295,67 +366,6 @@
                   On Instagram: <a href="https://www.instagram.com/swingcoop/">@swingcoop</a>
                </p>
             </section>
-
-<!--
-            <section class="rsvp">
-               <h2>RSVP</h2>
-
-               <p>To take a course, please reserve a spot. Also these courses are 
-                  being offered with no enrollment fee / aka for free.</p>
-
-               <p><strong>Please note:</strong> Both classes are sold out. We can
-                  add you to the waitlist if you'd like.
-               </p>
-
-               <form v-on:submit.prevent="rsvp">
-                  <label>
-                     <div>Name</div>
-                     <input type="text" v-model="name"/>
-                  </label>
-
-                  <div>Which course would you like to take?</div>
-                  <select v-model="course">
-                     <option value="null">&ndash; Please select &ndash;</option>
-                     <option value="Charleston">Charleston - Sold out</option>
-                     <option value="Lindy hop">Lindy hop - Sold out</option>
-                     <option value="Both">Both courses, please - Sold out</option>
-                  </select>
-
-                  <div>What dance role would you like to have for this course?</div>
-                  <select v-model="role">
-                     <option value="null">&ndash; Please select &ndash;</option>
-                     <option value="Follow - Waitlist">Follow - Waitlist</option>
-                     <option value="Lead">Lead - Waitlist</option>
-                     <option value="Either">Either Follow or Lead - Waitlist</option>
-                  </select>
-
-                  <div>What's your zip code?</div>
-                  <input type="text" v-model="zip"/>
-
-                  <div>And your email address?</div>
-                  <input type="text" v-model="email"/>
-
-                  <div>Anything else you'd like to share?</div>
-                  <textarea rows="4" v-model="comments"></textarea>
-
-                  <div v-if="!submitted">
-                     <button type="submit" :disabled="sending">RSVP</button>
-                  </div>
-                  
-                  <div v-else>
-                     <p>
-                        Thank you! We'll email you this week to confirm your enrollment. 
-                        The courses are close to being full, so if there's no room we'll add your
-                        name to the waitlist. &mdash; P</p>
-                  </div>
-
-                  <p v-if="error" v-cloak>
-                     Sorry, there was an error when we tried to submit your form.
-                     Please let us know at info@coop.dance?
-                  </p>
-               </form>
-            </section>
--->
 
             <section class="teachers">
                <h2>Swing Dance Cooperative Staff</h2>
@@ -495,9 +505,11 @@ new Vue({
     zip: null,
     email: null,
     comments: null,
+    agreed: null,
     submitted: false,
     error: false,
     sending: false,
+    rsvpPressed: false,
     hour: new Date().getHours()
   },
   computed: {
@@ -511,14 +523,21 @@ new Vue({
       if (this.hour < 17)
          return "afternoon"
       return "evening"
+    },
+    needAgreement() {
+      return this.rsvpPressed && !this.agreed;
     }
   },
   methods: {
     rsvp: function () {
+      this.rsvpPressed = true;
+      if (this.needAgreement) {
+         return;
+      }
       this.sending = true;
       var data = {
          name: this.name,
-         course: this.course,
+         course: 'Starter Kit',
          role: this.role,
          zip: this.zip,
          email: this.email,
