@@ -232,10 +232,12 @@
 
                               <select v-model="role">
                                  <option value="null">&ndash; Please select &ndash;</option>
-                                 <option value="Follow">Follow</option>
+                                 <option value="Follow - Waitlist">Follow - Waitlist</option>
                                  <option value="Lead">Lead</option>
                                  <option value="Any">Any</option>
                               </select>
+
+                              <div style="margin-bottom: 1em">If it says "Waitlist" next to your chosen role, that means we're waiting for the class to balance out before allowing more people who want that role into the class.</div>
 
                               <div>What's your zip code?</div>
                               <input type="text" v-model="zip"/>
