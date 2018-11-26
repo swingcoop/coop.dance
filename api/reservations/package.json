@@ -2,12 +2,7 @@
   "name": "dance.coop.reservations",
   "version": "1.0.0",
   "description": "/reservations endpoint",
-  "main": "server.js",
-  "scripts": {
-    "start": "micro",
-    "dev": "micro-dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/swingcoop/coop.dance.git"
@@ -19,10 +14,7 @@
   },
   "homepage": "https://github.com/swingcoop/coop.dance#readme",
   "dependencies": {
-    "micro": "^9.3.3",
-    "r2": "^2.0.1"
-  },
-  "devDependencies": {
-    "micro-dev": "^3.0.0"
+    "axios": "^0.18.0",
+    "micro": "^9.3.3"
   }
 }

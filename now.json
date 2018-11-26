@@ -1,0 +1,12 @@
+{
+   "version": 2,
+   "alias": [ "swing.dance.coop" ],
+   "builds": [
+      { "src": "www/**", "use": "@now/static" },
+      { "src": "api/reservations/index.js", "use": "@now/node" }
+   ],
+   "routes": [
+      { "src": "/api/reservations", "dest": "/api/reservations/index.js"},
+      { "src": "/(.*)", "dest": "/www/$1" }
+   ]
+}
