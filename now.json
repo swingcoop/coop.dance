@@ -3,10 +3,16 @@
    "alias": [ "swing.dance.coop" ],
    "builds": [
       { "src": "www/**", "use": "@now/static" },
-      { "src": "api/reservations/index.js", "use": "@now/node" }
+      { "src": "api/reservations/index.js", "use": "@now/node" },
+      { "src": "api/subscriptions/*.js", "use": "@now/node" }
    ],
    "routes": [
-      { "src": "/api/reservations", "dest": "/api/reservations/index.js"},
+      { "src": "/api/reservations", "dest": "/api/reservations/index.js" },
+      { "src": "/api/subscriptions/start", "dest": "/api/subscriptions/start.js" },
+      { "src": "/api/subscriptions/confirm", "dest": "/api/subscriptions/confirm.js" },
       { "src": "/(.*)", "dest": "/www/$1" }
-   ]
+   ],
+   "env": {
+      "TWILIO_API_KEY": "@verify-api-key"
+   }
 }
