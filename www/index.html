@@ -60,8 +60,7 @@
                </p>
 
                <p>
-                  Our third class series, Swing Dance Starter Kit, starts Monday, December 3.
-                  If you would like to take the series, please continue reading.
+                  Our third class series, Swing Dance Starter Kit, is in progress.
                </p>
 
                <div v-if="reservations" style="text-align: center; font-size: 9pt">
@@ -175,17 +174,10 @@
                you'll learn the essentials to start having fun on the dance floor in
                as little time as possible &mdash; only three weeks.</p>
 
-               <p>
-                  This class is free &mdash; it's a six-lesson series that will 
-                  introduce you to social dancing, Lindy hop, Charleston, and East Coast
-                  swing.
-               </p>
-
                <div class="fun-times">
                   <img src="/img/fancy-dance.jpg"/>
                   <div class="credit">Photo: Abigail Stuart House, November 3</div>
                </div>
-
 
                <p>
                   Our goal in this series is to get you comfortable on the dance floor, 
@@ -198,7 +190,11 @@
                         <h4>Schedule</h4>
                         <ul>
                            <li>Starts Monday, December 3</li>
-                           <li>7-8:30 p.m.</li>
+                           <li>6:45 p.m. Doors open</li>
+                           <li>7:00 p.m. Class begins
+                           <li>8:00 p.m. Break
+                           <li>8:10 p.m. Act II
+                           <li>8:30 p.m. End</li>
                            <li>Six sessions: Dec 3, 5, 10, 12, 17, 19</li>
                            <li>(Mondays and Wednesdays)</li>
                         </ul>
@@ -217,89 +213,18 @@
                         <h4>Requirements</h4>
                         <div class="venue-content">
                            <p>This class series is for beginners and experts. Intermediate dancers are welcome, but they will likely have the hardest time in this series, as most of their time will be spent unlearning what they have learned.</p>
-
-                           <p>To be fair to all students, the first two sessions, December 3rd and 5th, cannot be missed.</p>
                         </div>
                      </div>
 
                      <div>
                         <h4>To attend</h4>
                         <div class="venue-content rsvp">
-                           <p>Please reserve your spot by submitting this form, and we'll see you on December&nbsp;3rd at 7 p.m. at the Abigail Stuart House!
+                           <p>This December class is full, and we are no longer accepting reservations at this time.</p>
 
                            <p>Because there's no admission cost for the
                            Starter Kit, we do have a $20 fee for cancellations 
                            made after November 24. Missing the first session or 
                            the second session is considered a cancellation in this series.</p>
-
-                           <form v-on:submit.prevent="rsvp">
-                              <label>
-                                 <div>Name</div>
-                                 <input type="text" v-model="name"/>
-                              </label>
-
-                              <div class="agreement">
-                                 <div style="margin-bottom: 0.5ex">Please confirm your availability:</div>
-                                 <input id="agreed" type="checkbox" v-model="agreed">
-                                 <label for="agreed">I will be at the first session and
-                                 the second session.</label></input>
-                              </div>
-
-<!--                               <div>Which course would you like to take?</div>
-                              <select v-model="course">
-                                 <option value="null">&ndash; Please select &ndash;</option>
-                                 <option value="Starter Kit">Starter Kit</option>
-                              </select>
- -->
-                              <div>What dance role would you like to have during Swing Dance Starter Kit?</div>
-
-                              <p>Swing dancing is a conversation, typically between two people. The person who is responsible for moving first is referred to as a lead, whereas the person who moves second is referred to as a follow. Most people who dance long enough learn both roles.</p>
-
-                              <select v-model="role">
-                                 <option value="null">&ndash; Please select &ndash;</option>
-                                 <option value="Follow - Waitlist">Follow - Waitlist</option>
-                                 <option value="Lead - Waitlist">Lead - Waitlist</option>
-                                 <option value="Any - Waitlist">Any - Waitlist</option>
-                              </select>
-
-                              <div style="margin-bottom: 1em">Class is currently
-                                 full. Registering will add you to the waitlist.</div>
-
-                              <div>What's your zip code?</div>
-                              <input type="text" v-model="zip"/>
-
-                              <div>And your email address?</div>
-                              <input type="text" v-model="email"/>
-
-                              <div>Anything else you'd like to share?</div>
-                              <textarea rows="4" v-model="comments"></textarea>
-
-                              <div v-if="!submitted">
-                                 <button type="submit" :disabled="sending">RSVP</button>
-                                 <span v-if="sending" style="margin-left: 1ex">Sending ...</span>
-                              </div>
-                              
-                              <div v-else>
-                                 <p>
-                                    Thank you! You should receive an email within an hour to
-                                    confirm that everything went through. &mdash; P</p>
-                              </div>
-
-                              <p v-if="error" v-cloak>
-                                 Sorry, there was an error when we tried to submit your form.
-                                 Please let us know at rsvp@dance.coop?
-                              </p>
-
-                              <p v-if="needAgreement" class="need-agreement">
-                                 <strong>Attention:</strong> To RSVP, please mark that you can attend the first class and the second class, above, and try submitting the form again.
-                              </p>
-
-                           </form>
-
-                        </div>
-                     </div>
-                  </div>
-               </div>
             </section>
 
             <section class="contact">
@@ -427,16 +352,6 @@
             <!--End mc_embed_signup-->
 
             <div class="close">
-               <div>Summer time winds!</div>
-               <div>hotjazz on th' street</div>
-               <div>the warm breeze swings</div>
-               <div>makes livin' all reet</div>
-               <div>take me back to Harlem</div>
-               <div>take me back to Harlem</div>
-               <div>take me back to Harlem</div>
-               <div>take me back to Harlem</div> 
-               <div>oh, where livin's all reet</div>
-
                <div class="name">The Swing Dance Cooperative</div>
                <div>Olympia, Washington.</div> 
 
@@ -480,7 +395,7 @@ new Vue({
       },
       reservations() {
          if (!this.starterKitReservations)
-            return null;
+            return [];
 
          return this.starterKitReservations.map(x => {
             let role = x.Role.replace(" - Waitlist","");
@@ -490,6 +405,9 @@ new Vue({
                waitlist: x.Role.includes("Waitlist")
             }
          });
+      },
+      waitlistCount() {
+         return this.reservations.filter(x => x.waitlist).length;
       },
       classes() {
          var val = {};
