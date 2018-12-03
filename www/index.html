@@ -27,6 +27,15 @@
       margin-top: 0.5em;
       margin-bottom: 1em;
    }
+   .role1 {
+      color: #a00;
+   }
+   .role2 {
+      color: red;
+   }
+   .waitlist {
+      color: #ccc;
+   }
    </style>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -54,6 +63,14 @@
                   Our third class series, Swing Dance Starter Kit, starts Monday, December 3.
                   If you would like to take the series, please continue reading.
                </p>
+
+               <div v-if="reservations" style="text-align: center; font-size: 9pt">
+                  <span v-for="r in reservations" :class="r.class">
+                     <span :class="{ 'waitlist': r.waitlist }">
+                        &#9711;
+                     </span>
+                  </span>
+               </div>
             </section>
 
 <!--
@@ -430,64 +447,102 @@
    </div>
    <script>
 new Vue({
-  el: '#app',
-  data: {
-    name: null,
-    course: null,
-    role: null,
-    zip: null,
-    email: null,
-    comments: null,
-    agreed: null,
-    submitted: false,
-    error: false,
-    sending: false,
-    rsvpPressed: false,
-    hour: new Date().getHours()
-  },
-  computed: {
-    greeting() {
-      if (this.hour < 3)
+   el: '#app',
+   data: {
+      name: null,
+      course: null,
+      role: null,
+      zip: null,
+      email: null,
+      comments: null,
+      agreed: null,
+      submitted: false,
+      error: false,
+      sending: false,
+      rsvpPressed: false,
+      hour: new Date().getHours(),
+      starterKitReservations: null
+   },
+   computed: {
+      greeting() {
+         if (this.hour < 3)
+            return "evening"
+         if (this.hour < 6) 
+            return "... morning?"
+         if (this.hour < 12)
+            return "morning"
+         if (this.hour < 17)
+            return "afternoon"
          return "evening"
-      if (this.hour < 6) 
-         return "... morning?"
-      if (this.hour < 12)
-         return "morning"
-      if (this.hour < 17)
-         return "afternoon"
-      return "evening"
-    },
-    needAgreement() {
-      return this.rsvpPressed && !this.agreed;
-    }
-  },
-  methods: {
-    rsvp: function () {
-      this.rsvpPressed = true;
-      if (this.needAgreement) {
-         return;
+      },
+      needAgreement() {
+         return this.rsvpPressed && !this.agreed;
+      },
+      reservations() {
+         if (!this.starterKitReservations)
+            return null;
+
+         return this.starterKitReservations.map(x => {
+            let role = x.Role.replace(" - Waitlist","");
+            return {
+               role: role,
+               'class': this.classes[role],
+               waitlist: x.Role.includes("Waitlist")
+            }
+         });
+      },
+      classes() {
+         var val = {};
+         if (!this.starterKitReservations)
+            return val;
+
+         return {
+            'Follow': 'role1',
+            'Lead': 'role2'
+         };
       }
-      this.sending = true;
-      var data = {
-         name: this.name,
-         course: 'Starter Kit',
-         role: this.role,
-         zip: this.zip,
-         email: this.email,
-         comments: this.comments,
-      };
-      axios.post('/api/reservations', data)
-      .then(() => {
-         this.submitted = true;
-         this.sending = false;
-         // console.log(data);
-      })
-      .catch(() => {
-         this.error = true;
-         this.sending = false;
+   },
+   methods: {
+      rsvp: function () {
+         this.rsvpPressed = true;
+         if (this.needAgreement) {
+            return;
+         }
+         this.sending = true;
+         var data = {
+            name: this.name,
+            course: 'Starter Kit',
+            role: this.role,
+            zip: this.zip,
+            email: this.email,
+            comments: this.comments,
+         };
+         axios.post('/api/reservations', data)
+         .then(() => {
+            this.submitted = true;
+            this.sending = false;
+            // console.log(data);
+         })
+         .catch(() => {
+            this.error = true;
+            this.sending = false;
+         });
+      },
+      shuffle(ok) {
+         let a = ok.slice();
+         for (let i = a.length - 1; i > 0; i--) {
+           const j = Math.floor(Math.random() * (i + 1));
+           [a[i], a[j]] = [a[j], a[i]];
+         }
+         return a;
+      }
+   },
+   created() {
+      axios.get('/api/reservations/starter-kit')
+      .then(res => {
+         this.starterKitReservations = this.shuffle(res.data);
       });
-    }
-  }
+   }
 })
 </script>
 

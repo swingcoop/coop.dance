@@ -1,0 +1,8 @@
+{
+  "main": "index.js",
+  "author": "Philip Manijak",
+  "license": "MIT",
+  "dependencies": {
+    "airtable": "^0.5.8"
+  }
+}
