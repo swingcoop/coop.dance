@@ -17,6 +17,7 @@
    ],
    "env": {
       "TWILIO_API_KEY": "@verify-api-key",
-      "AIRTABLE_API_KEY": "@airtable-api-key"
+      "AIRTABLE_API_KEY": "@airtable-api-key",
+      "AIRTABLE_SUBSCRIPTIONS_BASE": "@airtable-subscriptions-base"
    }
 }

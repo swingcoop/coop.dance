@@ -1,6 +1,8 @@
 {
    "dependencies": {
+      "airtable": "^0.5.8",
       "axios": "^0.18.0",
-      "micro": "^9.3.3"
+      "micro": "^9.3.3",
+      "twilio": "^3.25.0"
    }
 }

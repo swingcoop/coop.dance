@@ -20,7 +20,8 @@ module.exports = {
          "country_code": 1, // TODO: Global
          "phone_number": phoneNumber,
          "via": "sms", // TODO: Everyone
-         "locale": "en" // TODO: Multilingual
+         "locale": "en", // TODO: Multilingual
+         "code_length": 5
       });
    },
    check: function (phoneNumber, verificationCode) {

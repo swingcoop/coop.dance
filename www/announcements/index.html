@@ -1,0 +1,116 @@
+<html>
+<head>
+   <title>Announcements: Swing Dance Cooperative</title>
+   <meta name="description" 
+      content="Swing Dance Cooperative: Announcements">
+   <meta name="keywords" content="swing dance coop announcements">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+   <link href="/style/main.css" rel="stylesheet">
+   
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+   <body>
+      <div id="app">
+      <div class="swing">
+         <div class="column">
+            <section class="section1">
+               <div class="rings">
+                  <img src="/img/rings.png" class="for-phone"/>
+               </div>
+               <h1 class="title">Swing Dance Announcements</h1>
+            </section>
+
+            <section class="section2">
+               <p>To be notified of new events by text message,
+                  please enter your phone number.</p>
+
+               <p>We'll send you a confirmation code to verify your number. Currently this will only work for phones in the United States and Canada.</p>
+
+               <div class="rsvp">
+                  <input type="text" v-model="phone" placeholder="e.g. 5555555555"/>
+                  <input type="text" v-model="zip" placeholder="Zip Code" />
+                  <div style="text-align: center">
+                     <button @click="start">Subscribe</button>
+                  </div>
+
+                  <div v-if="isStarted">
+                     <p>Please enter the verification code we just sent:</p>
+                     <input type="text" v-model="code"/>
+                     <div style="text-align: center">
+                        <button v-if="!isChecking && !isConfirmed" 
+                           @click="check">Verify</button>
+                        <p v-if="isChecking">
+                           Verifying ...
+                        </p>
+                        <p v-if="isConfirmed">
+                           You're in! Thank you.
+                        </p>
+                        <p v-if="confirmationError">
+                           Sorry, that was not the code we sent.
+                        </p>
+                     </div>
+                  </div>
+
+                  <p v-if="error">
+                     <strong>Attention:</strong> There was an error.
+                     Please let us know at info@dance.coop.
+                  </p>
+               </div>
+            </section>
+         </div>
+      </div>
+      </div>
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    phone: null,
+    code: null,
+    zip: null,
+    isStarted: false,
+    isChecking: false,
+    isConfirmed: false,
+    error: null,
+    confirmationError: null
+  },
+  methods: {
+    start: function () {
+      var data = {
+         phone: this.phone
+      };
+      axios.post('/api/subscriptions/start', data)
+      .then(res => {
+         this.isStarted = true;
+      })
+      .catch(err => {
+         this.error = err;
+      });
+    },
+    check: function() {
+      var data = {
+         phone: this.phone,
+         code: this.code,
+         zip: this.zip
+      };
+      this.isChecking = true;
+      axios.post('/api/subscriptions/confirm', data)
+      .then(res => {
+         this.isChecking = false;
+         this.isConfirmed = true;
+         this.phone = null;
+         this.code = null;
+      })
+      .catch(err => {
+         this.isChecking = false;
+         this.confirmationError = err;
+      });
+    }
+  }
+})
+
+</script>
+   </body>
+</html>
