@@ -11,10 +11,10 @@ module.exports = (req, res) => {
    var items = authHeader.split(" ");
    if (items.length < 2) {
       res.statusCode = 400;
-      res.send("Authorization header must be in format: '<type> <token>'");
+      res.end("Authorization header must be in format: '<type> <token>'");
       return;
    }
 
-   var token = items[1];
-   return userInfo(token);
+   var idToken = items[1];
+   return userInfo(idToken);
 };

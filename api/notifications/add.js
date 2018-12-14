@@ -4,6 +4,7 @@ const { json } = require('micro');
 
 async function addAnnouncement(req, res) {
    const body = await json(req);
+
    if (!body.message) {
       res.statusCode = 400;
       res.end("Propery required: message");
@@ -13,9 +14,9 @@ async function addAnnouncement(req, res) {
    var venue = 'swingcoop';
    // TODO: How to use topics and keys?
    const producer = kafka.producer();
-   await producer.connect()
+   await producer.connect();
    await producer.send({
-      topic: 'announcements-test',
+      topic: 'announcements',
       messages: [
          { key: venue, value: body.message }
       ]
@@ -44,7 +45,8 @@ module.exports = async (req, res) => {
    }
    catch(err) {
       console.log(err);
-      throw err;
+      res.statusCode = 500;
+      res.end("Server error");
    };
 
    return;

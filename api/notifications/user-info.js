@@ -12,7 +12,7 @@ var tokenRequest = {
    audience: 'https://swing.auth0.com/api/v2/'
 };
 
-module.exports = (accessToken) => {
+module.exports = (idToken) => {
    return new Promise(function (resolve, reject) {
       const client = jwksClient({
         jwksUri: 'https://swing.auth0.com/.well-known/jwks.json'
@@ -20,7 +20,6 @@ module.exports = (accessToken) => {
 
       // public:
       const kid = 'MDZERjE4REEzODlFNjk3RjJFMjM0NUYwMkI5NDEwQ0M5MTMzNDRCNw';
-      
       client.getSigningKey(kid, (err, key) => {
          if (err) {
             reject(err);
@@ -31,7 +30,7 @@ module.exports = (accessToken) => {
          var options = {
             algorithms: ["RS256","HS256"]
          };
-         var payload = jwt.verify(accessToken, signingKey, options);
+         var payload = jwt.verify(idToken, signingKey, options);
 
          axios.post(tokenUrl, tokenRequest)
          .then(res => {
@@ -52,7 +51,6 @@ module.exports = (accessToken) => {
                resolve(userInfo);
             })
             .catch(err => {
-               console.log(err);
                reject(err);
             });
          })

@@ -22,6 +22,9 @@
       "AIRTABLE_API_KEY": "@airtable-api-key",
       "AIRTABLE_SUBSCRIPTIONS_BASE": "@airtable-subscriptions-base",
       "AUTH0_USERS_ID": "@auth0-users-client-id",
-      "AUTH0_USERS_KEY": "@auth0-users-client-secret"
+      "AUTH0_USERS_KEY": "@auth0-users-client-secret",
+      "CLOUDKARAFKA_BROKERS": "@cloudkarafka-brokers",
+      "CLOUDKARAFKA_USERNAME": "@cloudkarafka-username",
+      "CLOUDKARAFKA_PASSWORD": "@cloudkarafka-password"
    }
 }

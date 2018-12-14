@@ -1,0 +1,72 @@
+<html>
+
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <p v-if="unauthenticated">Please sign in.</p>
+  <p v-if="authResult">Ready.</p>
+
+  <textarea v-model="message" rows="4"></textarea>
+  <button @click="announce">Make announcement</button>
+</div>
+<script>
+var auth = new auth0.WebAuth({
+  domain: "auth0.dance.coop",
+  clientID: "8fgalHmdBwGPbqtkERsxol3AnBJoRN8-",
+  responseType: "token id_token",
+  redirectUri: window.location.protocol + '//' + window.location.host
+});
+
+new Vue({
+  el: "#app",
+  data() {
+    return {
+      authResult: null,
+      message: null,
+      unauthenticated: false
+    };
+  },
+  created() {
+    auth.checkSession({}, (err, authResult) => {
+      if (authResult 
+      && authResult.accessToken 
+      && authResult.idToken) {
+        // Authenticated
+        this.authResult = authResult;
+      }
+      else {
+        this.unauthenticated = true;
+      }
+    });
+  },
+  methods: {
+    announce() {
+      var data = {
+         message: this.message
+      };
+
+      axios.post('/api/notifications/add', data, {
+         headers: { 
+            'Authorization': 'Bearer ' + this.authResult.idToken
+         }
+      })
+      .then(res => {
+         console.log(res.data);
+      })
+      .catch(err => {
+         console.log(err);
+      });
+    }
+  }
+});
+</script>
+</body>
+</html>
+
+
+
