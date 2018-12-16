@@ -1,27 +1,31 @@
 require('dotenv').config();
 
-const serve = require('koa-static');
-const bodyParser = require('koa-bodyparser');
-const _ = require('koa-route');
-
-const Koa = require('koa');
-const app = new Koa();
-
-// webwebweb
-app.use(serve('./www'));
-
-// Parse json
-app.use(bodyParser());
+const http   = require('http');
+const Router = require('router');
+const serve  = require('serve-static');
+const done   = require('finalhandler');
+const config = require('./now.json');
 
 // Routes
-const add = require('./api/notifications-add.js');
-app.use(_.post('/api/notifications/add', add));
+var router = Router();
+config.routes.forEach(route => {
+   // Ignore wildcard rules
+   if (route.dest.includes("$"))
+      return;
 
-const send = require('./api/notifications-send.js');
-app.use(_.post('/api/notifications/send', send));
-
-app.use(ctx => {
-   ctx.assert(ctx.body || ctx.body === null, 418);
+   var path = '.' + route.dest;
+   const code = require(path);
+   router.all(route.src, code);
 });
 
-app.listen(8080);
+// Static files
+const www = serve('./www');
+
+// Start server
+var server = http.createServer(function (req, res) {
+   // Serve routes first then fallback to static files
+   router(req, res, function () {
+      www(req, res, done(req, res));      
+   });
+});
+server.listen(8080);
