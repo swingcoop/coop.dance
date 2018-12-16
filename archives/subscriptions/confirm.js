@@ -1,4 +1,4 @@
-const api = require('./api.js');
+const api = require('../api.js');
 const twilio = require('./twilio-verify.js');
 const add = require('./add.js');
 

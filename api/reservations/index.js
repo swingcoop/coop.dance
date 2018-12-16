@@ -10,5 +10,5 @@ module.exports = async (req, res) => {
    console.log(data);
 
    res.end("Ok");
-	return "Ok"; // TODO: Not sure if we need this 
+	return; 
 };
