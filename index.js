@@ -14,7 +14,7 @@ app.use(serve('./www'));
 app.use(bodyParser());
 
 // Routes
-const add = require('./api/add.js');
+const add = require('./api/notifications-add.js');
 app.use(_.post('/api/notifications/add', add));
 
 app.listen(8080);
