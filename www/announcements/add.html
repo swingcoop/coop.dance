@@ -12,7 +12,12 @@
   <p v-if="authResult">Ready.</p>
 
   <textarea v-model="message" rows="4"></textarea>
-  <button @click="announce">Make announcement</button>
+  <div>
+    <button @click="announce">Add announcement</button>
+  </div>
+  <p>
+    <button @click="send">Send txt</button>
+  </p>
 </div>
 <script>
 var auth = new auth0.WebAuth({
@@ -51,6 +56,22 @@ new Vue({
       };
 
       axios.post('/api/notifications/add', data, {
+         headers: { 
+            'Authorization': 'Bearer ' + this.authResult.idToken
+         }
+      })
+      .then(res => {
+         console.log(res.data);
+      })
+      .catch(err => {
+         console.log(err);
+      });
+    },
+    send() {
+      var data = {
+        txt: this.message
+      };
+      axios.post('/api/notifications/send', data, {
          headers: { 
             'Authorization': 'Bearer ' + this.authResult.idToken
          }

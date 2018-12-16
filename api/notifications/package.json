@@ -1,6 +1,7 @@
 {
    "dependencies": {
       "axios": "^0.18.0",
+      "dotenv": "^6.2.0",
       "kafkajs": "^1.4.6"
    }
 }
