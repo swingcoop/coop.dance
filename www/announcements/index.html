@@ -21,9 +21,24 @@
                   <img src="/img/rings.png" class="for-phone"/>
                </div>
                <h1 class="title">Swing Dance Announcements</h1>
+                <p>Our next dance is Saturday, February 2, 2019 at the Abigail Stuart House, in the evening.</p>
+
             </section>
 
-            <section class="section2">
+            <section v-if="isCheckingSession">
+              <p>Signing in ...</p>
+            </section>
+
+            <section v-else-if="isAuthenticated">
+              <p>Thank you for joining the announcement list.</p>
+            </section>
+
+            <section v-else>
+              <p>Welcome to our small announcements page.</p>
+            </section>
+
+
+            <section class="section2" v-if="!isCheckingSession && !isAuthenticated">
                <p>To be notified of new events by text message,
                   please enter your phone number.</p>
 
@@ -68,7 +83,10 @@
 var auth = new auth0.WebAuth({
   domain:       'auth0.dance.coop',
   clientID:     '8fgalHmdBwGPbqtkERsxol3AnBJoRN8-', // public
-  redirectUri:  window.location.protocol + '//' + window.location.host,
+  redirectUri:  window.location.protocol 
+    + '//' 
+    + window.location.host
+    + '/announcements',
   responseType: 'token id_token'
 });
 
@@ -81,6 +99,8 @@ new Vue({
     isStarted: false,
     isChecking: false,
     isConfirmed: false,
+    isCheckingSession: false,
+    isAuthenticated: false,
     error: null,
     confirmationError: null
   },
@@ -88,6 +108,22 @@ new Vue({
     fullPhoneNumber() {
       return '+1' + this.phone;
     }
+  },
+  created() {
+    this.isCheckingSession = true;
+    auth.checkSession({}, (err, authResult) => {
+      this.isCheckingSession = false;
+      if (authResult 
+      && authResult.accessToken 
+      && authResult.idToken) {
+        // Authenticated
+        this.isAuthenticated = true;
+      }
+      else {
+        this.unauthenticated = true;
+        this.confirmationError = err;
+      }
+    });
   },
   methods: {
     start: function () {
