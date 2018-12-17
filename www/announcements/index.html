@@ -31,7 +31,7 @@
               <p>Signing in ...</p>
             </section>
 
-            <section v-else-if="isAuthenticated">
+            <section v-else-if="isAuthenticated" v-cloak>
               <p>Thank you for joining the announcement list.</p>
             </section>
 
@@ -40,7 +40,7 @@
             </section>
 
 
-            <section class="section2" v-if="!isCheckingSession && !isAuthenticated">
+            <section class="section2" v-if="!isCheckingSession && !isAuthenticated" v-cloak>
                <p>To be notified of new events by text message,
                   please enter your phone number.</p>
 
@@ -76,6 +76,26 @@
                      Please let us know at info@dance.coop.
                   </p>
                </div>
+            </section>
+
+            <section class="cooperative">
+              <div class="column">
+                <h1 class="for-phone">About the co-op</h1>
+                <p>We're a cooperative, and we identify with the 
+                   <a href="https://www.ica.coop/en/whats-co-op/co-operative-identity-values-principles">cooperative movement</a> and its values.</p>
+
+                <p>We'll be talking more about this later, but half of what we're doing is encouraging other 
+                   organizations to become cooperatives.</p>
+
+                <div class="close">
+                  <div class="name">The Swing Dance Cooperative</div>
+                  <div>Olympia, Washington.</div> 
+
+                  <a href="/">
+                    <img src="/img/rings.png" class="rings"/>
+                  </a>
+                </div>
+              </div>
             </section>
          </div>
       </div>
