@@ -24,21 +24,19 @@
                </div>
                <h1 class="title">Swing Dance Announcements</h1>
                 <p>Our next dance is Saturday, February 2, 2019 at the Abigail Stuart House, in the evening.</p>
-
             </section>
 
-            <section v-if="isCheckingSession">
-              <p>Signing in ...</p>
-            </section>
+            <section >
+              <p v-if="isCheckingSession">Signing in ...</p>
+              <p v-else-if="isAuthenticated" v-cloak>Thank you for joining the announcement list.</p>
+              <p v-else>Welcome to our small announcements page.</p>
 
-            <section v-else-if="isAuthenticated" v-cloak>
-              <p>Thank you for joining the announcement list.</p>
+              <ul>
+                <li>Swing dance: February 2 &ndash; Saturday evening</li>
+                <li>Lindy Hop Potluck series: Wednesdays in February</li>
+                <li>Beginning dance series: Mondays in February</li>
+              </ul>
             </section>
-
-            <section v-else>
-              <p>Welcome to our small announcements page.</p>
-            </section>
-
 
             <section class="section2" v-if="!isCheckingSession && !isAuthenticated" v-cloak>
                <p>To be notified of new events by text message,
