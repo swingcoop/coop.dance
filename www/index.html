@@ -36,6 +36,27 @@
    .waitlist {
       color: #ccc;
    }
+   .button-link {
+      display: inline-block;
+      border: solid 1px #c22;
+      border-radius: 6px;
+      padding: 2ex;
+      margin-top: 1.5em;
+      min-width: 100px;
+      text-align: center;
+      text-decoration: none;
+   }
+   .button-link a {
+      color: inherit;
+   }
+   .proto-nav-panel {
+      margin-bottom: 1em;
+      text-align: center; 
+   }
+   .proto-nav-panel .button-link { 
+      margin-left: 1ex;
+      margin-right: 1ex;
+   }
    </style>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -60,7 +81,7 @@
                </p>
 
                <p>
-                  Our third class series, Swing Dance Starter Kit, is in progress.
+                  Our third class series, Swing Dance Starter Kit, just wrapped up.
                </p>
 
                <div v-if="reservations" style="text-align: center; font-size: 9pt">
@@ -70,6 +91,25 @@
                      </span>
                   </span>
                </div>
+
+               <div class="proto-nav-panel">
+                  <a class="button-link" href="/announcements">Announcements</a>
+
+                  <a class="button-link" href="https://www.meetup.com/Swing-Dance-Cooperative/">Meetup</a>
+
+                  <a class="button-link" href="/contact">Contact us</a>
+               </div>
+               
+            </section>
+
+            <section>
+               <h2>Save the date</h2>
+
+               <p>You are invited to an evening of swing dancing in Olympia. Please join us at the historic Abigail Stuart House, situated just south of downtown, on 1002 Washington St SE.</p> 
+
+               <p>The night will begin with an introductory lesson at 7 p.m., followed by dancing from 8 until 10.</p>
+
+               <p>Saturday, February 2, 2019.</p>
             </section>
 
 <!--
@@ -167,7 +207,7 @@
             </section>
 -->
 
-            <section>
+<!--             <section>
                <h2>Swing Dance Starter Kit</h2>
 
                <p>Welcome to the world of swing dancing. With Swing Dance Starter Kit,
@@ -185,7 +225,7 @@
                </p>
 
                <div class="lindy-dates">
-<!--                   <div class="when-where">
+                  <div class="when-where">
                      <div>
                         <h4>Schedule</h4>
                         <ul>
@@ -208,7 +248,7 @@
                            <div>Olympia</div>
                         </div>
                      </div>
- -->
+
                      <div>
                         <h4>Requirements</h4>
                         <div class="venue-content">
@@ -225,7 +265,7 @@
                            Starter Kit, we do have a $20 fee for cancellations 
                            made after November 24. Missing the first session or 
                            the second session is considered a cancellation in this series.</p>
-            </section>
+            </section> -->
 
             <section class="contact">
                <h2>Keep in touch</h2>
