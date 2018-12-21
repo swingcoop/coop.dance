@@ -1,0 +1,96 @@
+<html>
+<head>
+   <title>Contact: Swing Dance Cooperative</title>
+   <meta name="description" 
+      content="Swing Dance Cooperative: Contact">
+   <meta name="keywords" content="swing dance coop contact">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+   <link href="/style/main.css" rel="stylesheet">
+   
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+   <body>
+      <div id="app">
+      <div class="swing">
+         <div class="column">
+            <section class="section1">
+               <div class="rings">
+                  <a href="/">
+                    <img src="/img/rings.png" class="for-phone"/>
+                  </a>
+               </div>
+               <h1 class="title">Swing Dance Cooperative</h1>
+            </section>
+
+            <section>
+              <h2>Contact us</h2>
+              <form class="rsvp">
+                <label>Your name (or stage name)</label>
+                <input type="text" v-model="name"/>
+                
+                <label>Please write your message below:</label>
+                <textarea v-model="message" rows="6"></textarea>
+                
+                <label>How should we contact you? (optional)
+                <input type="text" v-model="contact"/>
+                
+                <div style="text-align: center">
+                  <div v-if="error">
+                    <p>There was an error sending your message.</p> 
+                    <p>Please email us at info@dance.coop if this isn't working.</p>
+                  </div>
+                  <div v-if="isSending">Sending ...</div>
+                  <div v-else-if="isSent">Sent. Thank you</div>
+                  <div v-else>
+                    <button 
+                      type="submit" 
+                      @click.prevent="sendLetter">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </section>
+         </div>
+      </div>
+      </div>
+<script>
+
+new Vue({
+  el: '#app',
+  data: {
+    name: null,
+    message: null,
+    contact: null,
+
+    isSending: false,
+    isSent: false,
+    error: null
+  },
+  methods: {
+    sendLetter: function () {
+      this.isSending = true;
+
+      var data = {
+        name: this.name,
+        contact: this.contact,
+        message: this.message,
+      };
+
+      axios.post('/api/letters', data)
+        .then(res => {
+          this.isSending = false;
+          this.isSent = true;
+        })
+        .catch(err => {
+          this.isSending = false;
+          this.error = err;
+        });
+    }
+  }
+})
+
+</script>
+   </body>
+</html>

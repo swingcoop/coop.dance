@@ -5,12 +5,14 @@
       { "src": "www/**", "use": "@now/static" },
       { "src": "api/reservations/index.js", "use": "@now/node" },
       { "src": "api/reservations/starter-kit/index.js", "use": "@now/node" },
+      { "src": "api/letters-add.js", "use": "@now/node" },
       { "src": "api/notifications-add.js", "use": "@now/node" },
       { "src": "api/notifications-send.js", "use": "@now/node" }
    ],
    "routes": [
       { "src": "/api/reservations", "dest": "/api/reservations/index.js" },
       { "src": "/api/reservations/starter-kit", "dest": "/api/reservations/starter-kit/index.js" },
+      { "src": "/api/letters", "dest": "/api/letters-add.js" },
       { "src": "/api/notifications/add", "dest": "/api/notifications-add.js" },
       { "src": "/api/notifications/send", "dest": "/api/notifications-send.js" },
       { "src": "/(.*)", "dest": "/www/$1" }

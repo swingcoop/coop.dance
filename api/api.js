@@ -7,15 +7,16 @@ function api(fn) {
    const app = new Koa();
 
    app.use(bodyParser());
-   app.use(fn);
 
-   // TODO: Should we catch empty statuses?
-   //
-   // app.use(async ctx => {
-   //    if (!ctx.status) {
-   //       ctx.status = 200;
-   //    }
-   // });
+   app.use(async (ctx, next) => {
+      await next();
+      if (ctx.status === 404) {
+         // The default koa status is 404, but
+         // in our API layer 204 is more useful.
+         ctx.status = 204;
+      }
+   });
+   app.use(fn);
 
    // Returns (req, res)
    return app.callback();
