@@ -38,7 +38,7 @@
    }
    .button-link {
       display: inline-block;
-      border: solid 1px #c22;
+      border: solid 2px #c22;
       border-radius: 6px;
       padding: 2ex;
       margin-top: 1.5em;
@@ -46,8 +46,8 @@
       text-align: center;
       text-decoration: none;
    }
-   .button-link a {
-      color: inherit;
+   a.button-link {
+      color: #ffc3bb;
    }
    .proto-nav-panel {
       margin-bottom: 1em;
@@ -271,15 +271,16 @@
                <h2>Keep in touch</h2>
 
                <div>
-                  <p>To be notified of new events by text message, please join our announcement list.</p>
+                  <div>To be notified of new events by text message, please join our announcement list.</div>
 
-                  <div style="text-align: center">
-                     <a href="/announcements" class="button button-caution button-raised button-rounded">Announcement List</a>
+                  <div class="proto-nav-panel">
+                     <a class="button-link" href="/announcements">Announcements</a>
                   </div>
 
-                  <p style="margin-top: 3em">With Meetup, you will be emailed when we share new events. It's also a decent way to reach us.</p>
-                  <div style="text-align: center">
-                     <a href="https://www.meetup.com/Swing-Dance-Cooperative/" class="button button-caution button-raised button-rounded">Visit Meetup</a>
+                  <div style="margin-top: 2em">With Meetup, you will be emailed when we share new events. It's also a decent way to reach us.</div>
+
+                  <div class="proto-nav-panel">
+                     <a class="button-link" href="https://www.meetup.com/Swing-Dance-Cooperative/">Meetup</a>
                   </div>
                </div>
 
