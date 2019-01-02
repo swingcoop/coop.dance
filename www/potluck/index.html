@@ -1,0 +1,274 @@
+<html>
+<head>
+   <title>Lindy Hop Potluck | The Swing Dance Cooperative</title>
+   <meta name="description" 
+      content="Lindy Hop Potluck | The Swing Dance Cooperative. Learn to dance, share what you can. Olympia, Washington.">
+   <meta name="keywords" content="swing dance coop co-cop cooperative olympia">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <meta property="og:title" content="Lindy Hop Potluck | The Swing Dance Cooperative">
+   <meta property="og:type" content="website">
+   <meta property="og:image" content="http://swing.dance.coop/img/ograph-banner.png">
+   <meta property="og:image:secure_url" content="https://swing.dance.coop/img/ograph-banner.png">
+   <meta property="og:url" content="https://swing.dance.coop/">
+   <meta property="og:description" 
+      content="Lindy Hop Potluck | The Swing Dance Cooperative. Learn to dance, share what you can. Olympia, Washington.">
+
+   <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+
+   <link href="/style/main.css" rel="stylesheet">
+   <style>
+   .checkbox input {
+      width: inherit;
+      margin-right: 1.5ex;
+      vertical-align: text-top;
+      margin-top: 3px;
+   }
+   .checkbox {
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+   }
+   .role1 {
+      color: #a00;
+   }
+   .role2 {
+      color: red;
+   }
+   .waitlist {
+      color: #ccc;
+   }
+   .button-link {
+      display: inline-block;
+      border: solid 2px #c22;
+      border-radius: 6px;
+      padding: 2ex;
+      margin-top: 1.5em;
+      min-width: 100px;
+      text-align: center;
+      text-decoration: none;
+   }
+   a.button-link {
+      color: #ffc3bb;
+   }
+   .proto-nav-panel {
+      margin-bottom: 1em;
+      text-align: center; 
+   }
+   .proto-nav-panel .button-link { 
+      margin-left: 1ex;
+      margin-right: 1ex;
+   }
+   .section1 {
+      background-color: #fffff0;
+      color: #222;
+   }
+   .section4 {
+      background-color: #ddddd0;
+      color: #222;
+   }
+
+
+   </style>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+   <div id="app">
+      <div class="swing">
+         <div class="column">
+            <section class="section1">
+               <div class="rings">
+                  <a href="/"><img src="/img/rings.png" class="for-phone"/></a>
+               </div>
+               <h1 class="title">Lindy Hop<span class="for-phone"> Potluck</span></h1>
+
+               <p>
+                  Lindy hop, often called the original swing dance, started in the 1920s in Harlem, and today is danced around the globe. It is a fun and expressive dance rooted in old jazz and having a good time.
+               </p>
+
+               <p>
+                  One of the characteristics of Lindy hop is that it is a combination of dances, past fads, and steps. The first Lindy hoppers went to circus shows for ideas, or watched the movements of animals for inspiration, and tried it out on the dance floor.
+               </p>
+
+               <p>
+                  Lindy Hop Potluck follows in that tradition, to bring a variety of movements, styles, techniques, mindsets, and steps to our lives. So, please join us for one class or for five &ndash; you are invited.
+               </p>
+            </section>
+
+            <section>
+               <h2>Next Potluck</h2>
+               <p>Wednesdays in February.</p>
+               <p>
+                  <div>7 - 8:30 p.m. at the Abigail Stuart House</div>
+                  <div>1002 Washington St SE, Olympia.</div>
+               </p>
+            </section>
+
+
+            <section class="section2">
+               <h2>Get on the schedule</h2>
+
+               <p>Share something you love about dancing. To be a teacher at Potluck, the main thing we ask is that you share something you're excited about.</p>
+
+               <p>When scheduling upcoming classes, preference is given to first-time teachers. We'd prefer that you attend at least one potluck class before teaching one, but we're flexible.</p>
+
+               <form class="rsvp" v-on:submit.prevent="rsvp">
+                  <label>
+                     <div>Your name (or stage name)</div>
+                     <input type="text" v-model="name"/>
+                  </label>
+
+                  <label>
+                     <div>Lesson type (descriptions below)</div>
+                  </label>
+
+                  <select v-model="lessonType">
+                     <option value="null">&ndash; Please select &ndash;</option>
+                     <option value="warmup">Solo jazz warmup (one song)</option>
+                     <option value="step">Jazz step</option>
+                     <option value="small">Small idea</option>
+                     <option value="main">Main lesson</option>
+                     <option value="full">Full class</option>
+                     <option value="snacks">Snacks</option>
+                  </select>
+
+                  <p><label>Solo jazz warmup:</label> Play one song and dance to it while people in class copy what you do. 3-5 minutes.</p>
+
+                  <p><label>Jazz step:</label> Pick a favorite jazz step of yours, or find one on YouTube, and break it down for the class. 2-4 minutes.</p>
+
+                  <p><label>Small idea:</label> Share a concept that made a difference in your dancing, or maybe a fun thing you did in another workshop, or a partner-dance move. 10 minutes of teaching, plus two songs for practice &ndash; so about 20 minutes.</p>
+
+                  <p><label>Main lesson:</label> A prepared presentation on a primary dance concept or routine. One hour.</p>
+
+                  <p><label>Full class:</label> Share the thing in an hour and a half. Includes a snack break.</p>
+
+                  <p><label>Snacks:</label> Instead of dancing, snacks.</p>
+
+                  <label>Requests</label>
+                  <div class="checkbox">
+                     <input
+                        id="music"
+                        type="checkbox"
+                        v-model="music">
+                        <label for="music">Music / DJ</label>
+                     </input>
+                  </div>
+
+                  <div class="checkbox">
+                     <input 
+                        id="planning" 
+                        type="checkbox" 
+                        v-model="planning">
+                        <label for="planning">Preparation help / consulting / mentoring</label>
+                     </input>
+                  </div>
+
+                  <div class="checkbox">
+                     <input 
+                        id="partner" 
+                        type="checkbox" 
+                        v-model="partner">
+                        <label for="partner">Demonstration partner during class</label>
+                     </input>
+                  </div>
+
+                  <div class="checkbox">
+                     <input 
+                        id="feedback" 
+                        type="checkbox" 
+                        v-model="feedback">
+                        <label for="feedback">Peer feedback / review</label>
+                     </input>
+                  </div>
+
+                  <label>Lesson title (optional)</label>
+                  <input type="text" v-model="lessonTitle"/>
+
+                  <label>
+                     <div>How should we contact you?</div>
+                     <input type="text" v-model="contact"/>
+                  </label>
+
+                  <label>Anything else?</label>
+                  <textarea rows="4" v-model="comments"></textarea>
+
+                  <div v-if="!submitted">
+                     <div style="text-align: center">
+                        <button type="submit" :disabled="sending">Submit</button>
+                        <span v-if="sending" style="margin-left: 1ex">Sending ...</span>
+                     </div>
+                  </div>
+
+                  <div v-else>
+                     <p>Thank you! We'll be in touch within 48 hours about adding you to the schedule.</p>
+                  </div>
+
+                  <p v-if="error" v-cloak>
+                     Sorry, there was an error when we tried to submit your form. Please let us know at rsvp@dance.coop?
+                  </p>
+            </section>
+         </div>
+      </div>
+
+      <section class="cooperative">
+         <div class="column">
+            <h1 class="for-phone">Thank you</h1>
+
+            <div class="close">
+               <div class="name">The Swing Dance Cooperative</div>
+               <div>Olympia, Washington.</div> 
+
+               <a href="/"><img src="/img/rings.png" class="rings"/></a>
+            </div>
+         </div>
+      </section>
+   </div>
+   <script>
+new Vue({
+   el: '#app',
+   data: {
+      name: null,
+      lessonType: null,
+      music: null,
+      planning: null,
+      partner: null,
+      feedback: null,
+      lessonTitle: null,
+      contact: null,
+      comments: null,
+      submitted: false,
+      error: false,
+      sending: false
+   },
+   methods: {
+      rsvp: function () {
+         this.sending = true;
+         var data = {
+            name: this.name,
+            lessonType: this.lessonType,
+            music: this.music,
+            planning: this.planning,
+            partner: this.partner,
+            feedback: this.feedback,
+            lessonTitle: this.lessonTitle,
+            contact: this.contact,
+            comments: this.comments,
+         };
+         axios.post('/api/reservations/potluck', data)
+         .then(() => {
+            this.submitted = true;
+            this.sending = false;
+            // console.log(data);
+         })
+         .catch(() => {
+            this.error = true;
+            this.sending = false;
+         });
+      }
+   }
+})
+</script>
+
+</body>
+</html>
