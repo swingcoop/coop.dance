@@ -8,7 +8,8 @@
       { "src": "api/letters-add.js", "use": "@now/node" },
       { "src": "api/notifications-add.js", "use": "@now/node" },
       { "src": "api/notifications-send.js", "use": "@now/node" },
-      { "src": "api/potluck-add.js", "use": "@now/node" }
+      { "src": "api/potluck-add.js", "use": "@now/node" },
+      { "src": "api/potluck/get.js", "use": "@now/node" }
    ],
    "routes": [
       { "src": "/api/reservations", "dest": "/api/reservations/index.js" },
@@ -16,7 +17,8 @@
       { "src": "/api/letters", "dest": "/api/letters-add.js" },
       { "src": "/api/notifications/add", "dest": "/api/notifications-add.js" },
       { "src": "/api/notifications/send", "dest": "/api/notifications-send.js" },
-      { "src": "/api/reservations/potluck", "dest": "/api/potluck-add.js" },
+      { "src": "/api/potluck", "dest": "/api/potluck-add.js" },
+      { "src": "/api/potluck/lessons", "dest": "/api/potluck/get.js" },
       { "src": "/(.*)", "dest": "/www/$1" }
    ],
    "env": {

@@ -103,6 +103,12 @@
                   <div>7 - 8:30 p.m. at the Abigail Stuart House</div>
                   <div>1002 Washington St SE, Olympia.</div>
                </p>
+
+               <span v-for="lesson in lessonTypes" :class="lesson">
+                  <span>
+                     &#9711;
+                  </span>
+               </span>
             </section>
 
 
@@ -239,7 +245,13 @@ new Vue({
       comments: null,
       submitted: false,
       error: false,
-      sending: false
+      sending: false,
+      potluckLessons: []
+   },
+   computed: {
+      lessonTypes() {
+         return this.potluckLessons.map(x => x.Type);
+      }
    },
    methods: {
       rsvp: function () {
@@ -255,7 +267,7 @@ new Vue({
             contact: this.contact,
             comments: this.comments,
          };
-         axios.post('/api/reservations/potluck', data)
+         axios.post('/api/potluck', data)
          .then(() => {
             this.submitted = true;
             this.sending = false;
@@ -265,7 +277,21 @@ new Vue({
             this.error = true;
             this.sending = false;
          });
+      },
+      shuffle(ok) {
+         let a = ok.slice();
+         for (let i = a.length - 1; i > 0; i--) {
+           const j = Math.floor(Math.random() * (i + 1));
+           [a[i], a[j]] = [a[j], a[i]];
+         }
+         return a;
       }
+   },
+   created() {
+      axios.get('/api/potluck/lessons')
+      .then(res => {
+         this.potluckLessons = this.shuffle(res.data);
+      });
    }
 })
 </script>
