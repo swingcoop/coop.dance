@@ -18,6 +18,17 @@
 
    <link href="/style/main.css" rel="stylesheet">
    <style>
+   h3 {
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+      font-weight: 300;
+      text-align: left;
+      margin-bottom: 0.3ex;
+      color: #f66;
+   }
+   .descriptions p {
+      margin-top: 0;
+   }
+
    .checkbox input {
       width: inherit;
       margin-right: 1.5ex;
@@ -42,8 +53,7 @@
       border: solid 2px #c22;
       border-radius: 6px;
       padding: 2ex;
-      margin-top: 1.5em;
-      min-width: 100px;
+      min-width: 70px;
       text-align: center;
       text-decoration: none;
    }
@@ -58,16 +68,6 @@
       margin-left: 1ex;
       margin-right: 1ex;
    }
-   .section1 {
-      background-color: #fffff0;
-      color: #222;
-   }
-   .section4 {
-      background-color: #ddddd0;
-      color: #222;
-   }
-
-
    </style>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -83,7 +83,9 @@
                </div>
                <h1 class="title">Lindy Hop<span class="for-phone"> Potluck</span></h1>
 
-               <p>
+               <p>Welcome to Potluck. Dance with us, share what you love.</p>
+
+<!--                <p>
                   Lindy hop, often called the original swing dance, started in the 1920s in Harlem, and today is danced around the globe. It is a fun and expressive dance rooted in old jazz and having a good time.
                </p>
 
@@ -94,13 +96,14 @@
                <p>
                   Lindy Hop Potluck follows in that tradition, to bring a variety of movements, styles, techniques, mindsets, and steps to our lives. So, please join us for one class or for five &ndash; you are invited.
                </p>
+ -->            
             </section>
 
             <section>
                <h2>Next Potluck</h2>
-               <p>Wednesdays in February.</p>
+               <p>Wednesdays in February. 7 - 8:30 p.m.</p>
                <p>
-                  <div>7 - 8:30 p.m. at the Abigail Stuart House</div>
+                  <div>Abigail Stuart House</div>
                   <div>1002 Washington St SE, Olympia.</div>
                </p>
 
@@ -117,7 +120,7 @@
 
                <p>Share something you love about dancing. To be a teacher at Potluck, the main thing we ask is that you share something you're excited about.</p>
 
-               <p>When scheduling upcoming classes, preference is given to first-time teachers. We'd prefer that you attend at least one potluck class before teaching one, but we're flexible.</p>
+<!--                <p>When scheduling upcoming classes, preference is given to first-time teachers. We'd prefer that you attend at least one potluck class before teaching one, but we're flexible.</p> -->
 
                <form class="rsvp" v-on:submit.prevent="rsvp">
                   <label>
@@ -139,17 +142,25 @@
                      <option value="snacks">Snacks</option>
                   </select>
 
-                  <p><label>Solo jazz warmup:</label> Play one song and dance to it while people in class copy what you do. 3-5 minutes.</p>
+                  <div class="descriptions">
+                     <h3>Solo jazz warmup</h3> 
+                     <p>Play one song and dance to it while people in class copy what you do. 3-5 minutes.</p>
 
-                  <p><label>Jazz step:</label> Pick a favorite jazz step of yours, or find one on YouTube, and break it down for the class. 2-4 minutes.</p>
+                     <h3>Jazz step</h3>
+                     <p>Pick a favorite jazz step of yours, or find one on YouTube, and break it down for the class. 2-4 minutes.</p>
 
-                  <p><label>Small idea:</label> Share a concept that made a difference in your dancing, or maybe a fun thing you did in another workshop, or a partner-dance move. 10 minutes of teaching, plus two songs for practice &ndash; so about 20 minutes.</p>
+                     <h3>Small idea</h3>
+                     <p>Share a concept that made a difference in your dancing, or maybe a fun thing you did in another workshop, or a partner-dance move. 10 minutes of teaching, plus two songs for practice &ndash; so about 20 minutes.</p>
 
-                  <p><label>Main lesson:</label> A prepared presentation on a primary dance concept or routine. One hour.</p>
+                     <h3>Main lesson</h3>
+                     <p>A prepared presentation on a primary dance concept or routine. One hour.</p>
 
-                  <p><label>Full class:</label> Share the thing in an hour and a half. Includes a snack break.</p>
+                     <h3>Full class</h3>
+                     <p>Share the thing in an hour and a half. Includes a snack break.</p>
 
-                  <p><label>Snacks:</label> Instead of dancing, snacks.</p>
+                     <h3>Snacks</h3>
+                     <p>Instead of dancing, snacks.</p>
+                  </div>
 
                   <label>Requests</label>
                   <div class="checkbox">
@@ -157,7 +168,7 @@
                         id="music"
                         type="checkbox"
                         v-model="music">
-                        <label for="music">Music / DJ</label>
+                        <label for="music">Music / DJ help</label>
                      </input>
                   </div>
 
@@ -166,7 +177,7 @@
                         id="planning" 
                         type="checkbox" 
                         v-model="planning">
-                        <label for="planning">Preparation help / consulting / mentoring</label>
+                        <label for="planning">Preparation help / advice</label>
                      </input>
                   </div>
 
@@ -175,7 +186,7 @@
                         id="partner" 
                         type="checkbox" 
                         v-model="partner">
-                        <label for="partner">Demonstration partner during class</label>
+                        <label for="partner">Partner for class demos</label>
                      </input>
                   </div>
 
@@ -196,7 +207,7 @@
                      <input type="text" v-model="contact"/>
                   </label>
 
-                  <label>Anything else?</label>
+                  <label>Anything else? Day preference?</label>
                   <textarea rows="4" v-model="comments"></textarea>
 
                   <div v-if="!submitted">
@@ -220,6 +231,11 @@
       <section class="cooperative">
          <div class="column">
             <h1 class="for-phone">Thank you</h1>
+
+            <div class="proto-nav-panel">
+               <a class="button-link" href="/mission" style="color: #c33">Mission</a>
+               <a class="button-link" href="/contact" style="color: #c33">Contact us</a>
+            </div>
 
             <div class="close">
                <div class="name">The Swing Dance Cooperative</div>
