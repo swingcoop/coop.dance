@@ -23,6 +23,7 @@
       font-weight: 300;
       text-align: left;
       margin-bottom: 0.3ex;
+      margin-top: 0.5ex;
       color: #f66;
    }
    .descriptions p {
@@ -34,6 +35,7 @@
       margin-right: 1.5ex;
       vertical-align: text-top;
       margin-top: 3px;
+      margin-bottom: 0;
    }
    .checkbox {
       margin-top: 0.5em;
@@ -67,6 +69,41 @@
    .proto-nav-panel .button-link { 
       margin-left: 1ex;
       margin-right: 1ex;
+   }
+   .lesson-type {
+      display: flex;
+      flex-flow: row wrap;
+      margin-top: 1ex;
+      justify-content: space-between;
+   }
+   .lesson-type div {
+      margin-bottom: 2ex;
+      text-align: center;
+      border: solid 1px red;
+      border-radius: 5px;
+      box-sizing: border-box;
+      width: 47%;
+   }
+   .lesson-type input[type="radio"] {
+      display: none;
+   }
+   .lesson-type div label {
+      display: block;
+      width: 100%;
+      padding: 2ex;
+      box-sizing: border-box;
+   }
+   .sel {
+      background-color: red;
+   }
+
+   .checkbox {
+      border: solid 1px red;
+      border-radius: 5px;
+      padding: 2ex;
+   }
+   .checkbox label {
+
    }
    </style>
 
@@ -156,41 +193,106 @@
                   </label>
 
                   <label>
-                     <div>Lesson type (descriptions below)</div>
+                     <div>What would you like to share?</div>
                   </label>
 
-                  <select v-model="lessonType">
-                     <option value="null">&ndash; Please select &ndash;</option>
-                     <option value="warmup">Solo jazz warmup (one song)</option>
-                     <option value="step">Jazz step</option>
-                     <option value="small">Small idea</option>
-                     <option value="main">Main lesson</option>
-                     <option value="full">Full class</option>
-                     <option value="snacks">Snacks</option>
-                  </select>
-
-                  <div class="descriptions">
-                     <h3>Solo jazz warmup</h3> 
-                     <p>Play one song and dance to it while people in class copy what you do. 3-5 minutes.</p>
-
-                     <h3>Jazz step</h3>
-                     <p>Pick a favorite jazz step of yours, or find one on YouTube, and break it down for the class. 2-4 minutes.</p>
-
-                     <h3>Small idea</h3>
-                     <p>Share a concept that made a difference in your dancing, or maybe a fun thing you did in another workshop, or a partner-dance move. 10 minutes of teaching, plus two songs for practice &ndash; so about 20 minutes.</p>
-
-                     <h3>Main lesson</h3>
-                     <p>A prepared presentation on a primary dance concept or routine. One hour.</p>
-
-                     <h3>Full class</h3>
-                     <p>Share the thing in an hour and a half. Includes a snack break.</p>
-
-                     <h3>Snacks</h3>
-                     <p>Instead of dancing, snacks.</p>
+                  <div class="lesson-type">
+                     <div :class="{ sel: lessonType == 'warmup' }">
+                        <input 
+                           type="radio" 
+                           id="warmup"
+                           value="warmup"
+                           v-model="lessonType">
+                           <label for="warmup">Warmup</label>
+                        </input>
+                     </div>
+                     <div :class="{ sel: lessonType == 'step' }">
+                        <input 
+                           type="radio" 
+                           id="step"
+                           value="step"
+                           v-model="lessonType">
+                           <label for="step">Jazz step</label>
+                        </input>
+                     </div>
+                     <div :class="{ sel: lessonType == 'small' }">
+                        <input 
+                           type="radio" 
+                           id="small"
+                           value="small"
+                           v-model="lessonType">
+                           <label for="small">Small idea</label>
+                        </input>
+                     </div>
+                     <div :class="{ sel: lessonType == 'main' }">
+                        <input 
+                           type="radio" 
+                           id="main"
+                           value="main"
+                           v-model="lessonType">
+                           <label for="main">Main class</label>
+                        </input>
+                     </div>
+                     <div :class="{ sel: lessonType == 'full' }">
+                        <input 
+                           type="radio" 
+                           id="full"
+                           value="full"
+                           v-model="lessonType">
+                           <label for="full">Full class</label>
+                        </input>
+                     </div>
+                     <div :class="{ sel: lessonType == 'snacks' }">
+                        <input 
+                           type="radio" 
+                           id="snacks"
+                           value="snacks"
+                           v-model="lessonType">
+                           <label for="snacks">Snacks</label>
+                        </input>
+                     </div>
                   </div>
 
+                  <div class="descriptions">
+                     <template v-if="lessonType === 'warmup'">
+                        <h3>Solo jazz warmup</h3> 
+                        <p>Play one song and dance to it while people in class copy what you do. 3-5 minutes.</p>
+                     </template>
+
+                     <template v-if="lessonType === 'step'">
+                        <h3>Jazz step</h3>
+                        <p>Pick a favorite jazz step of yours, or find one on YouTube, and break it down for the class. 2-4 minutes.</p>
+                     </template>
+
+                     <template v-if="lessonType === 'small'">
+                        <h3>Small idea</h3>
+                        <p>Share a concept that made a difference in your dancing, or maybe a fun thing you did in another workshop, or a partner-dance move. 10 minutes of teaching, plus two songs for practice &ndash; so about 20 minutes.</p>
+                     </template>
+
+                     <template v-if="lessonType === 'main'">
+                        <h3>Main lesson</h3>
+                        <p>A prepared presentation on a primary dance concept or routine. One hour.</p>
+                     </template>
+
+                     <template v-if="lessonType === 'full'">
+                        <h3>Full class</h3>
+                        <p>Share the thing in an hour and a half. Includes a snack break.</p>
+                     </template>
+
+                     <template v-if="lessonType === 'snacks'">
+                        <h3>Snacks</h3>
+                        <p>Instead of dancing, snacks.</p>
+                     </template>
+
+                     <template v-if="lessonType === null">
+                        <p style="margin-bottom: 1.8em; text-align: center">(Please select above)</p>
+                     </template>
+                  </div>
+
+                  <hr style="width: 15%; border-style: dotted; border-top-width: 8px; border-bottom-width: 0; border-color: #fcc"/>
+
                   <label>Requests</label>
-                  <div class="checkbox">
+                  <div class="checkbox" :class="{ sel: music }">
                      <input
                         id="music"
                         type="checkbox"
@@ -199,7 +301,7 @@
                      </input>
                   </div>
 
-                  <div class="checkbox">
+                  <div class="checkbox" :class="{ sel: planning }">
                      <input 
                         id="planning" 
                         type="checkbox" 
@@ -208,7 +310,7 @@
                      </input>
                   </div>
 
-                  <div class="checkbox">
+                  <div class="checkbox" :class="{ sel: partner }">
                      <input 
                         id="partner" 
                         type="checkbox" 
@@ -217,7 +319,7 @@
                      </input>
                   </div>
 
-                  <div class="checkbox">
+                  <div class="checkbox" :class="{ sel: feedback }">
                      <input 
                         id="feedback" 
                         type="checkbox" 
@@ -230,11 +332,16 @@
                   <input type="text" v-model="lessonTitle"/>
 
                   <label>
+                     <div>Date preference? (optional)</div>
+                     <input type="text" v-model="date"/>
+                  </label>
+
+                  <label>
                      <div>How should we contact you?</div>
                      <input type="text" v-model="contact"/>
                   </label>
 
-                  <label>Anything else? Day preference?</label>
+                  <label>Want to say anything else?</label>
                   <textarea rows="4" v-model="comments"></textarea>
 
                   <div v-if="!submitted">
@@ -284,6 +391,7 @@ new Vue({
       partner: null,
       feedback: null,
       lessonTitle: null,
+      date: null,
       contact: null,
       comments: null,
       submitted: false,
@@ -307,6 +415,7 @@ new Vue({
             partner: this.partner,
             feedback: this.feedback,
             lessonTitle: this.lessonTitle,
+            date: this.date,
             contact: this.contact,
             comments: this.comments,
          };
