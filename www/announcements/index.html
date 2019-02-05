@@ -126,7 +126,7 @@ new Vue({
   },
   computed: {
     fullPhoneNumber() {
-      return '+1' + this.phone;
+      return '+1' + (this.phone && this.phone.replace(/-/g, ''));
     }
   },
   created() {
