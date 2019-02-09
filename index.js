@@ -13,9 +13,13 @@ config.routes.forEach(route => {
    if (route.dest.includes("$"))
       return;
 
-   var path = '.' + route.dest;
+   const path = '.' + route.dest;
    const code = require(path);
-   router.all(route.src, code);
+   const methods = route.methods || [ 'all' ];
+   methods.forEach(m => {
+      let verb = m.toLowerCase();
+      router[verb](route.src, code);
+   });
 });
 
 // Static files
