@@ -1,0 +1,183 @@
+<html>
+<head>
+   <title>Profile: Swing Dance Cooperative</title>
+   <meta name="description" 
+      content="Swing Dance Cooperative: Profile">
+   <meta name="keywords" content="swing dance coop profile">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+   <link href="/style/main.css" rel="stylesheet">
+   
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+   <body>
+      <div id="app">
+      <div class="swing">
+         <div class="column">
+            <section class="section1">
+               <div class="rings">
+                  <a href="/">
+                    <img src="/img/rings.png" class="for-phone"/>
+                  </a>
+               </div>
+               <h1 class="title">Guest profile</h1>
+            </section>
+
+            <section>
+              <p v-if="isCheckingSession">Signing in ...</p>
+              <p v-else-if="isAuthenticated" v-cloak>Welcome.</p>
+            </section>
+
+            <section class="section2" v-if="!isCheckingSession && !isAuthenticated" v-cloak>
+               <p>To create an account, please enter your phone number.</p>
+
+               <p>We'll send you a confirmation code to verify your number. Currently this will only work for phones in the United States and Canada.</p>
+
+               <div class="rsvp">
+                  <input type="text" v-model="phone" placeholder="e.g. 5555555555"/>
+                  <!-- <input type="text" v-model="zip" placeholder="Zip Code" /> -->
+                  <div style="text-align: center">
+                     <button @click="start">Create account</button>
+                  </div>
+
+                  <div v-if="isStarted">
+                     <p>Please enter the verification code we just sent:</p>
+                     <input type="text" v-model="code"/>
+                     <div style="text-align: center">
+                        <button v-if="!isChecking && !isConfirmed" 
+                           @click="check">Verify</button>
+                        <p v-if="isChecking">
+                           Verifying ...
+                        </p>
+                        <p v-if="isConfirmed">
+                           You're in! Thank you.
+                        </p>
+                        <p v-if="confirmationError">
+                           Sorry, that was not the code we sent.
+                        </p>
+                     </div>
+                  </div>
+
+                  <p v-if="error">
+                     <strong>Attention:</strong> There was an error.
+                     Please let us know at info@dance.coop.
+                  </p>
+               </div>
+            </section>
+
+            <section class="cooperative">
+              <div class="column">
+                <h1 class="for-phone">About the co-op</h1>
+                <p>We're a cooperative, and we identify with the 
+                   <a href="https://www.ica.coop/en/whats-co-op/co-operative-identity-values-principles">cooperative movement</a> and its values.</p>
+
+                <p>We'll be talking more about this later, but half of what we're doing is encouraging other 
+                   organizations to become cooperatives.</p>
+
+                <div class="close">
+                  <div class="name">The Swing Dance Cooperative</div>
+                  <div>Olympia, Washington.</div> 
+
+                  <a href="/">
+                    <img src="/img/rings.png" class="rings"/>
+                  </a>
+                </div>
+              </div>
+            </section>
+         </div>
+      </div>
+      </div>
+<script>
+// Initialize application
+var auth = new auth0.WebAuth({
+  domain:       'auth0.dance.coop',
+  clientID:     '8fgalHmdBwGPbqtkERsxol3AnBJoRN8-', // public
+  redirectUri:  window.location.protocol 
+    + '//' 
+    + window.location.host
+    + '/profile',
+  responseType: 'token id_token'
+});
+
+new Vue({
+  el: '#app',
+  data: {
+    phone: null,
+    code: null,
+    zip: null,
+    isStarted: false,
+    isChecking: false,
+    isConfirmed: false,
+    isCheckingSession: false,
+    isAuthenticated: false,
+    error: null,
+    confirmationError: null
+  },
+  computed: {
+    fullPhoneNumber() {
+      return '+1' + (this.phone && this.phone.replace(/-/g, ''));
+    }
+  },
+  created() {
+    this.isCheckingSession = true;
+    auth.checkSession({}, (err, authResult) => {
+      this.isCheckingSession = false;
+      if (authResult 
+      && authResult.accessToken 
+      && authResult.idToken) {
+        // Authenticated
+        this.isAuthenticated = true;
+        axios.get('/api/profile', {
+           headers: { 
+              'Authorization': 'Bearer ' + authResult.idToken
+           }
+        })
+        .then(res => {
+           console.log(res.data);
+        })
+        .catch(err => {
+           console.log(err);
+        });
+      }
+      else {
+        this.unauthenticated = true;
+      }
+    });
+  },
+  methods: {
+    start: function () {
+      // Send a verification code using SMS
+      var data = {
+        connection: 'sms',
+        send: 'code',
+        phone_number: this.fullPhoneNumber,
+      };
+
+      auth.passwordlessStart(data, (err, res) => {
+        this.isStarted = true;
+        this.error = err;
+      });
+    },
+    check: function() {
+      var data = {
+        connection: 'sms',
+        phoneNumber: this.fullPhoneNumber,
+        verificationCode: this.code
+      };
+
+      this.isChecking = true;
+      auth.passwordlessLogin(data, (err,res) => {
+        // Callback for errors only
+        this.isChecking  = false;
+        this.confirmationError = err;
+      });
+    }
+  }
+})
+
+</script>
+   </body>
+</html>

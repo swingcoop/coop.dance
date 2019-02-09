@@ -1,0 +1,15 @@
+{
+  "name": "dance.coop.profile",
+  "version": "1.0.0",
+  "description": "/profile endpoint",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swingcoop/coop.dance.git"
+  },
+  "author": "Philip Manijak",
+  "license": "MIT",
+  "dependencies": {
+    "airtable": "^0.5.8",
+    "axios": "^0.18.0"
+  }
+}
