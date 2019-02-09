@@ -27,11 +27,22 @@
             </section>
 
             <section>
-              <p v-if="isCheckingSession">Signing in ...</p>
+              <p v-if="isCheckingSession">
+                Signing in ...
+                <span v-if="isGettingProfile" v-cloak>Getting profile ...</span>
+              </p>
               <div v-else-if="isAuthenticated" v-cloak>
                 <p>Welcome.</p>
-                <input type="text" v-model="name">
-                <button @click="saveProfile">Save Profile</button>
+                <input type="text" v-model="name" placeholder="Name">
+                <div style="margin-top: 1em">
+                  <label>
+                    <input type="checkbox" v-model="announcements">
+                    Subscribe to txt-message announcements
+                  </label>
+                </div>
+                <div style="margin-top: 1em">
+                  <button @click="saveProfile">Save Profile</button>
+                </div>
               </div>
             </section>
 
@@ -121,7 +132,8 @@ new Vue({
     confirmationError: null,
     idToken: null,
     name: null,
-    profileId: null
+    profileId: null,
+    isGettingProfile: false 
   },
   computed: {
     fullPhoneNumber() {
@@ -131,16 +143,18 @@ new Vue({
   created() {
     this.isCheckingSession = true;
     auth.checkSession({}, (err, authResult) => {
-      this.isCheckingSession = false;
       if (authResult 
       && authResult.accessToken 
       && authResult.idToken) {
         // Authenticated
         this.isAuthenticated = true;
         this.idToken = authResult.idToken;
-        this.getProfile();
+        this.getProfile().then(() => {
+          this.isCheckingSession = false;
+        });
       }
       else {
+        this.isCheckingSession = false;
         this.unauthenticated = true;
       }
     });
@@ -174,7 +188,8 @@ new Vue({
       });
     },
     getProfile: function() {
-      axios.get('/api/profile', {
+      this.isGettingProfile = true;
+      return axios.get('/api/profile', {
          headers: { 
             'Authorization': 'Bearer ' + this.idToken
          }
@@ -182,17 +197,23 @@ new Vue({
       .then(res => {
         var data = res.data;
         this.profileId = data.id;
+        
         this.name = data.fields.Name;
+        this.announcements = data.fields.Announcements;
+
+        this.isGettingProfile = false;
       })
       .catch(err => {
-         console.log(err);
+        this.isGettingProfile = false;
+        console.log(err);
       });
     },
     saveProfile: function() {
       var model = {
         id: this.profileId,
         fields: {
-          Name: this.name
+          Name: this.name,
+          Announcements: this.announcements
         }
       };
       axios.put('/api/profile', model, {
