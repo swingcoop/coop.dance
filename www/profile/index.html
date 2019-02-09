@@ -28,7 +28,11 @@
 
             <section>
               <p v-if="isCheckingSession">Signing in ...</p>
-              <p v-else-if="isAuthenticated" v-cloak>Welcome.</p>
+              <div v-else-if="isAuthenticated" v-cloak>
+                <p>Welcome.</p>
+                <input type="text" v-model="name">
+                <button @click="saveProfile">Save Profile</button>
+              </div>
             </section>
 
             <section class="section2" v-if="!isCheckingSession && !isAuthenticated" v-cloak>
@@ -114,7 +118,10 @@ new Vue({
     isCheckingSession: false,
     isAuthenticated: false,
     error: null,
-    confirmationError: null
+    confirmationError: null,
+    idToken: null,
+    name: null,
+    profileId: null
   },
   computed: {
     fullPhoneNumber() {
@@ -130,17 +137,8 @@ new Vue({
       && authResult.idToken) {
         // Authenticated
         this.isAuthenticated = true;
-        axios.get('/api/profile', {
-           headers: { 
-              'Authorization': 'Bearer ' + authResult.idToken
-           }
-        })
-        .then(res => {
-           console.log(res.data);
-        })
-        .catch(err => {
-           console.log(err);
-        });
+        this.idToken = authResult.idToken;
+        this.getProfile();
       }
       else {
         this.unauthenticated = true;
@@ -173,6 +171,40 @@ new Vue({
         // Callback for errors only
         this.isChecking  = false;
         this.confirmationError = err;
+      });
+    },
+    getProfile: function() {
+      axios.get('/api/profile', {
+         headers: { 
+            'Authorization': 'Bearer ' + this.idToken
+         }
+      })
+      .then(res => {
+        var data = res.data;
+        this.profileId = data.id;
+        this.name = data.fields.Name;
+      })
+      .catch(err => {
+         console.log(err);
+      });
+    },
+    saveProfile: function() {
+      var model = {
+        id: this.profileId,
+        fields: {
+          Name: this.name
+        }
+      };
+      axios.put('/api/profile', model, {
+         headers: { 
+            'Authorization': 'Bearer ' + this.idToken
+         }
+      })
+      .then(res => {
+        // console.log('ok');
+      })
+      .catch(err => {
+         console.log(err);
       });
     }
   }
