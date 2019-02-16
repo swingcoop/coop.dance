@@ -57,6 +57,51 @@
       margin-left: 1ex;
       margin-right: 1ex;
    }
+
+   .month {
+      text-align: center;
+   }
+
+   .events {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+      grid-auto-rows: minmax(100px, auto);
+   }
+   .event {
+      position: relative;
+      padding: 1ex; 
+      border: dotted 2px red;
+      border-radius: 5px;
+
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+   .event.oly-dance {
+      border: solid 1px pink;
+   }
+   .event .title {
+      text-align: center;
+      margin-top: 1.1em;
+      margin-bottom: 1.1em;
+   }
+   .event .title div {
+      margin-bottom: 0.4ex;
+   }
+   .date, .type {
+      position: absolute;
+      font-size: smaller;
+   }
+   .date {
+      right: 1.2ex;
+      bottom: 1ex;
+   }
+   .type {
+      top: 1ex;
+      right: 1.2ex;
+   }
+
    </style>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -81,7 +126,7 @@
                </p>
 
                <p>
-                  Our third class series, Swing Dance Starter Kit, just wrapped up.
+                  In February we are hosting <a href="/potluck">Lindy Hop Potluck</a>, a community dance workshop.
                </p>
 
                <div v-if="reservations" style="text-align: center; font-size: 9pt">
@@ -94,7 +139,6 @@
 
                <div class="proto-nav-panel">
                   <a class="button-link" href="/announcements">Announcements</a>
-                  <a class="button-link" href="/potluck">Potluck</a>
                   <a class="button-link" href="/mission">Mission</a>
                   <a class="button-link" href="/contact">Contact us</a>
                </div>
@@ -102,18 +146,190 @@
             </section>
 
             <section>
-               <h2>Save the date</h2>
+               <h2>Swing Dance Lessons and Events</h2>
 
-               <p>You are invited to an evening of swing dancing in Olympia. Please join us at the historic Abigail Stuart House, situated just south of downtown, on 1002 Washington St SE.</p> 
+               <h4 class="month">February</h4>
 
-               <p>The night will begin with an introductory lesson at 7 p.m., followed by dancing from 8 until 10.</p>
-
-               <p>Saturday, February 2, 2019.</p>
-
-               <div class="fun-times">
-                  <img src="/img/fancy-dance.jpg"/>
-                  <div class="credit">Photo: Abigail Stuart House, November 3</div>
+               <div>
+                  <p>We are hosting four swing dance workshops on Wednesday evenings, in February in Olympia.</p>
                </div>
+
+               <div class="events">
+                  <div class="event">
+                     <div class="title">
+                        <div>Charleston swingout</div>
+                        <div>20s Charleston</div>
+                     </div>
+                     <div class="date">
+                        <div>6.</div>
+                     </div>
+                  </div>
+
+                  <div class="event">
+                     <div class="title">
+                        <div>Balboa</div>
+                        <div>Jazz routine</div>
+                     </div>
+                     <div class="date">13.</div>
+                  </div>
+
+                  <div class="event">
+                     <div class="title">
+                        <div>Connection</div>
+                        <div>Body movement</div>
+                     </div>
+                     <div class="date">20.</div>
+                  </div>
+
+                  <div class="event">
+                     <div class="title">
+                        <div>Popping footwork</div>
+                        <div>Floats and glides</div>
+                        <div>Connection</div>
+                     </div>
+                     <div class="date">27.</div>
+                  </div>
+               </div>
+
+               <div>
+                  <p>All workshops are in the dance studio at the Abigail Stuart House:</p>
+
+                  <div>7 - 8:30 p.m.</div>
+                  <div>1002 Washington St SE, Olympia</div>
+
+                   <p>These events are by donation, with all proceeds going to the teachers.</p> 
+                </div>
+            </section>
+
+            <section class="section2">
+               <h4 class="month">March</h4>
+
+               <p>We're hosting a Beginning Swing series in March on Mondays, and a set of four beginning workshops on Wednesdays, named First Steps.</p>
+
+               <div class="events">
+                  <div class="event">
+                     <div class="title">
+                        <div>Beginning Swing</div>
+                     </div>
+<!--                      <div class="type">
+                        RSVP
+                     </div>
+ -->                     <div class="date">
+                        <div>4, 11, 18, 25.</div>
+                     </div>
+                  </div>
+
+                  <div class="event">
+                     <div class="title">
+                        <div>First Steps 1</div>
+                     </div>
+                     <div class="date">6.</div>
+                  </div>
+
+                  <div class="event">
+                     <div class="title">
+                        <div>First Steps 2</div>
+                     </div>
+                     <div class="date">13.</div>
+                  </div>
+
+                  <div class="event">
+                     <div class="title">
+                        <div>First Steps 3</div>
+                     </div>
+                     <div class="date">20.</div>
+                  </div>
+
+                  <div class="event">
+                     <div class="title">
+                        <div>First Steps 4</div>
+                     </div>
+                     <div class="date">27.</div>
+                  </div>
+               </div>
+
+               <div>
+                  <p>All classes are 7-8:30 p.m. at the Abigail Stuart House, 1002 Washington St SE in Olympia. It's possible the series will only be 7-8 p.m., we're still working out details with the venue.</p>
+               </div>
+            </section>
+
+            <section class="rsvp">
+               <h2>Beginning Swing</h2>
+               <p>March 4, 11, 18, 25</p>
+               <div>
+                  <h4>Requirements</h4>
+                  <div class="venue-content">
+                     <p>This class series is for beginners and experts. Intermediate dancers are welcome, but they will likely have the hardest time in this series, as most of their time will be spent unlearning what they have learned.</p>
+                  </div>
+               </div>
+
+               <h4>To attend</h4>
+               <div class="venue-content rsvp">
+                  <p>Please reserve your spot by submitting this form.</p>
+
+                  <p>Because there's no admission cost for the
+                  Beginning Swing series, we do have a $20 fee for cancellations 
+                  made after February 25. Missing the first session or 
+                  the second session is considered a cancellation in this series.</p>
+               </div>
+
+               <form v-on:submit.prevent="rsvp">
+                  <label>
+                     <div>Name</div>
+                     <input type="text" v-model="name"/>
+                  </label>
+
+                  <div class="agreement">
+                     <div style="margin-bottom: 0.5ex">Please confirm your availability:</div>
+                     <input id="agreed" type="checkbox" v-model="agreed">
+                     <label for="agreed">I will be at the first session (March 4) and
+                     the second session (March 11).</label></input>
+                  </div>
+
+                  <div>What dance role would you like to have during this Beginning Swing series?</div>
+
+                  <p>Swing dancing is a conversation, typically between two people. The person who is responsible for moving first is referred to as a lead, whereas the person who moves second is referred to as a follow. Most people who dance long enough learn both roles.</p>
+
+                  <select v-model="role">
+                     <option value="null">&ndash; Please select &ndash;</option>
+                     <option value="Follow - Waitlist">Follow - Waitlist</option>
+                     <option value="Lead - Waitlist">Lead - Waitlist</option>
+                     <option value="Any - Waitlist">Any - Waitlist</option>
+                  </select>
+
+                  <div style="margin-bottom: 1em">Currently there is a lot
+                     of demand for our beginning classes, so everyone starts
+                     on the waitlist.</div>
+
+                  <div>What's your zip code?</div>
+                  <input type="text" v-model="zip"/>
+
+                  <div>And your email address?</div>
+                  <input type="text" v-model="email"/>
+
+                  <div>Anything else you'd like to share?</div>
+                  <textarea rows="4" v-model="comments"></textarea>
+
+                  <div v-if="!submitted">
+                     <button type="submit" :disabled="sending">RSVP</button>
+                     <span v-if="sending" style="margin-left: 1ex">Sending ...</span>
+                  </div>
+
+                  <div v-else>
+                     <p>
+                        Thank you! You should receive an email within an hour to
+                        confirm that everything went through. &mdash; P</p>
+                  </div>
+
+                  <p v-if="error" v-cloak>
+                     Sorry, there was an error when we tried to submit your form.
+                     Please let us know at rsvp@dance.coop?
+                  </p>
+
+                  <p v-if="needAgreement" class="need-agreement">
+                     <strong>Attention:</strong> To RSVP, please mark that you can attend the first class and the second class, above, and try submitting the form again.
+                  </p>
+               </form>
             </section>
 
 <!--
@@ -412,11 +628,11 @@ new Vue({
             return [];
 
          return this.starterKitReservations.map(x => {
-            let role = x.Role.replace(" - Waitlist","");
+            let role = x.Role ? x.Role.replace(" - Waitlist","") : 'Lead';
             return {
                role: role,
                'class': this.classes[role],
-               waitlist: x.Role.includes("Waitlist")
+               waitlist: x.Role ? x.Role.includes("Waitlist") : false
             }
          });
       },
@@ -443,7 +659,7 @@ new Vue({
          this.sending = true;
          var data = {
             name: this.name,
-            course: 'Starter Kit',
+            course: 'Beginning Swing',
             role: this.role,
             zip: this.zip,
             email: this.email,
