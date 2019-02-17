@@ -69,19 +69,25 @@
       grid-auto-rows: minmax(100px, auto);
    }
    .event {
-      position: relative;
-      padding: 1ex; 
+      position: relative; 
       border: dotted 2px red;
       border-radius: 5px;
 
-     display: flex;
-     align-items: center;
-     justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
    }
    .event.oly-dance {
       border: solid 1px pink;
    }
    .event .title {
+      padding: 1ex;
+
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+     justify-content: center;
+
       text-align: center;
       margin-top: 1.1em;
       margin-bottom: 1.1em;
@@ -89,19 +95,12 @@
    .event .title div {
       margin-bottom: 0.4ex;
    }
-   .date, .type {
+   .event .details {
       position: absolute;
+      bottom: 1ex;
+      right: 1.2ex;
       font-size: smaller;
    }
-   .date {
-      right: 1.2ex;
-      bottom: 1ex;
-   }
-   .type {
-      top: 1ex;
-      right: 1.2ex;
-   }
-
    </style>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -126,7 +125,7 @@
                </p>
 
                <p>
-                  In February we are hosting <a href="/potluck">Lindy Hop Potluck</a>, a community dance workshop.
+                  In February we are hosting <a href="/potluck">Potluck</a>, a community dance workshop.
                </p>
 
                <div v-if="reservations" style="text-align: center; font-size: 9pt">
@@ -160,9 +159,7 @@
                         <div>Charleston swingout</div>
                         <div>20s Charleston</div>
                      </div>
-                     <div class="date">
-                        <div>6.</div>
-                     </div>
+                     <div class="details">Feb 6</div>
                   </div>
 
                   <div class="event">
@@ -170,7 +167,7 @@
                         <div>Balboa</div>
                         <div>Jazz routine</div>
                      </div>
-                     <div class="date">13.</div>
+                     <div class="details">Feb 13</div>
                   </div>
 
                   <div class="event">
@@ -178,7 +175,7 @@
                         <div>Connection</div>
                         <div>Body movement</div>
                      </div>
-                     <div class="date">20.</div>
+                     <div class="details">Feb 20</div>
                   </div>
 
                   <div class="event">
@@ -187,7 +184,7 @@
                         <div>Floats and glides</div>
                         <div>Connection</div>
                      </div>
-                     <div class="date">27.</div>
+                     <div class="details">Feb 27</div>
                   </div>
                </div>
 
@@ -211,40 +208,41 @@
                      <div class="title">
                         <div>Beginning Swing</div>
                      </div>
-<!--                      <div class="type">
-                        RSVP
-                     </div>
- -->                     <div class="date">
-                        <div>4, 11, 18, 25.</div>
+                     <div class="details">
+                        <div>Mar 4, 11, 18, 25</div>
                      </div>
                   </div>
 
                   <div class="event">
                      <div class="title">
-                        <div>First Steps 1</div>
+                        <div>First Steps</div>
+                        <div>Connection</div>
                      </div>
-                     <div class="date">6.</div>
+                     <div class="details">Mar 6</div>
                   </div>
 
                   <div class="event">
                      <div class="title">
-                        <div>First Steps 2</div>
+                        <div>First Steps</div>
+                        <div>Momentum</div>
                      </div>
-                     <div class="date">13.</div>
+                     <div class="details">Mar 13</div>
                   </div>
 
                   <div class="event">
                      <div class="title">
-                        <div>First Steps 3</div>
+                        <div>First Steps</div>
+                        <div>Musicality</div>
                      </div>
-                     <div class="date">20.</div>
+                     <div class="details">Mar 20</div>
                   </div>
 
                   <div class="event">
                      <div class="title">
-                        <div>First Steps 4</div>
+                        <div>First Steps</div>
+                        <div>Counterbalance</div>
                      </div>
-                     <div class="date">27.</div>
+                     <div class="details">Mar 27</div>
                   </div>
                </div>
 
@@ -292,14 +290,10 @@
 
                   <select v-model="role">
                      <option value="null">&ndash; Please select &ndash;</option>
-                     <option value="Follow - Waitlist">Follow - Waitlist</option>
-                     <option value="Lead - Waitlist">Lead - Waitlist</option>
-                     <option value="Any - Waitlist">Any - Waitlist</option>
+                     <option :value="followValue">{{ followValue }}</option>
+                     <option :value="leadValue">{{ leadValue }}</option>
+                     <option :value="anyValue">{{ anyValue }}</option>
                   </select>
-
-                  <div style="margin-bottom: 1em">Currently there is a lot
-                     of demand for our beginning classes, so everyone starts
-                     on the waitlist.</div>
 
                   <div>What's your zip code?</div>
                   <input type="text" v-model="zip"/>
@@ -310,7 +304,7 @@
                   <div>Anything else you'd like to share?</div>
                   <textarea rows="4" v-model="comments"></textarea>
 
-                  <div v-if="!submitted">
+                  <div v-if="!submitted" style="text-align: center">
                      <button type="submit" :disabled="sending">RSVP</button>
                      <span v-if="sending" style="margin-left: 1ex">Sending ...</span>
                   </div>
@@ -636,8 +630,36 @@ new Vue({
             }
          });
       },
-      waitlistCount() {
-         return this.reservations.filter(x => x.waitlist).length;
+      followValue() {
+         return "Follow" + (this.isNewFollowWaitlisted ? ' - Waitlist' : '');
+      },
+      leadValue() {
+         return "Lead" + (this.isNewLeadWaitlisted ? ' - Waitlist' : '');
+      },
+      anyValue() {
+         return "Any" + (this.isClassFull ? ' - Waitlist' : '');
+      },
+      follows() {
+         return this.reservationsByRole('Follow').length;
+      },
+      leads() {
+         return this.reservationsByRole('Lead').length;
+      },
+      anys() {
+         return this.reservationsByRole('Any').length;
+      },
+      isClassFull() {
+         return this.follows + this.leads + this.anys >= 20;
+      },
+      isNewFollowWaitlisted() {
+         return ((this.follows > 5) && this.leads + this.anys < this.follows) 
+            || this.isClassFull
+            || this.reservations.filter(x => x.role === 'Follow' && x.waitlist).length > 0;
+      },
+      isNewLeadWaitlisted() {
+         return ((this.leads > 5) && this.follows + this.anys < this.leads) 
+            || this.isClassFull
+            || this.reservations.filter(x => x.role === 'Lead' && x.waitlist).length > 0;
       },
       classes() {
          var val = {};
@@ -683,6 +705,9 @@ new Vue({
            [a[i], a[j]] = [a[j], a[i]];
          }
          return a;
+      },
+      reservationsByRole(role) {
+         return this.reservations.filter(x => x.role === role && !x.waitlist);
       }
    },
    created() {
