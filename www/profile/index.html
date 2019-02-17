@@ -12,6 +12,19 @@
    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
    <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   <style>
+  .checkbox input {
+      width: inherit;
+      margin-right: 1.5ex;
+      vertical-align: text-top;
+      margin-top: 3px;
+      margin-bottom: 0;
+   }
+   .checkbox {
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+   }
+   </style>
 </head>
    <body>
       <div id="app">
@@ -23,27 +36,40 @@
                     <img src="/img/rings.png" class="for-phone"/>
                   </a>
                </div>
-               <h1 class="title">Guest profile</h1>
+               <h1 class="title">The Swing Dance Cooperative</h1>
+               <h2>Guest Profile</h2>
             </section>
 
-            <section>
-              <p v-if="isCheckingSession">
+            <section v-if="isCheckingSession" class="rsvp">
+              <p>
                 Signing in ...
                 <span v-if="isGettingProfile" v-cloak>Getting profile ...</span>
               </p>
-              <div v-else-if="isAuthenticated" v-cloak>
+            </section>
+            <section v-else-if="isAuthenticated" v-cloak>
+              <div style="position: relative" class="rsvp">
                 <p>Welcome.</p>
-                <input type="text" v-model="name" placeholder="Name">
+
+                <p>Here's a small page for your profile and preferences. We plan
+                  on adding more things soon, but for now it's just your name and
+                  a checkbox.</p>
+
+                <label for="name-input">Name (or stage name)</label>
+                <input id="name-input" type="text" v-model="name">
+
                 <div style="margin-top: 1em">
-                  <label>
-                    <input type="checkbox" v-model="announcements">
+                  <label class="checkbox">
+                    <input 
+                      type="checkbox" 
+                      style="display: inline-block" 
+                      v-model="announcements">
                     Subscribe to txt-message announcements
                   </label>
                 </div>
-                <div style="margin-top: 1em">
+                <div style="margin-top: 1em; text-align: center">
                   <button @click="saveProfile">Save Profile</button>
                 </div>
-                <a href="#" @click="logout">Sign out</a>
+                <a href="#" @click="logout" style="position: absolute; top: 0; right: 1.2ex">Sign out</a>
               </div>
             </section>
 
@@ -53,18 +79,20 @@
                <p>We'll send you a confirmation code to verify your number. Currently this will only work for phones in the United States and Canada.</p>
 
                <div class="rsvp">
-                  <input type="text" v-model="phone" placeholder="e.g. 5555555555"/>
-                  <!-- <input type="text" v-model="zip" placeholder="Zip Code" /> -->
-                  <div style="text-align: center">
-                     <button @click="start">Sign in</button>
-                  </div>
+                  <form @submit.prevent="start">
+                    <input type="text" v-model="phone" placeholder="e.g. 5555555555"/>
+                    <!-- <input type="text" v-model="zip" placeholder="Zip Code" /> -->
+                    <div style="text-align: center">
+                       <button type="submit">Sign in</button>
+                    </div>
+                  </form>
 
-                  <div v-if="isStarted">
+                  <form @submit.prevent="check" v-if="isStarted">
                      <p>Please enter the verification code we just sent:</p>
                      <input type="text" v-model="code"/>
                      <div style="text-align: center">
                         <button v-if="!isChecking && !isConfirmed" 
-                           @click="check">Verify</button>
+                           type="submit">Verify</button>
                         <p v-if="isChecking">
                            Verifying ...
                         </p>
@@ -75,7 +103,7 @@
                            Sorry, that was not the code we sent.
                         </p>
                      </div>
-                  </div>
+                  </form>
 
                   <p v-if="error">
                      <strong>Attention:</strong> There was an error.
@@ -222,7 +250,7 @@ new Vue({
          }
       })
       .then(res => {
-        console.log('ok');
+        // console.log('ok');
       })
       .catch(err => {
          console.log(err);
