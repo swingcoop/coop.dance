@@ -1,6 +1,6 @@
 const api        = require('./api.js');
 const authEnsure = require('./auth/ensure.js');
-const phones     = require('./notifications/phones.js');
+const guests     = require('./notifications/guests.js');
 
 const axios = require('axios')
 const qs    = require('querystring');
@@ -33,9 +33,13 @@ function send(txt, toPhone) {
 }
 
 async function sendToPhones(txt) {
-   const numbers = await phones();
-   var everyone = numbers.map(num => send(txt, num));
-   await axios.all(everyone);
+   const data = await guests();
+   // People with empty profiles and those who have 
+   // the 'announcements' flag receive messages.
+   const recipients = data.filter(x => !x.profile || x.profile.announcements);
+
+   var promises = recipients.map(recipient => send(txt, recipient.phone));
+   await axios.all(promises);
 }
 
 module.exports = api(async ctx => {

@@ -1,6 +1,11 @@
-const phones = require('./phones.js');
+const guests = require('./guests.js');
 
-phones().then(p => {
-   console.log(p)
-});
-
+module.exports = () => {
+   guests().then(data => {
+      data = data.filter(x => !x.profile || x.profile.announcements);
+      console.log(data);
+   })
+   .catch(err => {
+      console.log(err);
+   });
+};
