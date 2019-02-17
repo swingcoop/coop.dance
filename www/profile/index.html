@@ -129,11 +129,12 @@ new Vue({
     isConfirmed: false,
     isCheckingSession: false,
     isAuthenticated: false,
+    hasProfile: false,
     error: null,
     confirmationError: null,
     idToken: null,
     name: null,
-    profileId: null,
+    announcements: null,
     isGettingProfile: false 
   },
   computed: {
@@ -151,7 +152,7 @@ new Vue({
         this.isAuthenticated = true;
         this.idToken = authResult.idToken;
         this.getProfile().then(() => {
-          this.isCheckingSession = false;
+           this.isCheckingSession = false;
         });
       }
       else {
@@ -197,11 +198,11 @@ new Vue({
       })
       .then(res => {
         var data = res.data;
-        this.profileId = data.id;
         
-        this.name = data.fields.Name;
-        this.announcements = data.fields.Announcements;
+        this.name = data.name;
+        this.announcements = data.announcements;
 
+        this.hasProfile = true;
         this.isGettingProfile = false;
       })
       .catch(err => {
@@ -211,19 +212,17 @@ new Vue({
     },
     saveProfile: function() {
       var model = {
-        id: this.profileId,
-        fields: {
-          Name: this.name,
-          Announcements: this.announcements
-        }
+          name: this.name,
+          announcements: this.announcements
       };
+
       axios.put('/api/profile', model, {
          headers: { 
             'Authorization': 'Bearer ' + this.idToken
          }
       })
       .then(res => {
-        // console.log('ok');
+        console.log('ok');
       })
       .catch(err => {
          console.log(err);

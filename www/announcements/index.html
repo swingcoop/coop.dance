@@ -168,7 +168,8 @@ new Vue({
 
       this.isChecking = true;
       auth.passwordlessLogin(data, (err,res) => {
-        // Callback for errors only
+        // Callback for errors only / this method
+        // performs a redirect.
         this.isChecking  = false;
         this.confirmationError = err;
       });
