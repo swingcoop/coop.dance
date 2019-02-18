@@ -57,6 +57,9 @@
                 <label for="name-input">Name (or stage name)</label>
                 <input id="name-input" type="text" v-model="name">
 
+                <label for="zip-input">Zip Code / Postal Code</label>
+                <input id="zip-input" type="text" v-model="zip">
+
                 <div style="margin-top: 1em">
                   <label class="checkbox">
                     <input 
@@ -68,6 +71,10 @@
                 </div>
                 <div style="margin-top: 1em; text-align: center">
                   <button @click="saveProfile">Save Profile</button>
+                  <span style="margin-left: 1ex">
+                    <span v-if="isSavingProfile">Saving ...</span>
+                    <span v-else-if="isProfileSaved">✅</span>
+                  </span>
                 </div>
                 <a href="#" @click="logout" style="position: absolute; top: 0; right: 1.2ex">Sign out</a>
               </div>
@@ -157,6 +164,8 @@ new Vue({
     isConfirmed: false,
     isCheckingSession: false,
     isAuthenticated: false,
+    isSavingProfile: false,
+    isProfileSaved: false,
     hasProfile: false,
     error: null,
     confirmationError: null,
@@ -228,6 +237,7 @@ new Vue({
         var data = res.data;
         
         this.name = data.name;
+        this.zip = data.zip;
         this.announcements = data.announcements;
 
         this.hasProfile = true;
@@ -241,9 +251,12 @@ new Vue({
     saveProfile: function() {
       var model = {
           name: this.name,
+          zip: this.zip,
           announcements: this.announcements
       };
 
+      this.isSavingProfile = true;
+      this.isProfileSaved = false;
       axios.put('/api/profile', model, {
          headers: { 
             'Authorization': 'Bearer ' + this.idToken
@@ -251,9 +264,12 @@ new Vue({
       })
       .then(res => {
         // console.log('ok');
+        this.isSavingProfile = false;
+        this.isProfileSaved = true;
       })
       .catch(err => {
          console.log(err);
+         this.isSavingProfile = false;
       });
     },
     logout() {
