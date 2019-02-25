@@ -46,13 +46,11 @@
                 <span v-if="isGettingProfile" v-cloak>Getting profile ...</span>
               </p>
             </section>
-            <section v-else-if="isAuthenticated" v-cloak>
-              <div style="position: relative" class="rsvp">
+            <section v-else-if="isAuthenticated" v-cloak class="rsvp">
+              <div style="position: relative">
                 <p>Welcome.</p>
 
-                <p>Here's a small page for your profile and preferences. We plan
-                  on adding more things soon, but for now it's just your name and
-                  a checkbox.</p>
+                <p>We have big plans for this profile page, but for now it's just this.</p>
 
                 <label for="name-input">Name (or stage name)</label>
                 <input id="name-input" type="text" v-model="name">
@@ -80,12 +78,12 @@
               </div>
             </section>
 
-            <section class="section2" v-if="!isCheckingSession && !isAuthenticated" v-cloak>
+            <section class="section2 rsvp" v-if="!isCheckingSession && !isAuthenticated" v-cloak>
                <p>To sign in, please enter your phone number.</p>
 
                <p>We'll send you a confirmation code to verify your number. Currently this will only work for phones in the United States and Canada.</p>
 
-               <div class="rsvp">
+               <div>
                   <form @submit.prevent="start">
                     <input type="text" v-model="phone" placeholder="e.g. 5555555555"/>
                     <!-- <input type="text" v-model="zip" placeholder="Zip Code" /> -->

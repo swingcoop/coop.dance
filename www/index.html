@@ -28,13 +28,13 @@
       margin-bottom: 1em;
    }
    .role1 {
-      color: #a00;
+      color: #c22;
    }
    .role2 {
       color: red;
    }
    .waitlist {
-      color: #ccc;
+      color: #ddd;
    }
    .button-link {
       display: inline-block;
@@ -47,6 +47,9 @@
       text-decoration: none;
    }
    a.button-link {
+      color: #c22;
+   }
+   .rsvp a.button-link {
       color: #ffc3bb;
    }
    .proto-nav-panel {
@@ -70,7 +73,7 @@
    }
    .event {
       position: relative; 
-      border: dotted 2px red;
+      border: dotted 1px #c22;
       border-radius: 5px;
 
       display: flex;
@@ -110,7 +113,7 @@
    <div id="app">
       <div class="swing">
          <div class="column">
-            <section class="section1">
+            <section class="section1 rsvp">
                <div class="rings">
                   <img src="./img/rings.png" class="for-phone"/>
                </div>
@@ -128,7 +131,7 @@
                   In February we are hosting <a href="/potluck">Potluck</a>, a community dance workshop.
                </p>
 
-               <div v-if="reservations" style="text-align: center; font-size: 9pt">
+               <div v-if="reservations" style="text-align: center; font-size: 10pt; margin-top: 3.1em;">
                   <span v-for="r in reservations" :class="r.class">
                      <span :class="{ 'waitlist': r.waitlist }">
                         &#9711;
@@ -141,7 +144,6 @@
                   <a class="button-link" href="/mission">Mission</a>
                   <a class="button-link" href="/contact">Contact us</a>
                </div>
-               
             </section>
 
             <section>

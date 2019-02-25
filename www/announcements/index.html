@@ -39,13 +39,13 @@
               </ul>
             </section>
 
-            <section class="section2" v-if="!isCheckingSession && !isAuthenticated" v-cloak>
+            <section class="section2 rsvp" v-if="!isCheckingSession && !isAuthenticated" v-cloak>
                <p>To be notified of new events by text message,
                   please enter your phone number.</p>
 
                <p>We'll send you a confirmation code to verify your number. Currently this will only work for phones in the United States and Canada.</p>
 
-               <div class="rsvp">
+               <div>
                   <input type="text" v-model="phone" placeholder="e.g. 5555555555"/>
                   <!-- <input type="text" v-model="zip" placeholder="Zip Code" /> -->
                   <div style="text-align: center">

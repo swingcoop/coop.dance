@@ -5,6 +5,7 @@ body {
 section {
    max-width: 625px;
    background-color: #780103;
+   background-color: #e3e3e3;
    margin-left: auto;
    margin-right: auto;
    padding: 2ex;
@@ -15,12 +16,17 @@ section {
    margin-top: 0;
 }
 .section1,
-.contact {
+.contact,
+.cooperative {
    background-color: #560103;
+   background-color: #e3e3e3;
+   color: #333;
 }
+
 .section2,
 .recommendations {
-   background-color: #930103;
+   background-color: #aaa;
+   color: #111;
 }
 
 h3 {
@@ -43,10 +49,11 @@ img.rings {
 }
 
 a {
-   color: red;
+   color: #c22;
 }
 h1, h2, h4 {
    font-family: "Satisfy", "Helvetica Neue", Helvetica, Roboto, Arial;
+   color: #bb0103;
 }
 .swing,
 .cooperative {
@@ -54,10 +61,11 @@ h1, h2, h4 {
 }
 .swing {
    color: #ffc3bb;
+   color: #333;
 }
 .cooperative {
-   color: #780103;
-   background-color: #ffc3bb;
+/*   color: #780103;
+   background-color: #ffc3bb;*/
    padding-top: 0;
 }
 .cooperative form {
@@ -114,6 +122,18 @@ h4 {
 }
 .v-cloak {
    display: none;
+}
+.rsvp {
+   background-color: #780103;
+   color: #ffc3bb;
+}
+.rsvp h1,
+.rsvp h2,
+.rsvp h3,
+.rsvp h4,
+.rsvp h5,
+.rsvp h6 {
+   color: #ffc3bb;
 }
 .rsvp input,
 .rsvp textarea,

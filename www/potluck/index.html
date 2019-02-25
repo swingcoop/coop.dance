@@ -24,7 +24,7 @@
       text-align: left;
       margin-bottom: 0.3ex;
       margin-top: 0.5ex;
-      color: #f66;
+      color: #c22;
    }
    .descriptions p {
       margin-top: 0;
@@ -59,9 +59,6 @@
       text-align: center;
       text-decoration: none;
    }
-   a.button-link {
-      color: #ffc3bb;
-   }
    .proto-nav-panel {
       margin-bottom: 1em;
       text-align: center; 
@@ -83,6 +80,7 @@
       border-radius: 5px;
       box-sizing: border-box;
       width: 47%;
+      cursor: pointer;
    }
    .lesson-type input[type="radio"] {
       display: none;
@@ -103,7 +101,7 @@
       padding: 2ex;
    }
    .checkbox label {
-
+      cursor: pointer;
    }
    </style>
 
@@ -175,7 +173,7 @@
                </div>
             </section>
 
-            <section>
+            <section class="rsvp">
                <h2>Get on the schedule</h2>
 
                <p>Share something you love about dancing.</p>
@@ -184,9 +182,11 @@
 
                <p>If you'd like to teach or share something &ndash; now or in the future &ndash; please sign up. We're always putting together the next series, and we'd love if you can be a part of it.</p>
 
+               <p><strong>Please note</strong>: Our schedule is full for our February potluck, but please let us know if you'd like to teach something before summer.</p>
+
 <!--                <p>When scheduling upcoming classes, preference is given to first-time teachers. We'd prefer that you attend at least one potluck class before teaching one, but we're flexible.</p> -->
 
-               <form class="rsvp" v-on:submit.prevent="rsvp">
+               <form v-on:submit.prevent="rsvp">
                   <label>
                      <div>Your name (or stage name)</div>
                      <input type="text" v-model="name"/>
@@ -367,8 +367,8 @@
             <h1 class="for-phone">Thank you</h1>
 
             <div class="proto-nav-panel">
-               <a class="button-link" href="/mission" style="color: #c33">Mission</a>
-               <a class="button-link" href="/contact" style="color: #c33">Contact us</a>
+               <a class="button-link" href="/mission">Mission</a>
+               <a class="button-link" href="/contact">Contact us</a>
             </div>
 
             <div class="close">
