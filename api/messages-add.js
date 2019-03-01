@@ -1,23 +1,27 @@
 const api       = require('./api.js');
 const authUser  = require('./auth/user.js');
 const kafka     = require('./notifications/kafka.js');
+const uuid      = require('uuid/v4')
 
 async function addMessage(ctx) {
    const body = ctx.request.body;
    ctx.assert(body && body.message, 400, "Propery required: message");
 
+   var message = { 
+      value: JSON.stringify(body.message),
+      headers: {
+         userId: ctx.state.user.user_id,
+         timestamp: new Date().toString(),
+         uuid: uuid()
+      }
+   };
+
    try {
       const producer = kafka.producer();
       await producer.connect();
       await producer.send({
-         topic: 'messages-0.1.0',
-         messages: [{ 
-            value: body.message,
-            headers: {
-               userId: ctx.state.user.user_id,
-               timestamp: '' + Date.now()
-            }
-         }]
+         topic: 'messages-0.2.0',
+         messages: [ message ]
       });
 
       await producer.disconnect();
