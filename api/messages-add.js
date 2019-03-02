@@ -1,14 +1,18 @@
 const api       = require('./api.js');
 const authUser  = require('./auth/user.js');
 const kafka     = require('./notifications/kafka.js');
-const uuid      = require('uuid/v4')
+const uuid      = require('uuid/v4');
+const dateformat = require('dateformat');
 
 async function addMessage(ctx) {
    const body = ctx.request.body;
-   ctx.assert(body && body.message, 400, "Propery required: message");
+   ctx.assert(body && body.title, 400, "Propery required: title");
+
+   var now = dateformat(new Date(), 'yyyy-mm-dd');
+   body.endDate = body.endDate || body.startDate || now;
 
    var message = { 
-      value: JSON.stringify(body.message),
+      value: JSON.stringify(body),
       headers: {
          userId: ctx.state.user.user_id,
          timestamp: new Date().toString(),

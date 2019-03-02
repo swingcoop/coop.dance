@@ -74,6 +74,31 @@
    .section1 h1, .cooperative h1 {
     color: #bb0103;
    }
+
+  .checkbox input {
+      width: inherit;
+      margin-right: 1.5ex;
+      vertical-align: text-top;
+      margin-top: 3px;
+      margin-bottom: 0;
+   }
+   .checkbox {
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+   }
+
+      .sel {
+      background-color: #c22;
+   }
+
+   .checkbox {
+      border: solid 1px red;
+      border-radius: 5px;
+      padding: 2ex;
+   }
+   .checkbox label {
+      cursor: pointer;
+   }
    </style>
 </head>
    <body>
@@ -95,24 +120,24 @@
               <div v-for="m in messages" v-cloak>
                 <div class="message-wrapper">
                   <div class="message">
-                    <div class="message-title">{{ m.Title }}</div>
-                    <div class="text">{{ m.Message }}</div>
+                    <div class="message-title">{{ m.title }}</div>
+                    <div class="text">{{ m.message }}</div>
                     <!-- <div class="timestamp">posted {{ new Date(m.Created).toLocaleDateString() }}</div> -->
 
                     <div class="location">
-                      <div>{{ m.Venue[0] }}</div>
-                      <div>{{ m.Address[0] }}, {{ m.City[0] }}</div>
+                      <div>{{ m.venue }}</div>
+                      <div>{{ m.address }}, {{ m.city }}</div>
                     </div>
                   </div>
                   <div class="message-footer">
-                    <div v-if="m.Host.length" class="host">{{ m.Host[0] }}</div>
+                    <div v-if="m.host" class="host">{{ m.host }}</div>
 
                     <div class="tags">
-                      <span v-for="tag in m.Tags">
+                      <span v-for="tag in m.tags">
                         #{{ tag }}
                       </span>
-                      <span v-if="m.RegistrationType">
-                        #{{ m.RegistrationType }}
+                      <span v-if="m.registrationType">
+                        #{{ m.registrationType }}
                       </span>
                     </div>
                   </div>
@@ -164,8 +189,101 @@
               <form @submit.prevent="announce" v-if="isAuthenticated">
                 <div>
                   <p>Post event:</p>
-                  <textarea v-model="message" style="border-color: white"></textarea>
+
+                  <label>Title
+                    <input v-model="title" type="text">
+                  </label>
+
+                  <label>Start date
+                    <input v-model="startDate" type="date" stepping="any">
+                  </label>
+
+                  <label>End date (optional)
+                    <input v-model="endDate" type="date" stepping="any">
+                  </label>
+
+                  <label>Description
+                    <textarea v-model="message" style="border-color: white"></textarea>
+                  </label>
+
+                  <label>Host name
+                    <input 
+                      v-model="host" 
+                      type="text"
+                      placeholder="e.g. The Swing Dance Cooperative">
+                  </label>
+
+                  <label>Venue name
+                    <input 
+                      v-model="venue" 
+                      type="text"
+                      placeholder="e.g. Abigail Stuart House">
+                  </label>
+
+                  <label>Address
+                    <input 
+                      v-model="address" 
+                      type="text"
+                      placeholder="e.g. 1002 Washington St SE">
+                  </label>
+
+                  <label>City
+                    <input v-model="city" type="text">
+                  </label>
+
+                  <label>Zip
+                    <input v-model="zip" type="text">
+                  </label>
+
+                  <div>Tags</div>
+
+                  <div class="checkbox" :class="{ sel: isDance }">
+                     <input
+                        id="dance"
+                        type="checkbox"
+                        v-model="isDance">
+                        <label for="dance">Dance</label>
+                     </input>
+                  </div>
+
+                  <div class="checkbox" :class="{ sel: isWorkshop }">
+                     <input
+                        id="workshop"
+                        type="checkbox"
+                        v-model="isWorkshop">
+                        <label for="workshop">Workshop</label>
+                     </input>
+                  </div>
+
+                  <div class="checkbox" :class="{ sel: isSeries }">
+                     <input
+                        id="series"
+                        type="checkbox"
+                        v-model="isSeries">
+                        <label for="series">Series</label>
+                     </input>
+                  </div>
+
+                  <div>Registration Type</div>
+                  <label style="display: block; margin-top: 1ex">
+                    <input 
+                      v-model="registrationType" 
+                      type="radio" 
+                      value="rsvp" 
+                      name="registration-type">
+                    Reservation required
+                  </label>
+
+                  <label style="display: block">
+                    <input 
+                      v-model="registrationType" 
+                      type="radio" 
+                      value="drop-in" 
+                      name="registration-type">
+                    Drop-in
+                  </label>
                 </div>
+
                 <button type="submit">Add event</button>
               </form>
             </section>
@@ -219,7 +337,20 @@ new Vue({
     confirmationError: null,
     authResult: null,
     messages: [],
-    message: null
+    
+    title: null,
+    startDate: null,
+    endDate: null,
+    message: null,
+    host: null,
+    venue: null,
+    address: null,
+    city: null,
+    zip: null,
+    registrationType: null,
+    isDance: false,
+    isSeries: false,
+    isWorkshop: false
   },
   computed: {
     fullPhoneNumber() {
@@ -254,19 +385,52 @@ new Vue({
       });
     },
     announce() {
-      var data = {
-         message: this.message
+      var payload = {
+        title: this.title,
+        startDate: this.startDate,
+        endDate: this.endDate,
+        message: this.message,
+        host: this.host,
+        venue: this.venue,
+        address: this.address,
+        city: this.city,
+        zip: this.zip,
+        registrationType: this.registrationType,
+        tags: []
       };
 
-      axios.post('/api/messages', data, {
+      if (this.isDance)
+        payload.tags.push('dance');
+
+      if (this.isSeries)
+        payload.tags.push('series');
+
+      if (this.isWorkshop)
+        payload.tags.push('workshop');
+
+      axios.post('/api/messages', payload, {
          headers: { 
             'Authorization': 'Bearer ' + this.authResult.idToken
          }
       })
       .then(res => {
-        console.log(res.data);
-        this.messages.push(this.message);
+        this.messages.push(payload);
+
+        this.title = null;
+        this.startDate = null;
+        this.endDate = null;
         this.message = null;
+        
+        this.host = null;
+        this.venue = null;
+        this.address = null;
+        this.city = null;
+        this.zip = null;
+        this.registrationType = null;
+        this.isDance = false;
+        this.isWorkshop = false;
+        this.isSeries = false;
+
         this.getMessages();
       })
       .catch(err => {
