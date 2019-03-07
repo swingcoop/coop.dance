@@ -80,6 +80,10 @@
       align-items: center;
       justify-content: center;
    }
+   .feature .event {
+      display: block;
+      padding: 2ex;
+   }
    .event.oly-dance {
       border: solid 1px pink;
    }
@@ -103,6 +107,11 @@
       bottom: 1ex;
       right: 1.2ex;
       font-size: smaller;
+   }
+   .message-title {
+    font-weight: bold;
+    font-size: larger;
+    margin-bottom: 0.8em;
    }
    </style>
 
@@ -128,8 +137,30 @@
                </p>
 
                <p>
-                  In February we are hosting <a href="/potluck">Potluck</a>, a community dance workshop.
+                  In March we are hosting Beginning Swing on Mondays and First Steps on Wednesdays.
                </p>
+
+               <div class="feature">
+                  <h2>Next Event</h2>
+                  <div class="event">
+                     <div class="message-title">First Steps: Balboa</div>
+
+                     <div>Wednesday, March 6</div>
+                     <div>7 - 8:30 p.m.</div>
+
+                     <p>An introduction to balboa and balboa-swing with David B. and Leah. We'll be touching on the fundamental technique of partner-dance connection. Beginner friendly.</p>
+
+                     <p>A note from the teachers: We recommend bringing indoor-only shoes with leather soles. For follows that have them, we suggest leather-sole kitten heels.</p>
+
+                     <div>Abigail Stuart House</div>
+                     <div>1002 Washington St SE, Olympia</div>
+
+                     <p>No reservation or partner required. By donation.</p>
+
+                     <p>Balboa demonstration:</p>
+                     <iframe width="100%" height="315" src="https://www.youtube-nocookie.com/embed/pQrmUEX7zk8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                  </div>
+               </div>
 
                <div v-if="reservations" style="text-align: center; font-size: 10pt; margin-top: 3.1em;">
                   <span v-for="r in reservations" :class="r.class">
@@ -148,59 +179,6 @@
 
             <section>
                <h2>Swing Dance Lessons and Events</h2>
-
-               <h4 class="month">February</h4>
-
-               <div>
-                  <p>We are hosting four swing dance workshops on Wednesday evenings, in February in Olympia.</p>
-               </div>
-
-               <div class="events">
-                  <div class="event">
-                     <div class="title">
-                        <div>Charleston swingout</div>
-                        <div>20s Charleston</div>
-                     </div>
-                     <div class="details">Feb 6</div>
-                  </div>
-
-                  <div class="event">
-                     <div class="title">
-                        <div>Balboa</div>
-                        <div>Jazz routine</div>
-                     </div>
-                     <div class="details">Feb 13</div>
-                  </div>
-
-                  <div class="event">
-                     <div class="title">
-                        <div>Connection</div>
-                        <div>Body movement</div>
-                     </div>
-                     <div class="details">Feb 20</div>
-                  </div>
-
-                  <div class="event">
-                     <div class="title">
-                        <div>Popping footwork</div>
-                        <div>Floats and glides</div>
-                        <div>Connection</div>
-                     </div>
-                     <div class="details">Feb 27</div>
-                  </div>
-               </div>
-
-               <div>
-                  <p>All workshops are in the dance studio at the Abigail Stuart House:</p>
-
-                  <div>7 - 8:30 p.m.</div>
-                  <div>1002 Washington St SE, Olympia</div>
-
-                   <p>These events are by donation, with all proceeds going to the teachers.</p> 
-                </div>
-            </section>
-
-            <section class="section2">
                <h4 class="month">March</h4>
 
                <p>We're hosting a Beginning Swing series in March on Mondays, and a set of four beginning workshops on Wednesdays, named First Steps.</p>
@@ -218,7 +196,7 @@
                   <div class="event">
                      <div class="title">
                         <div>First Steps</div>
-                        <div>Connection</div>
+                        <div>Balboa</div>
                      </div>
                      <div class="details">Mar 6</div>
                   </div>
@@ -249,7 +227,32 @@
                </div>
 
                <div>
-                  <p>All classes are 7-8:30 p.m. at the Abigail Stuart House, 1002 Washington St SE in Olympia. It's possible the series will only be 7-8 p.m., we're still working out details with the venue.</p>
+                  <p>All Wednesday classes are 7-8:30 p.m. at the Abigail Stuart House, 1002 Washington St SE in Olympia. The Monday series is 7-8 p.m.</p>
+               </div>
+            </section>
+
+            <section>
+               <h4 class="month">April</h4>
+
+               <p>On Wednesdays in April we're hosting a balboa lesson series. We'll have more info / registration up soon, just wanted to give you a heads up.</p>
+
+               <p>On Mondays in April we're doing something, not sure exactly what, yet.</p>
+
+               <div class="events">
+                  <div class="event">
+                     <div class="title">
+                        <div>Something on Mondays</div>
+                     </div>
+                     <div class="details">Apr 1, 8, 15, 22</div>
+                  </div>
+                  <div class="event">
+                     <div class="title">
+                        <div>Beginning Balboa</div>
+                     </div>
+                     <div class="details">
+                        <div>Apr 3, 10, 17, 24</div>
+                     </div>
+                  </div>
                </div>
             </section>
 
