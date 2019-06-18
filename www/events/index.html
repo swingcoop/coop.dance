@@ -386,39 +386,32 @@ new Vue({
 
       this.messages = [
         {
-          title: 'Olympia Spring Swingout',
-          message: 'May 4-5 (Weekend)\n\nSwing and jazz dance festival with workshops during the day and dancing at night. Please see our homepage for details.',
+          title: 'Summer Skill Share',
+          message: 'July 8, 15, 22, 29 (Mondays)\n7-8 p.m.',
           host: coop,
-          tags: ['workshop', 'dance', 'festival'],
-          address: 'Multiple venues',
-          city: oly
+          venue: abigail,
+          address: abigailAddress,
+          city: oly,
+          host: coop,
+          tags: ['workshop'],
+          registrationType: dropIn
         },{
-          title: 'A Taste of Jazz',
-          message: 'May 1, 8, 15, 22, 29 (Wednesdays)\n7-8:30 p.m.\nSolo jazz with Amee',
+          title: 'Intro to Lindy Hop',
+          message: 'July 10, 17, 24, 31 (Wednesdays) with Gabrielle and Jim.\n7-8 p.m.',
           venue: abigail,
           address: abigailAddress,
           city: oly,
           host: coop,
           tags: ['series'],
-          registrationType: dropIn
+          registrationType: 'rsvp'
         },{
-          title: 'Confidence on the Dance Floor',
-          message: 'May 13, 20 (Mondays)\n7-8:30 p.m.\nWorkshops with Leslie',
+          title: 'Summer Evening Swing Dance',
+          message: 'August 14 with Frog & Henry from New Orleans.\nLesson at 7 p.m.\nMusic and dancing 8-10 p.m.',
           venue: abigail,
           address: abigailAddress,
           city: oly,
           host: coop,
-          tags: ['series'],
-          registrationType: dropIn
-        },{
-          title: 'Evergreen Swing',
-          message: 'May 2, 9, 16, 23, 30 (Thursdays)\n7-8:30 p.m.\nIntro to swing dancing with Bethany and Philip',
-          venue: 'COM 209',
-          address: 'The Evergreen State College',
-          city: oly,
-          host: coop,
-          tags: ['series'],
-          registrationType: dropIn
+          tags: ['dance']
         }
       ];
       // axios.get('/api/messages').then(res => {
