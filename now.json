@@ -4,7 +4,7 @@
    "builds": [
       { "src": "www/**", "use": "@now/static" },
       { "src": "api/reservations/index.js", "use": "@now/node" },
-      { "src": "api/reservations/starter-kit/index.js", "use": "@now/node" },
+      { "src": "api/reservations/current/index.js", "use": "@now/node" },
       { "src": "api/letters-add.js", "use": "@now/node" },
       { "src": "api/messages-add.js", "use": "@now/node" },
       { "src": "api/messages-get.js", "use": "@now/node" },
@@ -16,7 +16,7 @@
    ],
    "routes": [
       { "src": "/api/reservations", "dest": "/api/reservations/index.js" },
-      { "src": "/api/reservations/starter-kit", "dest": "/api/reservations/starter-kit/index.js" },
+      { "src": "/api/reservations/current", "dest": "/api/reservations/current/index.js" },
       { "src": "/api/letters", "dest": "/api/letters-add.js" },
       { "src": "/api/messages", "methods": ["POST"], "dest": "/api/messages-add.js" },
       { "src": "/api/messages", "methods": ["GET"], "dest": "/api/messages-get.js" },

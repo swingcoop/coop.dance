@@ -1,0 +1,412 @@
+<html>
+<head>
+   <title>Olympia Spring Swingout - RSVP</title>
+   <meta name="description" 
+      content="Make a reservation for the Olympia Spring Swingout, a weekend of workshops and dancing in downtown Olympia.">
+   <meta name="keywords" content="swing dance coop co-cop cooperative olympia">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <meta property="og:title" content="Olympia Spring Swingout - RSVP">
+   <meta property="og:type" content="website">
+   <meta property="og:image" content="http://swing.dance.coop/img/ograph-banner.png">
+   <meta property="og:image:secure_url" content="https://swing.dance.coop/img/ograph-banner.png">
+   <meta property="og:url" content="https://swing.dance.coop/">
+   <meta property="og:description" 
+      content="Make a reservation for the Olympia Spring Swingout, a weekend of workshops and dancing in downtown Olympia.">
+
+   <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/Buttons/2.0.0/css/buttons.min.css" rel="stylesheet">
+
+   <link href="/style/main.css" rel="stylesheet">
+   <style>
+   .rsvp .agreement input {
+      width: inherit;
+      margin-right: 1.5ex;
+   }
+   .agreement {
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+   }
+   .role1 {
+      color: #c22;
+   }
+   .role2 {
+      color: red;
+   }
+   .waitlist {
+      color: #ddd;
+   }
+   .button-link {
+      display: inline-block;
+      border: solid 2px #c22;
+      border-radius: 6px;
+      padding: 2ex;
+      margin-top: 1.5em;
+      min-width: 70px;
+      text-align: center;
+      text-decoration: none;
+   }
+   a.button-link {
+      color: #c22;
+   }
+   .rsvp a.button-link {
+      color: #ffc3bb;
+   }
+   .proto-nav-panel {
+      margin-bottom: 1em;
+      text-align: center; 
+   }
+   .proto-nav-panel .button-link { 
+      margin-left: 1ex;
+      margin-right: 1ex;
+   }
+
+   .month {
+      text-align: center;
+   }
+
+   .events {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+      grid-auto-rows: minmax(100px, auto);
+   }
+   .event {
+      position: relative; 
+      border: dotted 1px #c22;
+      border-radius: 5px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+   .feature .event {
+      display: block;
+      padding: 2ex;
+   }
+   .event.oly-dance {
+      border: solid 1px pink;
+   }
+   .event .title {
+      padding: 1ex;
+
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+     justify-content: center;
+
+      text-align: center;
+      margin-top: 1.1em;
+      margin-bottom: 1.1em;
+   }
+   .event .title div {
+      margin-bottom: 0.4ex;
+   }
+   .event .details {
+      position: absolute;
+      bottom: 1ex;
+      right: 1.2ex;
+      font-size: smaller;
+   }
+   .message-title {
+    font-weight: bold;
+    font-size: larger;
+    margin-bottom: 0.8em;
+   }
+
+   .checkbox input {
+      width: inherit;
+      margin-right: 1.5ex;
+      vertical-align: text-top;
+      margin-top: 3px;
+      margin-bottom: 0;
+   }
+   .checkbox {
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+   }
+   .sel {
+      background-color: #c22;
+   }
+
+   .checkbox {
+      border: solid 1px red;
+      border-radius: 5px;
+      padding: 2ex;
+   }
+   .checkbox label {
+      cursor: pointer;
+   }
+   </style>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+   <div id="app">
+      <div class="swing">
+         <div class="column">
+            <section class="section1 rsvp">
+               <div class="rings">
+                  <a href="/"><img src="/img/rings.png" class="for-phone"/></a>
+               </div>
+               <h1 class="title">Olympia Spring <span class="for-phone"> Swingout</span></h1>
+
+               <p>Welcome! It's our six-month-iversary in May, and to celebrate we're hosting the Olympia Spring Swingout, a weekend of workshops and dancing.</p>
+            </section>
+
+            <section class="rsvp">
+                <form v-on:submit.prevent="rsvp">
+                  <h2 style="text-align: center">R.S.V.P.</h2>
+
+                  <label>
+                     <div>What's your name?</div>
+                     <input type="text" v-model="name"/>
+                  </label>
+
+                  <div>Which classes would you like to be in?</div>
+                  <div class="checkbox" :class="{ sel: saturday }">
+                     <input
+                        id="saturday"
+                        type="checkbox"
+                        v-model="saturday">
+                        <label for="saturday">Saturday Workshops</label>
+                     </input>
+                  </div>
+
+                  <div class="checkbox" :class="{ sel: sunday }">
+                     <input
+                        :disabled="isSundaySoldOut"
+                        id="sunday"
+                        type="checkbox"
+                        v-model="sunday">
+                        <label for="sunday" v-if="!isSundaySoldOut">Jazz Step Sunday</label>
+                        <label v-else><span style="text-decoration: line-through">Jazz Step Sunday</span> &nbsp;Sold out</label>
+                     </input>
+                  </div>
+
+                  <div>What's your zip code?</div>
+                  <input type="text" v-model="zip"/>
+
+                  <div>And your email address?</div>
+                  <input type="text" v-model="email"/>
+
+                  <div v-if="saturday">
+                     <div>What dance role would you like to have on Saturday during the workshops?</div>
+
+                     <select v-model="role">
+                        <option value="null">&ndash; Please select &ndash;</option>
+                        <option :value="followValue">{{ followValue }}</option>
+                        <option :value="leadValue">{{ leadValue }}</option>
+                        <option :value="anyValue">{{ anyValue }}</option>
+                     </select>
+                  </div>
+
+<!--                   <div class="agreement">
+                     <div style="margin-bottom: 0.5ex">Please confirm your availability:</div>
+                     <input id="agreed" type="checkbox" v-model="agreed">
+                     <label for="agreed">I will be at the first session (April 3) and
+                     the second session (April 10).</label></input>
+                  </div> -->
+
+                  <div>Anything else you'd like to share?</div>
+                  <textarea rows="4" v-model="comments"></textarea>
+
+                  <p>The workshops, classes, and dances are by donation. Our costs for the Olympia Spring Swingout are about $10 per hour per guest.</p>
+
+                  <div v-if="!submitted" style="text-align: center">
+                     <button type="submit" :disabled="sending">Finish RSVP</button>
+                     <span v-if="sending" style="margin-left: 1ex">Sending ...</span>
+                  </div>
+
+                  <div v-else>
+                     <p>
+                        Thank you! You should receive an email within an hour to
+                        confirm that everything went through.</p>
+                  </div>
+
+                  <p v-if="error" v-cloak>
+                     Sorry, there was an error when we tried to submit your form.
+                     Please let us know at rsvp@dance.coop?
+                  </p>
+               </form>
+            </section>
+      </div>
+
+      <section class="cooperative">
+         <div class="column">
+            <h1 class="for-desktop">Cooperative</h1>
+            <h1 class="for-phone">About the co-op</h1>
+            <p>We're a cooperative, and we identify with the 
+               <a href="https://www.ica.coop/en/whats-co-op/co-operative-identity-values-principles">cooperative movement</a> and its values.</p>
+
+            <div class="proto-nav-panel">
+               <a class="button-link" href="/events">Events</a>
+               <a class="button-link" href="/mission">Mission</a>
+               <a class="button-link" href="/contact">Contact us</a>
+            </div>
+
+            <div class="close">
+               <div class="name">The Swing Dance Cooperative</div>
+               <div>Olympia, Washington.</div> 
+
+               <a href="/"><img src="/img/rings.png" class="rings"/></a>
+            </div>
+         </div>
+      </section>
+   </div>
+</div>
+   <script>
+new Vue({
+   el: '#app',
+   data: {
+      name: null,
+      course: null,
+      role: null,
+      zip: null,
+      email: null,
+      comments: null,
+      agreed: null,
+      submitted: false,
+      error: false,
+      sending: false,
+      rsvpPressed: false,
+      hour: new Date().getHours(),
+      starterKitReservations: null,
+      saturday: false,
+      sunday: false
+   },
+   computed: {
+      greeting() {
+         if (this.hour < 3)
+            return "evening"
+         if (this.hour < 6) 
+            return "... morning?"
+         if (this.hour < 12)
+            return "morning"
+         if (this.hour < 17)
+            return "afternoon"
+         return "evening"
+      },
+      needAgreement() {
+         return this.rsvpPressed && !this.agreed;
+      },
+      reservations() {
+         if (!this.starterKitReservations)
+            return [];
+
+         return this.starterKitReservations.filter(o => o.Saturday).map(x => {
+            let role = x.Role ? x.Role.replace(" - Waitlist","") : 'Lead';
+            return {
+               role: role,
+               'class': this.classes[role],
+               waitlist: x.Role ? x.Role.includes("Waitlist") : false,
+               saturday: x.Saturday,
+               sunday: x.Sunday
+            }
+         });
+      },
+      sundayReservations() {
+         if (!this.starterKitReservations)
+            return [];
+
+         return this.starterKitReservations.filter(o => o.Sunday).map(x => {
+            return {
+               'class': 'sunday',
+            }
+         });
+      },
+      isSundaySoldOut() {
+         return this.sundayReservations.length >= 25;
+      },
+      followValue() {
+         return "Follow" + (this.isNewFollowWaitlisted ? ' - Waitlist' : '');
+      },
+      leadValue() {
+         return "Lead" + (this.isNewLeadWaitlisted ? ' - Waitlist' : '');
+      },
+      anyValue() {
+         return "Either" + (this.isClassFull ? ' - Waitlist' : '');
+      },
+      follows() {
+         return this.reservationsByRole('Follow').length;
+      },
+      leads() {
+         return this.reservationsByRole('Lead').length;
+      },
+      anys() {
+         return this.reservationsByRole('Either').length;
+      },
+      isClassFull() {
+         return this.follows + this.leads + this.anys >= 50;
+      },
+      isNewFollowWaitlisted() {
+         return ((this.follows >= 20) && this.leads + this.anys < this.follows) 
+            || this.isClassFull
+            || this.reservations.filter(x => x.role === 'Follow' && x.waitlist).length > 0;
+      },
+      isNewLeadWaitlisted() {
+         return ((this.leads >= 20) && this.follows + this.anys < this.leads) 
+            || this.isClassFull
+            || this.reservations.filter(x => x.role === 'Lead' && x.waitlist).length > 0;
+      },
+      classes() {
+         var val = {};
+         if (!this.starterKitReservations)
+            return val;
+
+         return {
+            'Follow': 'role1',
+            'Lead': 'role2'
+         };
+      }
+   },
+   methods: {
+      rsvp: function () {
+         this.rsvpPressed = true;
+
+         this.sending = true;
+         var data = {
+            name: this.name,
+            course: 'Olympia Spring Swingout',
+            role: this.role,
+            zip: this.zip,
+            email: this.email,
+            comments: this.comments,
+            saturday: this.saturday,
+            sunday: this.sunday
+         };
+         axios.post('/api/reservations', data)
+         .then(() => {
+            this.submitted = true;
+            this.sending = false;
+            // console.log(data);
+         })
+         .catch(() => {
+            this.error = true;
+            this.sending = false;
+         });
+      },
+      shuffle(ok) {
+         let a = ok.slice();
+         for (let i = a.length - 1; i > 0; i--) {
+           const j = Math.floor(Math.random() * (i + 1));
+           [a[i], a[j]] = [a[j], a[i]];
+         }
+         return a;
+      },
+      reservationsByRole(role) {
+         return this.reservations.filter(x => x.role === role && !x.waitlist);
+      }
+   },
+   created() {
+      axios.get('/api/reservations/current')
+      .then(res => {
+         this.starterKitReservations = this.shuffle(res.data);
+      });
+   }
+})
+</script>
+   </body>
+
+</html>

@@ -7,9 +7,9 @@ const base = Airtable.base(reservations);
 function get() {
     return new Promise(function (resolve, reject) {
         var val = [];
-        base('Starter Kit')
+        base('Current')
         .select({
-            fields: [ "Role", "Any" ],
+            fields: [ "Role", "Any", "Saturday", "Sunday" ],
             view: "Grid View"
         })
         .eachPage(function page(records, nextPage) {

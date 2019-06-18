@@ -112,7 +112,9 @@
                   </a>
                </div>
                <h1 class="title">Swing Dance Cooperative Events</h1>
-               <p>Welcome to our small events page. We try to host a couple classes each month, and a fancy dance once every three months. All events are by donation.</p>
+               <p>Welcome to our small events page. We try to host a couple classes each month, and a fancy dance once every three months.</p>
+
+               <p>All events are by donation, except the classes at Evergreen, which require a CRC rec-class ticket.</p>
             </section>
 
             <section class="clear">
@@ -376,12 +378,55 @@ new Vue({
   },
   methods: {
     getMessages() {
-      axios.get('/api/messages').then(res => {
-        this.messages = res.data;
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      var coop = 'The Swing Dance Cooperative';
+      var abigail = "Abigail Stuart House";
+      var abigailAddress = "1002 Washington St SE";
+      var oly = "Olympia";
+      var dropIn = 'drop-in';
+
+      this.messages = [
+        {
+          title: 'Olympia Spring Swingout',
+          message: 'May 4-5 (Weekend)\n\nSwing and jazz dance festival with workshops during the day and dancing at night. Please see our homepage for details.',
+          host: coop,
+          tags: ['workshop', 'dance', 'festival'],
+          address: 'Multiple venues',
+          city: oly
+        },{
+          title: 'A Taste of Jazz',
+          message: 'May 1, 8, 15, 22, 29 (Wednesdays)\n7-8:30 p.m.\nSolo jazz with Amee',
+          venue: abigail,
+          address: abigailAddress,
+          city: oly,
+          host: coop,
+          tags: ['series'],
+          registrationType: dropIn
+        },{
+          title: 'Confidence on the Dance Floor',
+          message: 'May 13, 20 (Mondays)\n7-8:30 p.m.\nWorkshops with Leslie',
+          venue: abigail,
+          address: abigailAddress,
+          city: oly,
+          host: coop,
+          tags: ['series'],
+          registrationType: dropIn
+        },{
+          title: 'Evergreen Swing',
+          message: 'May 2, 9, 16, 23, 30 (Thursdays)\n7-8:30 p.m.\nIntro to swing dancing with Bethany and Philip',
+          venue: 'COM 209',
+          address: 'The Evergreen State College',
+          city: oly,
+          host: coop,
+          tags: ['series'],
+          registrationType: dropIn
+        }
+      ];
+      // axios.get('/api/messages').then(res => {
+      //   this.messages = res.data;
+      // })
+      // .catch(err => {
+      //   console.log(err);
+      // });
     },
     announce() {
       var payload = {
