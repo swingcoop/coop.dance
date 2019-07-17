@@ -1,0 +1,14 @@
+{
+  "name": "courses",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Philip Manijak",
+  "license": "MIT",
+  "dependencies": {
+    "airtable": "^0.6.0"
+  }
+}

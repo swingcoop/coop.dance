@@ -1,0 +1,1086 @@
+<html>
+<head>
+   <title>The Swing Dance Cooperative | Olympia</title>
+   <meta name="description" 
+      content="The Swing Dance Cooperative. We swing dance! We're in Olympia! We're an employee-owned cooperative!">
+   <meta name="keywords" content="swing dance coop co-cop cooperative olympia">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <meta property="og:title" content="The Swing Dance Cooperative | Olympia">
+   <meta property="og:type" content="website">
+   <meta property="og:image" content="http://swing.dance.coop/img/ograph-banner.png">
+   <meta property="og:image:secure_url" content="https://swing.dance.coop/img/ograph-banner.png">
+   <meta property="og:url" content="https://swing.dance.coop/">
+   <meta property="og:description" 
+      content="The Swing Dance Cooperative. We swing dance! We're in Olympia! We're an employee-owned cooperative!">
+
+   <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/Buttons/2.0.0/css/buttons.min.css" rel="stylesheet">
+
+   <link href="/style/main.css" rel="stylesheet">
+   <style>
+   .tito-ticket-description {
+      display: none;
+   }
+   #tito-ticket-a-mdnefq-mw,
+   #tito-ticket-wvqw9lmywwg {
+      height: 100px;
+   }
+   .tito-checkbox {
+      display: block;
+      padding-left: 2ex;
+      font-size: 3em;
+      margin-top: 0.35ex;
+   }
+
+   .rsvp .agreement input {
+      width: inherit;
+      margin-right: 1.5ex;
+   }
+   .agreement {
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+   }
+   .role1 {
+      color: #c22;
+   }
+   .role2 {
+      color: red;
+   }
+   .waitlist {
+      color: #ddd;
+   }
+   .button-link {
+      display: inline-block;
+      border: solid 2px #c22;
+      border-radius: 6px;
+      padding: 2ex;
+      min-width: 70px;
+      text-align: center;
+      text-decoration: none;
+      margin-bottom: 1em;
+   }
+   a.button-link {
+      color: #c22;
+   }
+   .rsvp a.button-link {
+      color: #ffc3bb;
+   }
+   .proto-nav-panel {
+      margin-top: 1.5em;
+      margin-bottom: 1em;
+      text-align: center; 
+   }
+   .proto-nav-panel .button-link { 
+      margin-left: 1ex;
+      margin-right: 1ex;
+   }
+
+   .month {
+      text-align: center;
+   }
+
+   .events {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+      grid-auto-rows: minmax(100px, auto);
+   }
+   .event {
+      position: relative; 
+      border: dotted 1px #c22;
+      border-radius: 5px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+   .feature .event {
+      display: block;
+      padding: 2ex;
+   }
+   .event.oly-dance {
+      border: solid 1px pink;
+   }
+   .event .title {
+      padding: 1ex;
+
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+     justify-content: center;
+
+      text-align: center;
+      margin-top: 1.1em;
+      margin-bottom: 1.1em;
+   }
+   .event .title div {
+      margin-bottom: 0.4ex;
+   }
+   .event .details {
+      position: absolute;
+      bottom: 1ex;
+      right: 1.2ex;
+      font-size: smaller;
+   }
+   .message-title {
+    font-weight: bold;
+    font-size: larger;
+    margin-bottom: 0.8em;
+   }
+
+/*   .event-type {
+      display: flex;
+      flex-flow: row wrap;
+      margin-top: 1ex;
+      justify-content: space-between;
+   }
+   .event-type div {
+      margin-bottom: 2ex;
+      text-align: center;
+      border: solid 1px red;
+      border-radius: 5px;
+      box-sizing: border-box;
+      width: 47%;
+      cursor: pointer;
+   }*/
+   .event input[type="radio"] {
+      display: none;
+   }
+/*   .event-type div label {
+      display: block;
+      width: 100%;
+      padding: 2ex;
+      box-sizing: border-box;
+   }*/
+   .sel {
+      background-color: #c22;
+   }
+
+   .descriptions {
+      border: dotted white 8px;
+      padding: 2ex;
+      margin-bottom: 1.3em;
+   }
+   .descriptions h4 {
+      margin-top: 0;
+   }
+   </style>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+   <div id="app">
+      <div class="swing">
+         <div class="column">
+            <section class="section1 rsvp">
+               <div class="rings">
+                  <img src="./img/rings.png" class="for-phone"/>
+               </div>
+               <h1 class="title">The Swing Dance<span class="for-phone"> Cooperative</span></h1>
+
+               <p>Hi. We're here to share swing dancing and host fancy dances and stuff. We're also here to be a part of the <a href="https://www.ica.coop/en/whats-co-op/co-operative-identity-values-principles">cooperative movement</a>.</p>
+
+               <div class="proto-nav-panel">
+                  <a class="button-link" href="/events">Events</a>
+                  <a class="button-link" href="/mission">Mission</a>
+                  <a class="button-link" href="/contact">Contact us</a>
+               </div>
+
+               <h2>June classes</h2>
+               <p>We're not hosting any events in June, so we can focus on improving our organization.</p>
+
+               <h2>Summer events</h2>
+               <p>Save the date for Wednesday, August 14.</p>
+
+<!--                <h4 style="text-align: center">May schedule</h4>
+
+               <div class="events">
+                  <div class="event" :class="{ sel: eventType == 'swingout' }">
+                     <label>
+                        <input 
+                           type="radio" 
+                           id="swingout"
+                           value="swingout"
+                           v-model="eventType">
+                           <div class="title">                        
+                              <div>Olympia Spring Swingout</div>
+                           </div>
+                           <div class="details">May 4, 5</div>
+                        </input>
+                     </label>
+                  </div>
+
+                  <div class="event" :class="{ sel: eventType == 'confidence' }">
+                     <label>
+                        <input
+                           type="radio"
+                           id="confidence"
+                           value="confidence"
+                           v-model="eventType">
+                           <div class="title">
+                              <div>Confidence on the Dance Floor</div>
+                           </div>
+                           <div class="details">May 13, 20</div>
+                        </input>
+                     </label>
+                  </div>
+
+                  <div class="event" :class="{ sel: eventType == 'taste' }">
+                     <label>
+                        <input
+                           type="radio"
+                           id="taste"
+                           value="taste"
+                           v-model="eventType">
+                           <div class="title">
+                              <div>A Taste of Jazz</div>
+                           </div>
+                           <div class="details">
+                              <div>May 1, 8, 15, 22</div>
+                           </div>
+                        </input>
+                     </label>
+                  </div>
+
+                  <div class="event" :class="{ sel: eventType == 'evergreen' }">
+                     <label>
+                        <input
+                           type="radio"
+                           id="evergreen"
+                           value="evergreen"
+                           v-model="eventType">
+                           <div class="title">
+                              <div>Evergreen Swing</div>
+                           </div>
+                           <div class="details">May 2, 9, 16, 23, 30</div>
+                        </input>
+                     </label>
+                  </div>
+               </div> -->
+
+<!--                <p>All tickets are by donation, please pay what you want. We put in suggested amounts for each experience, but you're welcome to change it to something that works for you.</p>
+
+               <div class="proto-nav-panel">
+                  <a class="button-link" href="https://ti.to/swing/olympia-spring-swingout">RSVP</a>
+               </div> -->
+            </section>
+
+<!--             <section>
+
+               <h2>Olympia Spring Swingout</h2>
+
+               <h3>May 4-5, downtown Olympia, Washington</h3>
+
+               <p>You are invited to join our 6-month celebration &ndash; a weekend of swing and jazz dancing in downtown Olympia.</p>
+
+               <p>Workshops lead by Nika Jin and Shane Allen, Saturday and Sunday. Our spring evening dance is Saturday night in the Olympia Ballroom.</p>
+
+               <div class="feature">
+                  <h2>Saturday Workshops</h2>
+                  <div class="event">
+                     <div class="message-title">May 4: Day</div>
+                     <p>Come share in the joy of Lindy hop, Charleston, and vernacular jazz dance.</p> 
+
+                     <div class="fun-times">
+                        <img
+                           style="border: none" 
+                           src="/img/nika-shane/nika-tracktown.jpg"/>
+                     </div>
+
+                     <div style="margin-bottom: 1ex; margin-top: 1.1em">
+                        <strong>Saturday Workshop Schedule</strong>
+                     </div>
+                     <div>11:00 a.m. Connection and Social Dancing Technique. aka Be Good at Dancing Together: How Do We Touch??</div>
+                     <div>Noon Lunch break</div>
+                     <div>1:30 p.m. SwingTFOut</div>
+                     <div>2:30 p.m. Break</div>
+                     <div>2:45 p.m. Hittin' the Hits and Riffin' the Riffs</div>
+                     <div>3:45 p.m. Break</div>
+                     <div>4:00 p.m. Wrap</div>
+
+                     <p>Schedule notes: There is a 15 minute break between each class, for snack time, video time, extra practice, stretching or resting.</p>
+
+                     <h3 style="text-align: left">Venue</h3>
+                     <div>Olympia Ballroom</div>
+                     <div>116 Legion Way SE, Olympia</div>
+
+                     <div class="fun-times" style="margin-top: 1.2em">
+                        <img
+                           style="border: none" 
+                           src="/img/olympia-ballroom-stairs.jpg"/>
+                     </div>
+                  </div>
+
+                  <h2>Saturday Dance</h2>
+                  <div class="event" style="margin-top: 1.5em">
+                     <div class="message-title">May 4: Evening</div>
+                     <p>After a four-year hiatus, swing dancing returns to the Olympia Ballroom.</p>
+
+                     <div class="fun-times">
+                        <img
+                           style="border: none" 
+                           src="/img/nika-shane/nika-solo.jpg"/>
+                     </div>
+
+                     <p><strong>Evening Dance Schedule</strong></p>
+                     <div>Introductory lesson with Nika and Shane at 7 p.m.</div>
+                     <div>Music and dancing to follow, 8-10 p.m.</div>
+
+                     <h3 style="text-align: left; margin-bottom: 1ex">Venue</h3>
+                     <div>Olympia Ballroom</div>
+                     <div>116 Legion Way SE, Olympia</div>
+
+                     <div class="fun-times" style="margin-top: 1.2em">
+                        <img
+                           style="border: none" 
+                           src="/img/olympia-ballroom.jpg"/>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="feature">
+                  <h2>Sunday Workshops</h2>
+                  <div class="event">
+                     <div class="message-title">May 5: Day</div>
+
+                     <p>After the big day on Saturday, please join us for a more-relaxed afternoon of dancing, centered around solo jazz movement with Nika and Shane.</p> 
+
+                     <div class="fun-times">
+                        <img
+                           style="border: none" 
+                           src="/img/nika-shane/shane-solo.jpg"/>
+                     </div>
+
+                      <p style="margin-bottom: 1ex"><strong>Solo Jazz Workshops Schedule</strong></p>
+                     <div>Noon Build Yo Vocab</div>
+                     <div>1:00 p.m. Break</div>
+                     <div>1:15 p.m. Make the Music</div>
+                     <div>2:15 p.m. Break</div>
+                     <div>2:30 p.m. Infinite Jams</div>
+                     <div>3:30 p.m. Break</div>
+                     <div>4:00 p.m. Wrap</div>
+
+                     <p>Schedule notes: There is a 15 minute break between each class, for snack time, video time, extra practice, stretching or resting.</p>
+
+                     <h3 style="text-align: left; margin-bottom: 1ex">Venue</h3>
+                     <div>Abigail Stuart House</div>
+                     <div>1002 Washington St SE, Olympia</div>
+                  </div>
+               </div>
+
+               <div class="feature">
+                  <h2>About the Artists</h2>
+                  <div class="fun-times">
+                     <img
+                        style="border: none" 
+                        src="/img/nika-shane/nika-shane.jpg"/>
+                  </div>
+
+                  <div class="message-title" style="margin-top: 1em">Nika Jin</div>
+                  <p>Nika started teaching and organizing Lindy Hop related shenanigans in Eugene, Oregon in 2013.</p>
+
+                  <p>She is on a continuous quest to learn how to listen to her body and how to listen to jazz, which are basically the keys to the kingdom for good social dancing, and a good healthy life in general. She loves sharing dance, and strives to bring an open-mind and unbridled enthusiasm to the classroom. Nika has been a finalist and winner of several competitions, but her priority will always be going ham on the dance floor.</p>
+
+                  <p>She also loves burritos, trees, and those crazy geodesic domes.</p>
+
+                  <div class="message-title" style="margin-top: 1em">Shane Allen</div>
+                  <p>Shane has been working on his triple steps around the world since 2011. His first partner dance experience was in the honky tonks of hometown Houston, Texas, but he soon found the spots that play the music he loves most: jazz. Since then, Shane has followed the four-on-the-floor feeling as far as his feet will take him.</p>
+
+                  <p>Drawing on his experience as a professional jazz pianist, Shane's understanding of the music's history is exceptional, and communicating the depth and relevance of jazz as social dance music is central to his classroom focus.</p>
+
+                  <p>Based in Eugene, Oregon since 2018, he loves teaching weekly as part of Track Town Swing and leading the Stealin' Apples Jazz Band.</p>
+               </div>
+
+               <div class="feature" style="margin-top: 1.5em">
+                  <h2>Event Registration</h2>
+
+                  <div class="proto-nav-panel">
+                     <a class="button-link" href="/swingout/rsvp">RSVP</a>
+                  </div>
+                  
+                  <hr style="margin-top: 2.5em; border: none; border-bottom: dotted 6px #900"/>
+               </div>
+
+               <div v-if="reservations" style="text-align: center; font-size: 10pt; margin-top: 3.1em;">
+                  <span v-for="r in reservations" :class="r.class">
+                     <span :class="{ 'waitlist': r.waitlist }">
+                        &#9711;
+                     </span>
+                  </span>
+               </div>
+            </section>
+-->
+            <section>
+<!--                <h2>Swing Dance Lessons and Events</h2>
+
+               <div class="feature">
+                  <h2>Next Event</h2>
+                  <div class="event">
+                     <div class="message-title">Beginning Swing at Evergreen</div>
+
+                     <div>Thursday, April 25</div>
+                     <div>7 - 9 p.m.</div>
+
+                     <p>An introduction to swing dancing with Bethany and Philip.</p>
+
+                     <div>The Evergreen State College</div>
+                     <div>Communications Building, Rm 209</div>
+                     <div>Olympia</div>
+
+                     <p>Drop in. Parking for cars is $3. Bring a CRC "rec activity" ticket, which you can get at the CRC front desk.</p>
+
+                     <p>Swing dance demonstration:</p>
+                     <iframe width="100%" height="315" src="https://www.youtube-nocookie.com/embed/RhLVM4Lv4Y0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                  </div>
+               </div> -->
+
+               <!--
+               <h4 class="month">March</h4>
+
+               <p>We're hosting a Beginning Swing series in March on Mondays, and a set of four introductions on Wednesdays, named First Steps.</p>
+
+               <div class="events">
+                  <div class="event">
+                     <div class="title">
+                        <div>Beginning Swing</div>
+                     </div>
+                     <div class="details">
+                        <div>Mar 4, 11, 18, 25</div>
+                     </div>
+                  </div>
+
+                  <div class="event">
+                     <div class="title">
+                        <div>First Steps</div>
+                        <div>Balboa</div>
+                     </div>
+                     <div class="details">Mar 6</div>
+                  </div>
+
+                  <div class="event">
+                     <div class="title">
+                        <div>First Steps</div>
+                        <div>Momentum</div>
+                     </div>
+                     <div class="details">Mar 13</div>
+                  </div>
+
+                  <div class="event">
+                     <div class="title">
+                        <div>First Steps</div>
+                        <div>Musicality</div>
+                     </div>
+                     <div class="details">Mar 20</div>
+                  </div>
+
+                  <div class="event">
+                     <div class="title">
+                        <div>First Steps</div>
+                        <div>Counterbalance</div>
+                     </div>
+                     <div class="details">Mar 27</div>
+                  </div>
+               </div>
+
+               <div>
+                  <p>All Wednesday classes are 7-8:30 p.m. at the Abigail Stuart House, 1002 Washington St SE in Olympia. The Monday series is 7-8 p.m.</p>
+               </div>
+            </section>
+
+            <section>
+            -->
+
+            <!--
+               <h4 class="month">April</h4>
+
+               <p>On Mondays in April we're hosting our first Red Series, an uptempo class for people who've taken a class with us before.</p> 
+
+               <p>On Wednesdays we're hosting a balboa lesson series with David B and Leah. Registration is up for that, below.</p>
+
+               <p>On Thursdays we're hosting an intro to swing dancing, drop-in lesson and practice, at Evergreen, which will run through May.</p>
+
+               <div class="events">
+                  <div class="event">
+                     <div class="title">
+                        <div>Red Series, Mondays</div>
+                     </div>
+                     <div class="details">Apr 1, 8, 15, 22</div>
+                  </div>
+                  <div class="event">
+                     <div class="title">
+                        <div>Beginning Balboa, Wednesdays</div>
+                     </div>
+                     <div class="details">
+                        <div>Apr 3, 10, 17, 24</div>
+                     </div>
+                  </div>
+                  <div class="event">
+                     <div class="title">
+                        <div>Thursdays at Evergreen</div>
+                     </div>
+                     <div class="details">
+                        <div>Apr 11, 18, 25</div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+
+            <section class="rsvp">
+               <h2>Swing Dance Lessons &ndash; Beginning Balboa</h2>
+
+               <p>Balboa is a swing dance that developed in the 1920s in Southern California. This class will cover the basic steps, techniques, and common moves to feel comfortable on the dance floor. We'll be sharing 'pure balboa' and 'bal-swing' topics.</p>
+
+               <div style="margin-top: 1.1em; margin-bottom: 1.1em">
+                  <div>April 3, 10, 17, 24 (Wednesdays)</div>
+                  <div>Time: 7-8:30 p.m.</div>
+                  <div>Instructors: David B and Leah</div>
+                  <div>Venue: Abigail Stuart House, 1002 Washington St SE, Olympia</div>
+               </div>
+
+               <p>The general format of the class will be a lesson from 7-8 p.m. each evening, followed by a 30-minute practice session.</p>
+
+               <p>Here is a balboa demonstration from LindyFest 2016 in Houston:</p>
+                <iframe width="100%" height="315" src="https://www.youtube-nocookie.com/embed/s67A_bPCNAQ?start=345" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+               <h4>Requirements</h4>
+               <div class="venue-content">
+                  <p>This is a class for people who've previously taken at least one (social) dance lesson, have danced with other people before, and can lead or follow a few things.</p>
+               </div>
+
+               <h4>To attend</h4>
+               <div class="venue-content rsvp">
+                  <p>Class has started and reservations are closed.</p>
+                  <p>Please reserve your spot by submitting this form.</p>
+
+                  <p>Because there's no admission cost for the
+                  Beginning Balboa series, we do have a $20 fee for cancellations 
+                  made after March 27. Missing the first session or 
+                  the second session is considered a cancellation in this series.</p>
+               </div>
+
+               <h4>Registration status</h4>
+               <div class="venue-content">
+                  <p>This chart displays a &#9711; for each person who has signed up:</p>
+                  <div style="display: flex">
+                     <div style="padding-right: 1ex">
+                        <div>Follows:</div>
+                        <div>Leads:</div>
+                        <div>Any:</div>
+                     </div>
+                     <div>
+                        <div v-if="reservations" style="text-align: left; font-size: 10pt;">
+                           <span v-for="r in reservations" :class="r.class">
+                              <span v-if="r.role === 'Follow'" :class="{ 'waitlist': r.waitlist }">
+                                 &#9711;
+                              </span>
+                           </span>
+                        </div>
+
+                        <div v-if="reservations" style="text-align: left; font-size: 10pt;">
+                           <span v-for="r in reservations" :class="r.class">
+                              <span v-if="r.role === 'Lead'" :class="{ 'waitlist': r.waitlist }">
+                                 &#9711;
+                              </span>
+                           </span>
+                        </div>
+
+                        <div v-if="reservations" style="text-align: left; font-size: 10pt;">
+                           <span v-for="r in reservations" :class="r.class">
+                              <span v-if="r.role === 'Any'" :class="{ 'waitlist': r.waitlist }">
+                                 &#9711;
+                              </span>
+                           </span>
+                        </div>
+                     </div>
+                  </div>
+
+                  <p>For this class, we have room for 20 students.</p>
+               </div>
+            -->
+
+<!--                <form v-on:submit.prevent="rsvp">
+                  <h2 style="text-align: center">R.S.V.P.</h4>
+                  <label>
+                     <div>Name</div>
+                     <input type="text" v-model="name"/>
+                  </label>
+
+                  <div class="agreement">
+                     <div style="margin-bottom: 0.5ex">Please confirm your availability:</div>
+                     <input id="agreed" type="checkbox" v-model="agreed">
+                     <label for="agreed">I will be at the first session (April 3) and
+                     the second session (April 10).</label></input>
+                  </div>
+
+                  <div>What dance role would you like to have during this Beginning Balboa series?</div>
+
+                  <p>Swing dancing is a conversation, typically between two people. The person who is responsible for moving first is referred to as a lead, whereas the person who moves second is referred to as a follow. Most people who dance long enough learn both roles.</p>
+
+                  <select v-model="role">
+                     <option value="null">&ndash; Please select &ndash;</option>
+                     <option :value="followValue">{{ followValue }}</option>
+                     <option :value="leadValue">{{ leadValue }}</option>
+                     <option :value="anyValue">{{ anyValue }}</option>
+                  </select>
+
+                  <div>What's your zip code?</div>
+                  <input type="text" v-model="zip"/>
+
+                  <div>And your email address?</div>
+                  <input type="text" v-model="email"/>
+
+                  <div>Anything else you'd like to share?</div>
+                  <textarea rows="4" v-model="comments"></textarea>
+
+                  <p>A note from the teachers: We recommend bringing indoor-only shoes with leather soles, that will allow you to shuffle across the floor. For follows that have them, we suggest leather-sole kitten heels.</p>
+
+
+                  <div v-if="!submitted" style="text-align: center">
+                     <button type="submit" :disabled="sending">RSVP</button>
+                     <span v-if="sending" style="margin-left: 1ex">Sending ...</span>
+                  </div>
+
+                  <div v-else>
+                     <p>
+                        Thank you! You should receive an email within an hour to
+                        confirm that everything went through. &mdash; P</p>
+                  </div>
+
+                  <p v-if="error" v-cloak>
+                     Sorry, there was an error when we tried to submit your form.
+                     Please let us know at rsvp@dance.coop?
+                  </p>
+
+                  <p v-if="needAgreement" class="need-agreement">
+                     <strong>Attention:</strong> To RSVP, please mark that you can attend the first class and the second class, above, and try submitting the form again.
+                  </p>
+               </form> -->
+            </section>
+
+<!--             <section>
+               <h2>Swing Dance Lessons &ndash; Red Series</h2>
+
+               <p>On Mondays in April, we are hosting our first Red Series.</p>
+
+               <p>The Red Series is for people who've completed one of our classes at The Swing Dance Cooperative. We have our eight-count rhythms, our connection, our frame, and now we're going to kick up the music and start to move.</p>
+
+               <div style="margin-top: 1.1em; margin-bottom: 1.1em">
+                  <div>April 1, 8, 15, 22 (Mondays)</div>
+                  <div>Time: 7-8:30 p.m.</div>
+                  <div>Instructors: Gabrielle and Philip</div>
+               </div>
+
+               <h4>Prerequisites</h4>
+               <ul>
+                  <li>You've completed at least one Swing Coop class</li>
+                  <li>OR you've taught with us, at Potluck or elsewhere</li>
+               </ul>
+
+               <h4>To Attend</h4>
+               <p>The Red Series has already started.</p>
+
+               <h4>Disclaimer</h4>
+               <p>To be clear, this series will include fast dancing.</p>
+
+               <div class="proto-nav-panel">
+                  <a class="button-link" href="/contact">Contact us</a>
+               </div>
+            </section> -->
+
+<!--
+            <section>
+               <h2>An evening of swing dancing</h2>
+
+               <p>You are invited to an evening of swing dancing in Olympia. Please join us at the historic Abigail Stuart House, situated just south of downtown, on 1002 Washington St SE.</p> 
+
+               <p>The night will begin with an introductory lesson at 7 p.m. taught by Amee and Phil, followed by dancing from 8 until 10.</p>
+
+               <p>We are fortunate to have internationally renown DJ and Track Town Swing founder Nick Davis joining us from Eugene, Oregon for our inaugural dance.</p>
+
+               <div class="fun-times">
+                  <img src="/img/red-shoes.jpg"/>
+               </div>
+
+               <div class="lindy-dates">
+                  <div class="when-where">
+                     <div>
+                        <h4>Schedule</h4>
+                        <ul>
+                           <li>Saturday, November 3</li>
+                           <li>Lesson at 7 p.m.</li>
+                           <li>Music and dancing from 8 until 10 p.m.</li>
+                        </ul>
+                     </div>
+
+                     <div>
+                        <h4>Venue</h4>
+                        <div class="venue-content">
+                           <div>Abigail Stuart House</div>
+                           <div>1002 Washington St SE</div>
+                           <div>Olympia</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <h4>Admission</h4>
+               <p>The dance is open to the public, and both individuals and partners are welcome.</p>
+
+               <p>Cover for the evening is by donation.</p>
+            </section>
+-->
+<!--
+            <section>
+               <h2>Partner Charleston, 1930s</h2>
+
+               <p>The Charleston, once the world's biggest dance craze, is fun, easy to pick up,
+               and the perfect way to start swing dancing, with or without a dance partner.</p>
+
+               <div class="fun-times">
+                  <img src="/img/charleston.jpg"/>
+                  <div class="credit">Photo credit: Martin &amp; Renee Norred</div>
+               </div>
+
+               <p>This class is for everyone:</p>
+
+               <p>If you're new to swing dancing, this class is our recommended starting point.</p>
+
+               <p>
+                  If you've been dancing for a little bit, this class will cover
+                  1930s Charleston (side-by-side), including footwork, connection, 
+                  momentum, and improvisation fundamentals, followed by a comfortable 
+                  introduction to tandem Charleston.
+               </p>
+
+               <p>
+                  This class has no prerequisite for attendance, though a reservation is required.
+               </p> 
+
+               <p><strong>Please note:</strong> All spots are sold out for the Charleston class.</p>
+
+               <div class="lindy-dates">
+                  <div class="when-where">
+                     <div>
+                        <h4>Schedule</h4>
+                        <ul>
+                           <li>Starts October 1</li>
+                           <li>Mondays, 7-8:30 p.m.</li>
+                           <li>Four weeks: Oct 1, 8, 15, 22</li>
+                        </ul>
+                     </div>
+
+                     <div>
+                        <h4>Venue</h4>
+                        <div class="venue-content">
+                           <div>Abigail Stuart House</div>
+                           <div>1002 Washington St SE</div>
+                           <div>Olympia</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+-->
+
+<!--             <section>
+               <h2>Swing Dance Starter Kit</h2>
+
+               <p>Welcome to the world of swing dancing. With Swing Dance Starter Kit,
+               you'll learn the essentials to start having fun on the dance floor in
+               as little time as possible &mdash; only three weeks.</p>
+
+               <div class="fun-times">
+                  <img src="/img/fancy-dance.jpg"/>
+                  <div class="credit">Photo: Abigail Stuart House, November 3</div>
+               </div>
+
+               <p>
+                  Our goal in this series is to get you comfortable on the dance floor, 
+                  and help you get started dancing on a regular basis &mdash; in Olympia, Tacoma, Seattle, Portland, Bellingham, and anywhere there are dances hosted by Lindy hoppers around the world.
+               </p>
+
+               <div class="lindy-dates">
+                  <div class="when-where">
+                     <div>
+                        <h4>Schedule</h4>
+                        <ul>
+                           <li>Starts Monday, December 3</li>
+                           <li>6:45 p.m. Doors open</li>
+                           <li>7:00 p.m. Class begins
+                           <li>8:00 p.m. Break
+                           <li>8:10 p.m. Act II
+                           <li>8:30 p.m. End</li>
+                           <li>Six sessions: Dec 3, 5, 10, 12, 17, 19</li>
+                           <li>(Mondays and Wednesdays)</li>
+                        </ul>
+                     </div>
+
+                     <div>
+                        <h4>Venue</h4>
+                        <div class="venue-content">
+                           <div>Abigail Stuart House</div>
+                           <div>1002 Washington St SE</div>
+                           <div>Olympia</div>
+                        </div>
+                     </div>
+
+                     <div>
+                        <h4>Requirements</h4>
+                        <div class="venue-content">
+                           <p>This class series is for beginners and experts. Intermediate dancers are welcome, but they will likely have the hardest time in this series, as most of their time will be spent unlearning what they have learned.</p>
+                        </div>
+                     </div>
+
+                     <div>
+                        <h4>To attend</h4>
+                        <div class="venue-content rsvp">
+                           <p>This December class is full, and we are no longer accepting reservations at this time.</p>
+
+                           <p>Because there's no admission cost for the
+                           Starter Kit, we do have a $20 fee for cancellations 
+                           made after November 24. Missing the first session or 
+                           the second session is considered a cancellation in this series.</p>
+            </section> -->
+
+            <section class="contact">
+               <h2>Keep in touch</h2>
+
+               <div>
+                  <div style="margin-top: 2em">With Meetup, you will be emailed when we share new events. It's also a decent way to reach us. On Instagram we're <a href="https://www.instagram.com/swingcoop/">@swingcoop</a>.</div>
+
+                  <div class="proto-nav-panel">
+                     <a class="button-link" href="https://www.meetup.com/Swing-Dance-Cooperative/">Meetup</a>
+                     <a class="button-link" href="https://www.instagram.com/swingcoop/">Instagram</a>
+                  </div>
+               </div>
+
+<!--                <div>To be notified of new events by text message, please join our announcement list.</div>
+
+                  <div class="proto-nav-panel">
+                     <a class="button-link" href="/announcements">Announcements</a>
+                  </div>
+ -->
+            </section>
+
+            <section class="teachers">
+               <h2>Swing Dance Cooperative Staff</h2>
+               <h4>Gabrielle</h4>
+
+               <div class="bio">
+                  <div class="content">
+                     <p>Dancing has been part of her life for as long as she can remember. From little pink slippers to her suede soled heels, expressing herself through dance is one of her greatest passions. Her dance philosophy is that as long as you're smiling, you're doing something right.</p>
+
+                     <div class="photo">
+                        <img src="./img/gabrielle-bio.jpg"/>
+                     </div>
+
+                     <p>With over 15 years of experience, Gabrielle has been teaching in Washington and learning all over the States. Despite knowing many styles of dance, Lindy hop is her first love. The pure energy of Lindy is hard to match!</p>
+
+                     <p>She lives for creating solid connections on the dance floor. Her favorite move is a well-executed outside turn, simple but so good!</p>
+                  </div>
+                  <div class="photo-lg">
+                     <img src="./img/gabrielle-bio.jpg"/>
+                  </div>
+               </div>
+
+               <h4>Philip</h4>
+               <div class="bio">
+                  <div class="content">
+                     <p>
+                        He took his first dance class to confront his greatest 
+                        social fear, dancing in a public space. Philip is a co-founder 
+                        of the Corvallis Swing Dance Society, where, among other things,
+                        he developed their class
+                        curriculum. He has taught for over 10 years, helping thousands 
+                        of people discover swing dance in that time.
+                     </p>
+
+                     <div class="photo">
+                        <img src="./img/philip-bio.jpg"/>
+                     </div>
+
+                     <p>
+                        Philip loves old jazz, and the people who created it. He enjoys creating spaces where people feel comfortable expressing themselves, and his favorite move is hopping around.
+                     </p>
+                  </div>
+                  <div class="photo-lg">
+                     <img src="./img/philip-bio.jpg"/>
+                  </div>
+               </div>
+            </section>
+
+            <section class="recommendations">
+               <h2>Recommendations</h2>
+
+               <p>If you're wondering if these classes are for you, they probably are. I mean, you're
+                  reading about swing dancing on the internet. Let us know if you have any questions.</p>
+
+               <p>Here's an example of Lindy hop from Denver in 2013:</p>
+
+               <iframe width="100%" height="315" src="https://www.youtube-nocookie.com/embed/FRIlMpVOH7k?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </section>
+         </div>
+      </div>
+
+      <section class="cooperative">
+         <div class="column">
+            <h1 class="for-desktop">Cooperative</h1>
+            <h1 class="for-phone">About the co-op</h1>
+            <p>We're a cooperative, and we identify with the 
+               <a href="https://www.ica.coop/en/whats-co-op/co-operative-identity-values-principles">cooperative movement</a> and its values.</p>
+
+            <div class="proto-nav-panel">
+               <a class="button-link" href="/events">Events</a>
+               <a class="button-link" href="/mission">Mission</a>
+               <a class="button-link" href="/contact">Contact us</a>
+            </div>
+
+            <div class="close">
+               <div class="name">The Swing Dance Cooperative</div>
+               <div>Olympia, Washington.</div> 
+
+               <img src="./img/rings.png" class="rings"/>
+            </div>
+         </div>
+      </section>
+   </div>
+   <script>
+new Vue({
+   el: '#app',
+   data: {
+      name: null,
+      course: null,
+      role: null,
+      zip: null,
+      email: null,
+      comments: null,
+      agreed: null,
+      submitted: false,
+      error: false,
+      sending: false,
+      rsvpPressed: false,
+      hour: new Date().getHours(),
+      starterKitReservations: null,
+      eventType: null
+   },
+   computed: {
+      greeting() {
+         if (this.hour < 3)
+            return "evening"
+         if (this.hour < 6) 
+            return "... morning?"
+         if (this.hour < 12)
+            return "morning"
+         if (this.hour < 17)
+            return "afternoon"
+         return "evening"
+      },
+      needAgreement() {
+         return this.rsvpPressed && !this.agreed;
+      },
+      reservations() {
+         if (!this.starterKitReservations)
+            return [];
+
+         return this.starterKitReservations.map(x => {
+            let role = x.Role ? x.Role.replace(" - Waitlist","") : 'Lead';
+            return {
+               role: role,
+               'class': this.classes[role],
+               waitlist: x.Role ? x.Role.includes("Waitlist") : false
+            }
+         });
+      },
+      followValue() {
+         return "Follow" + (this.isNewFollowWaitlisted ? ' - Waitlist' : '');
+      },
+      leadValue() {
+         return "Lead" + (this.isNewLeadWaitlisted ? ' - Waitlist' : '');
+      },
+      anyValue() {
+         return "Any" + (this.isClassFull ? ' - Waitlist' : '');
+      },
+      follows() {
+         return this.reservationsByRole('Follow').length;
+      },
+      leads() {
+         return this.reservationsByRole('Lead').length;
+      },
+      anys() {
+         return this.reservationsByRole('Any').length;
+      },
+      isClassFull() {
+         return this.follows + this.leads + this.anys >= 20;
+      },
+      isNewFollowWaitlisted() {
+         return ((this.follows >= 5) && this.leads + this.anys < this.follows) 
+            || this.isClassFull
+            || this.reservations.filter(x => x.role === 'Follow' && x.waitlist).length > 0;
+      },
+      isNewLeadWaitlisted() {
+         return ((this.leads >= 5) && this.follows + this.anys < this.leads) 
+            || this.isClassFull
+            || this.reservations.filter(x => x.role === 'Lead' && x.waitlist).length > 0;
+      },
+      classes() {
+         var val = {};
+         if (!this.starterKitReservations)
+            return val;
+
+         return {
+            'Follow': 'role1',
+            'Lead': 'role2'
+         };
+      }
+   },
+   methods: {
+      rsvp: function () {
+         this.rsvpPressed = true;
+         if (this.needAgreement) {
+            return;
+         }
+         this.sending = true;
+         var data = {
+            name: this.name,
+            course: 'Balboa',
+            role: this.role,
+            zip: this.zip,
+            email: this.email,
+            comments: this.comments,
+         };
+         axios.post('/api/reservations', data)
+         .then(() => {
+            this.submitted = true;
+            this.sending = false;
+            // console.log(data);
+         })
+         .catch(() => {
+            this.error = true;
+            this.sending = false;
+         });
+      },
+      shuffle(ok) {
+         let a = ok.slice();
+         for (let i = a.length - 1; i > 0; i--) {
+           const j = Math.floor(Math.random() * (i + 1));
+           [a[i], a[j]] = [a[j], a[i]];
+         }
+         return a;
+      },
+      reservationsByRole(role) {
+         return this.reservations.filter(x => x.role === role && !x.waitlist);
+      }
+   },
+   created() {
+      axios.get('/api/reservations/current')
+      .then(res => {
+         this.starterKitReservations = this.shuffle(res.data);
+      });
+   }
+})
+</script>
+
+</body>
+</html>

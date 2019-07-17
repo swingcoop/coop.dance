@@ -3,6 +3,7 @@
    "alias": [ "swing.dance.coop" ],
    "builds": [
       { "src": "www/**", "use": "@now/static" },
+      { "src": "api/courses/get.js", "use": "@now/node" },
       { "src": "api/reservations/index.js", "use": "@now/node" },
       { "src": "api/reservations/current/index.js", "use": "@now/node" },
       { "src": "api/letters-add.js", "use": "@now/node" },
@@ -15,6 +16,7 @@
       { "src": "api/profile-update.js", "use": "@now/node" }
    ],
    "routes": [
+      { "src": "/api/courses", "dest": "/api/courses/get.js" },
       { "src": "/api/reservations", "dest": "/api/reservations/index.js" },
       { "src": "/api/reservations/current", "dest": "/api/reservations/current/index.js" },
       { "src": "/api/letters", "dest": "/api/letters-add.js" },
