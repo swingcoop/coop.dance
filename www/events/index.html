@@ -386,40 +386,32 @@ new Vue({
 
       this.messages = [
         {
-          title: 'Summer Skill Share',
-          message: 'July 8, 15, 22, 29 (Mondays)\n7-8 p.m.',
+          title: 'Intro to Swing Dance',
+          message: 'October 7, 14, 21, 28 (Mondays)\n7-8:30 p.m.',
           host: coop,
           venue: abigail,
           address: abigailAddress,
           city: oly,
           host: coop,
-          tags: ['workshop'],
-          registrationType: dropIn
+          tags: ['series'],
+          registrationType: 'rsvp'
         },{
-          title: 'Swingout Combinations',
-          message: 'July 17, 24, 31 (Wednesdays) with Amee and Zoe.\n7-8 p.m.',
+          title: 'Intro to Swing Dance (repeat)',
+          message: 'October 9, 16, 23, 30 (Wednesdays)\n7-8:30 p.m.',
           venue: abigail,
           address: abigailAddress,
           city: oly,
           host: coop,
-          tags: ['workshop'],
-          registrationType: dropIn
+          tags: ['series'],
+          registrationType: 'rsvp'
         },{
-          title: 'Fountain Dance Party',
-          message: 'August 3\n1 - 4 p.m.',
-          venue: 'Heritage Park Fountain',
-          address: '330 5th Ave SW',
+          title: 'Fall Workshops / Fancy Dance',
+          message: 'November 16 Weekend',
+          venue: 'Olympia Ballroom',
+          address: '116 Legion Way SE',
           city: 'Olympia',
-          host: 'OlyDance',
-          tags: ['dance']
-        },{
-          title: 'Summer Evening Swing Dance',
-          message: 'August 14 with Frog & Henry from New Orleans.\nLesson at 7 p.m.\nMusic and dancing 8-10 p.m.',
-          venue: abigail,
-          address: abigailAddress,
-          city: oly,
           host: coop,
-          tags: ['dance']
+          tags: ['workshop','dance']
         }
       ];
       // axios.get('/api/messages').then(res => {
