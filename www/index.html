@@ -14,7 +14,7 @@
    <meta property="og:description" 
       content="The Swing Dance Cooperative. We swing dance! We're in Olympia! We're an employee-owned cooperative!">
 
-   <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
    <link href="https://cdnjs.cloudflare.com/ajax/libs/Buttons/2.0.0/css/buttons.min.css" rel="stylesheet">
 
    <link href="/style/main.css" rel="stylesheet">
@@ -52,14 +52,20 @@
    }
    .button-link {
       display: inline-block;
-      border: solid 2px #c22;
-      border-radius: 6px;
-      padding: 2ex;
+      border: solid 1px #c22;
+      /* border-radius: 6px; */
+      padding: 3ex;
+      padding-bottom: 1ex;
       min-width: 70px;
       text-align: center;
       text-decoration: none;
       margin-bottom: 1em;
+      border-top: 0; 
+      border-left: 0;
+      border-right: 0; 
+      /* border-bottom: 0; */
    }
+
    a.button-link {
       color: #c22;
    }
@@ -153,7 +159,7 @@
    <div id="app">
       <div class="swing">
          <div class="column">
-            <section class="section1 rsvp">
+            <section class="section1 title-section rsvp">
                <div class="rings">
                   <img src="./img/rings.png" class="for-phone"/>
                </div>
@@ -162,15 +168,37 @@
                <p>Hi. We're here to share swing dancing and host fancy dances and stuff. We're also here to be a part of the <a href="https://www.ica.coop/en/whats-co-op/co-operative-identity-values-principles">cooperative movement</a>.</p>
 
                <div class="proto-nav-panel">
-                  <a class="button-link" href="/events">Events</a>
+                  <!-- <a class="button-link" href="/events">Events</a> -->
                   <a class="button-link" href="/mission">Mission</a>
                   <a class="button-link" href="/contact">Contact us</a>
                </div>
-
             </section>
 
-            <section>
-               <h2>Upcoming Swing Dance Lessons</h2>
+            <section class="post-title-section">
+               <h2>November 16-17</h2>
+
+               <img src="/img/fall-swingout-plain.jpg" width="100%" />
+               
+               <p>The Olympia Fall Swingout is our premier dance event of the season.</p>
+
+               <p>
+                  Featuring world-renowned instructors Joshua Mclean and Ana Lisa Sutherland,
+                  our fall workshop weekend is seven dance classes and an evening swing 
+                  dance at the Olympia Ballroom.
+               </p>
+
+               <p>
+                  Classes are by donation, so please come to all of them. 
+                  Similar events typically cost about $60, or $15 per class.
+               </p>
+
+               <p>
+                  Detailed schedule and RSVP form coming soon.
+               </p>
+            </section>
+
+            <section class="post-title-section">
+               <h2>More Swing Dance Lessons</h2>
                <noscript>
                   <h4>Regarding JavaScript</h4>
                   <p>Thanks for browsing the web without JavaScript. Our site
@@ -210,6 +238,62 @@
                   <p>Hosted by {{course['Organization']}}</p>
                </div>
             </section>
+
+            <!-- <section class="rsvp">
+               <form v-on:submit.prevent="rsvp">
+                  <h2>R.S.V.P.</h2>
+                  <label>Your name</label>
+                  <input type="text" v-model="name"/>
+                  <label>Email address</label>
+                  <input type="text" v-model="email"/>
+                  <label>Which course are you taking?</label>
+                  <input type="text" v-model="course" placeholder="Mondays, Wednesdays, or both"/>
+                  
+                  <label>Can you make it to each class?</label>
+                  <p>
+                     We require that people attend the first two classes 
+                     &ndash; we charge a fee if y'all skip, as it makes
+                     everything harder.
+                  </p>
+                  <input type="text" v-model="attendance" placeholder="Yes or please explain"/>
+
+                  <label>Dance role</label>
+                  <p>
+                     Swing dancing is a conversation of motion between two people. 
+                     The person who moves first is said to be the "lead," and the
+                     "follow" moves however they'd like in reply.
+                  </p>
+                  <p> 
+                     Please pick one role for your class experience this time, so we can
+                     try to keep the classes balanced. We encourage people to learn both 
+                     roles. 
+                  </p>
+                  <p>
+                     If you don't care which role you are, please enter "either," and
+                     we'll assign you a role during the first class.
+                  </p>
+                  <input type="text" v-model="role" placeholder="Follow, lead, or either"/>
+                  <label>Additional comments or questions</label>
+                  <textarea v-model="comments"></textarea>
+
+                  <div v-if="!submitted" style="text-align: center">
+                        <button type="submit" :disabled="sending">RSVP</button>
+                        <span v-if="sending" style="margin-left: 1ex">Sending ...</span>
+                     </div>
+
+                     <div v-else>
+                        <p>
+                           Thank you! You should receive an email within an hour to
+                           confirm that everything went through. &mdash; P</p>
+                     </div>
+
+                     <p v-if="error" v-cloak>
+                        Sorry, there was an error when we tried to submit your form.
+                        Please let us know at rsvp@dance.coop?
+                     </p>
+                  </div>
+               </form>
+            </section> -->
 
             <section class="contact">
                <h2>Keep in touch</h2>
@@ -317,7 +401,7 @@
                <a href="https://www.ica.coop/en/whats-co-op/co-operative-identity-values-principles">cooperative movement</a> and its values.</p>
 
             <div class="proto-nav-panel">
-               <a class="button-link" href="/events">Events</a>
+               <!-- <a class="button-link" href="/events">Events</a> -->
                <a class="button-link" href="/mission">Mission</a>
                <a class="button-link" href="/contact">Contact us</a>
             </div>
@@ -341,6 +425,7 @@ new Vue({
       role: null,
       zip: null,
       email: null,
+      attendance: '',
       comments: null,
       agreed: null,
       submitted: false,
@@ -424,15 +509,15 @@ new Vue({
    methods: {
       rsvp: function () {
          this.rsvpPressed = true;
-         if (this.needAgreement) {
-            return;
-         }
+         // if (this.needAgreement) {
+         //    return;
+         // }
          this.sending = true;
          var data = {
             name: this.name,
-            course: 'Balboa',
+            course: this.course,
             role: this.role,
-            zip: this.zip,
+            attendance: this.attendance,
             email: this.email,
             comments: this.comments,
          };

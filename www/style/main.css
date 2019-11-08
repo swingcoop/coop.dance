@@ -22,6 +22,14 @@ section {
    background-color: #e3e3e3;
    color: #333;
 }
+.title-section {
+   clip-path: circle(200vw at bottom 200vw left 50%);
+   margin-bottom: 1rem;
+}
+.post-title-section {
+   margin-top: -2.5rem;
+   padding-top: 2.5rem;
+}
 
 .section2,
 .recommendations {
@@ -52,7 +60,8 @@ a {
    color: #c22;
 }
 h1, h2, h4 {
-   font-family: "Satisfy", "Helvetica Neue", Helvetica, Roboto, Arial;
+   /* font-family: "Satisfy", "Helvetica Neue", Helvetica, Roboto, Arial; */
+   font-family: Quicksand, "Helvetica Neue", Helvetica, Roboto, Arial;
    color: #bb0103;
 }
 .swing,
@@ -79,9 +88,11 @@ h1 {
    padding-top: 0.8em;
    text-align: center;
    font-size: 2em;
+   font-weight: 500;
 }
 h2 {
    text-align: center;
+   font-weight: 600;
 }
 h4 {
    margin-bottom: 1em;
