@@ -1,20 +1,20 @@
 <html>
 <head>
-   <title>Olympia Spring Swingout - RSVP</title>
+   <title>Olympia Fall Swingout - RSVP</title>
    <meta name="description" 
-      content="Make a reservation for the Olympia Spring Swingout, a weekend of workshops and dancing in downtown Olympia.">
+      content="Make a reservation for the Olympia Fall Swingout, a weekend of workshops and dancing in downtown Olympia.">
    <meta name="keywords" content="swing dance coop co-cop cooperative olympia">
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-   <meta property="og:title" content="Olympia Spring Swingout - RSVP">
+   <meta property="og:title" content="Olympia Fall Swingout - RSVP">
    <meta property="og:type" content="website">
-   <meta property="og:image" content="http://swing.dance.coop/img/ograph-banner.png">
-   <meta property="og:image:secure_url" content="https://swing.dance.coop/img/ograph-banner.png">
+   <meta property="og:image" content="http://swing.dance.coop/img/fall-swingout-banner.png">
+   <meta property="og:image:secure_url" content="https://swing.dance.coop/img/fall-swingout-banner.png">
    <meta property="og:url" content="https://swing.dance.coop/">
    <meta property="og:description" 
-      content="Make a reservation for the Olympia Spring Swingout, a weekend of workshops and dancing in downtown Olympia.">
+      content="Make a reservation for the Olympia Fall Swingout, a weekend of workshops and dancing in downtown Olympia.">
 
-   <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
    <link href="https://cdnjs.cloudflare.com/ajax/libs/Buttons/2.0.0/css/buttons.min.css" rel="stylesheet">
 
    <link href="/style/main.css" rel="stylesheet">
@@ -150,9 +150,9 @@
                <div class="rings">
                   <a href="/"><img src="/img/rings.png" class="for-phone"/></a>
                </div>
-               <h1 class="title">Olympia Spring <span class="for-phone"> Swingout</span></h1>
+               <h1 class="title">Olympia Fall <span class="for-phone"> Swingout</span></h1>
 
-               <p>Welcome! It's our six-month-iversary in May, and to celebrate we're hosting the Olympia Spring Swingout, a weekend of workshops and dancing.</p>
+               <p>Welcome! It's our first anniversary, and to celebrate we're hosting the Olympia Fall Swingout, a weekend of workshops and dancing.</p>
             </section>
 
             <section class="rsvp">
@@ -180,8 +180,8 @@
                         id="sunday"
                         type="checkbox"
                         v-model="sunday">
-                        <label for="sunday" v-if="!isSundaySoldOut">Jazz Step Sunday</label>
-                        <label v-else><span style="text-decoration: line-through">Jazz Step Sunday</span> &nbsp;Sold out</label>
+                        <label for="sunday" v-if="!isSundaySoldOut">Solo Jazz Sunday</label>
+                        <label v-else><span style="text-decoration: line-through">Solo Jazz Sunday</span> &nbsp;Sold out</label>
                      </input>
                   </div>
 
@@ -202,17 +202,14 @@
                      </select>
                   </div>
 
-<!--                   <div class="agreement">
-                     <div style="margin-bottom: 0.5ex">Please confirm your availability:</div>
-                     <input id="agreed" type="checkbox" v-model="agreed">
-                     <label for="agreed">I will be at the first session (April 3) and
-                     the second session (April 10).</label></input>
-                  </div> -->
-
                   <div>Anything else you'd like to share?</div>
                   <textarea rows="4" v-model="comments"></textarea>
 
-                  <p>The workshops, classes, and dances are by donation. Our costs for the Olympia Spring Swingout are about $10 per hour per guest.</p>
+                  <p>
+                     The workshops, classes, and dances are by donation. 
+                     Our costs for the Olympia Fall Swingout are about 
+                     $15 per hour per guest.
+                  </p>
 
                   <div v-if="!submitted" style="text-align: center">
                      <button type="submit" :disabled="sending">Finish RSVP</button>
@@ -241,7 +238,7 @@
                <a href="https://www.ica.coop/en/whats-co-op/co-operative-identity-values-principles">cooperative movement</a> and its values.</p>
 
             <div class="proto-nav-panel">
-               <a class="button-link" href="/events">Events</a>
+               <a class="button-link" href="/">Events</a>
                <a class="button-link" href="/mission">Mission</a>
                <a class="button-link" href="/contact">Contact us</a>
             </div>
@@ -368,7 +365,7 @@ new Vue({
          this.sending = true;
          var data = {
             name: this.name,
-            course: 'Olympia Spring Swingout',
+            course: 'Olympia Fall Swingout',
             role: this.role,
             zip: this.zip,
             email: this.email,
