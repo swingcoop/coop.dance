@@ -456,7 +456,7 @@ export default {
       //    this.starterKitReservations = this.shuffle(res.data);
       // });
 
-      axios.get("/api/courses").then(res => {
+      axios.get("/api/courses/get").then(res => {
          this.courses = res.data && res.data.sort((a, b) => {
             if (a['Sort Order'] < b['Sort Order'])
                return -1;
