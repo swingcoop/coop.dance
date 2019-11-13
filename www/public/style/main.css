@@ -155,6 +155,7 @@ h4 {
    margin-bottom: 2.25ex;
    width: 100%;
    background-color: #fdd;
+   box-sizing: border-box;
 }
 .rsvp input[type="radio"] {
    width: auto;
