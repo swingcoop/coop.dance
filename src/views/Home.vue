@@ -33,6 +33,12 @@
                   <p>&ndash;Philip</p>
                </noscript>
 
+               <p v-if="isGettingCourses">One moment, please ...</p>
+               <div v-if="coursesError">
+                  <p>We're sorry, there was an error loading our upcoming classes.</p>
+                  <p>Please reload the page? Or let us know if this keeps happening.</p>
+               </div>
+
                <div class="course" v-for="course in courses" :key="course.Title" v-cloak>
                   <h4>{{course['Title']}}</h4>
 
@@ -261,7 +267,9 @@ export default {
       rsvpPressed: false,
       hour: new Date().getHours(),
       starterKitReservations: null,
-      eventType: null
+      eventType: null,
+      isGettingCourses: false,
+      coursesError: null
     };
    },
    computed: {
@@ -377,7 +385,9 @@ export default {
       //    this.starterKitReservations = this.shuffle(res.data);
       // });
 
-      axios.get("/api/courses/get").then(res => {
+      this.isGettingCourses = true;
+      axios.get("/api/courses/get")
+      .then(res => {
          this.courses = res.data && res.data.sort((a, b) => {
             if (a['Sort Order'] < b['Sort Order'])
                return -1;
@@ -385,6 +395,11 @@ export default {
                return 1;
             return 0;
          });
+         this.isGettingCourses = false;
+      })
+      .catch(err => {
+         this.coursesError = err;
+         this.isGettingCourses = false;
       });
    }
 }
