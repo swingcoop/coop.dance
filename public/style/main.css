@@ -23,7 +23,7 @@ section {
    color: #333;
 }
 .title-section {
-   clip-path: circle(200vw at bottom 200vw left 50%);
+   clip-path: circle(350vw at bottom 350vw left 50%);
    margin-bottom: 1rem;
 }
 .post-title-section {
