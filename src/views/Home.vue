@@ -18,6 +18,45 @@
             </section>
 
             <section class="post-title-section">
+               <h2>Next Dance: December 7</h2>
+               <div class="fun-times">
+                  <img src="../assets/swing-dance-banner.jpg" />
+               </div>
+               <p>
+                  You are invited to an evening of swing dancing to the sounds 
+                  of the 1920s, 30s and 40s. We're starting our second year of
+                  sharing dance classes, hosting fancy dances, and joining the
+                  cooperative movement.
+               </p>
+               <p>
+                  The occasion will begin at the historic Olympia Ballroom with 
+                  a one-hour intro lesson at 7 p.m., followed by music and dancing 
+                  from guest DJs.
+               </p>
+
+               <div>
+                  <h3 style="text-align: left">Schedule</h3>
+                  <ul>
+                     <li>Saturday, December 7</li>
+                     <li>6:45 p.m. Doors</li>
+                     <li>7 p.m. Introductory lesson</li>
+                     <li>8 - 10 p.m. Music and dancing</li>
+                  </ul>
+               </div>
+
+               <div>
+                  <h3 style="text-align: left">Location</h3>
+                  <ul>
+                     <li>Olympia Ballroom</li>
+                     <li>116 Legion Way SE, Olympia</li>
+                     <li>at Legion &amp; Washington</li>
+                  </ul>
+               </div>
+
+               <p>By donation. $5-10 suggested.</p>
+            </section>
+
+            <section class="post-title-section">
                <h2>Swing Dance Lessons</h2>
                <noscript>
                   <h4>Regarding JavaScript</h4>
