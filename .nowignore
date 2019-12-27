@@ -1,3 +1,5 @@
 .env
 .kube
 archives
+www-v1
+dist
