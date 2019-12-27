@@ -18,7 +18,7 @@
             </section>
 
             <section class="post-title-section">
-               <h2>Next Dance: December 7</h2>
+               <h2>Next Dance: January 4</h2>
                <div class="fun-times">
                   <img src="../assets/swing-dance-banner.jpg" />
                </div>
@@ -30,17 +30,17 @@
                </p>
                <p>
                   The occasion will begin at the historic Olympia Ballroom with 
-                  a one-hour intro lesson at 7 p.m., followed by music and dancing 
+                  a one-hour intro lesson at 7:30 p.m., followed by music and dancing 
                   from guest DJs.
                </p>
 
                <div>
                   <h3 style="text-align: left">Schedule</h3>
                   <ul>
-                     <li>Saturday, December 7</li>
-                     <li>6:45 p.m. Doors</li>
-                     <li>7 p.m. Introductory lesson</li>
-                     <li>8 - 10 p.m. Music and dancing</li>
+                     <li>Saturday, January 4</li>
+                     <li>7 p.m. Doors</li>
+                     <li>7:30 p.m. Introductory lesson</li>
+                     <li>8:30 - 10:30 p.m. Music and dancing</li>
                   </ul>
                </div>
 
@@ -102,6 +102,15 @@
 
                   <p>Hosted by {{course['Organization']}}</p>
                </div>
+            </section>
+
+            <section>
+               <h2>Saturday Swing Dances</h2>
+               <p>Once a month, we host swing dances at the Olympia Ballroom downtown.</p>
+
+               <p>Each dance begins with an introductory lesson. Individuals and partners welcome. All our events are open to the public, and we are an all ages venue.</p>
+
+               <p>Our next event is January 4.</p>
             </section>
 
             <!-- <section class="rsvp">
