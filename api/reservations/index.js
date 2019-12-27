@@ -1,14 +1,24 @@
-const { json } = require('micro');
 const axios = require('axios');
+var Airtable = require('airtable');
+var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
+	.base('apppi7CBP4i1rQmng');
 
-module.exports = async (req, res) => {
-	const js = await json(req);
-	console.log(js);
+module.exports = async (ctx, next) => {
+	var record = {
+		"Name": ctx.body["name"],
+		"Comments": ctx.body["comments"] || "",
+		"Role": ctx.body["role"] || "Unknown",
+		"Zip": ctx.body["zip"] || "",
+		"Email": ctx.body["email"] || "",
+		"Class": ctx.body["class"] || "",
+		"Staff notes": ""
+	};
 
-	let zapierHook = 'https://hooks.zapier.com/hooks/catch/3680855/qy16ij/';
-   let data = await axios.post(zapierHook, js);
-   console.log(data);
-
-   res.end("Ok");
-	return; 
+	try {
+		var records = await base('Current').create([{ fields: record }]);
+		ctx.body = records;
+	}
+	catch (err) {
+		ctx.throw(500, 'Error creating reservation', err);
+	}
 };
