@@ -1,15 +1,5 @@
 <template>
-<div class="swing">
-    <div class="column">
-    <section class="section1">
-        <div class="rings">
-            <a href="/">
-            <img src="../assets/rings.png" class="for-phone"/>
-            </a>
-        </div>
-        <h1 class="title">The Swing Dance Cooperative</h1>
-    </section>
-
+<page>
     <section class="rsvp">
         <h2>Contact us</h2>
         <form>
@@ -43,14 +33,15 @@
             </div>
         </form>
     </section>
-    </div>
-</div>
+</page>
 </template>
 
 <script>
 import axios from 'axios';
+import Page from '../components/Page.vue';
 
 export default {
+  components: { Page },
   data() {
     return {
         name: null,
