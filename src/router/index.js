@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Contact from '../views/Contact.vue'
 import Home from '../views/Home.vue'
 import Mission from '../views/Mission.vue'
-
+import Rsvp from '../views/Rsvp.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +22,10 @@ const routes = [
     path: '/mission',
     name: 'mission',
     component: Mission
+  },{
+    path: '/rsvp',
+    name: 'rsvp',
+    component: Rsvp
   },
   {
     path: '/about',

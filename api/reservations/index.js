@@ -3,22 +3,34 @@ var Airtable = require('airtable');
 var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY })
 	.base('apppi7CBP4i1rQmng');
 
-module.exports = async (ctx, next) => {
+var rsvpZapierUrl = 'https://hooks.zapier.com/hooks/catch/3680855/qy16ij/';
+
+module.exports = async function (req, res) {
 	var record = {
-		"Name": ctx.body["name"],
-		"Comments": ctx.body["comments"] || "",
-		"Role": ctx.body["role"] || "Unknown",
-		"Zip": ctx.body["zip"] || "",
-		"Email": ctx.body["email"] || "",
-		"Class": ctx.body["class"] || "",
+		"Name": req.body["name"],
+		"Comments": req.body["comments"] || "",
+		"Role": req.body["role"] || "Unknown",
+		"Zip": req.body["zip"] || "",
+		"Email": req.body["email"] || "",
+		"Class": req.body["class"] || "",
 		"Staff notes": ""
+	};
+
+	var zapierPackage = {
+		name: record["Name"],
+		comments: record["Comments"],
+		role: record["Role"],
+		email: record["Email"],
+		course: record["Class"]
 	};
 
 	try {
 		var records = await base('Current').create([{ fields: record }]);
-		ctx.body = records;
+		await axios.post(rsvpZapierUrl, zapierPackage);
+		res.send(records.fields);
 	}
 	catch (err) {
-		ctx.throw(500, 'Error creating reservation', err);
+		console.log(err);
+		res.status(500).send('Error creating reservation');
 	}
 };
