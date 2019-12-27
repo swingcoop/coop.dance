@@ -83,9 +83,16 @@
 
                   <p style="white-space: pre-wrap;">{{course['Description']}}</p>
 
+                  <div v-if="takesReservations(course)">
+                     <p>To attend, please make a reservation:</p>
+                     <div class="proto-nav-panel">
+                        <a class="button-link" :href="rsvpUrl(course)">R.S.V.P.</a>
+                     </div>
+                  </div>
+
                   <div>With: {{course['Instructors']}}</div>
                   <div>Dance format: {{course['Dance Format']}}</div>
-                  <div>How to attend: {{course['How to Register']}}</div>
+                  <!-- <div>How to attend: {{course['How to Register']}}</div> -->
 
                   <div class="schedule" style="margin-top: 1.1em">
                      <div>{{course['Dates Description']}}</div>
@@ -391,6 +398,14 @@ export default {
       }
    },
    methods: {
+      takesReservations(course) {
+         let howTo = course["How to Register"];
+         return howTo && howTo.filter(x => x === "rsvp").length > 0;
+      },
+      rsvpUrl(course) {
+         let courseId = course["Course ID"];
+         return courseId ? `/rsvp?course=${courseId}` : '/rsvp';
+      },
       rsvp: function () {
          this.rsvpPressed = true;
          // if (this.needAgreement) {
@@ -429,10 +444,6 @@ export default {
       }
    },
    created() {
-      // axios.get('/api/reservations/current').then(res => {
-      //    this.starterKitReservations = this.shuffle(res.data);
-      // });
-
       this.isGettingCourses = true;
       axios.get("/api/courses/get")
       .then(res => {
