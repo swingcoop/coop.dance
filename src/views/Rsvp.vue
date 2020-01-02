@@ -3,6 +3,11 @@
     <section class="rsvp">
         <form v-on:submit.prevent="rsvp">
             <h1>R.S.V.P.</h1>
+
+            <p>Course: {{course && course.Title}}</p>
+            <div>Follow spots remaining: {{followSpots}}</div>
+            <div>Lead spots remaining: {{leadSpots}}</div>
+
             <p>
                 Please enter some information to reserve your spot in the class 
                 and help us understand where you're coming from.
@@ -85,11 +90,37 @@ export default {
             error: false,
             sending: false,
             rsvpPressed: false,
-            courseId: null
+            courseId: null,
+            reservations: null,
+            course: null
         }
+    },
+    computed: {
+        followSpots() {
+            return Math.max(0, 9 - this.reservations.filter(x => x.Role === 'Follow').length);
+        },
+        leadSpots() {
+            return Math.max(0, 9 - this.reservations.filter(x => x.Role === 'Lead').length);
+        }
+    },
+    created() {
+
     },
     mounted() {
         this.courseId = this.$route.query.course;
+        var url = '/api/reservations/get';
+        if (this.courseId) {
+            url += '?course=' + this.courseId;
+        }
+        axios.get(url).then(res => {
+            this.reservations = res.data;
+        });
+
+        axios.get('/api/courses/get?id=' + this.courseId).then(res => {
+            if (res.data && res.data.length) {
+                this.course = res.data.pop();
+            }            
+        });
     },
     methods: {
         rsvp() {

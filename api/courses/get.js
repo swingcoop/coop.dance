@@ -3,12 +3,17 @@ var courses = 'appUzML2aPlDHWcFi';
 
 const base = Airtable.base(courses);
 
-function get() {
+function get(courseId) {
     return new Promise(function (resolve, reject) {
         var courses = [];
 
+        var query = { view: "Website View" };
+        if (courseId) {
+            query.filterByFormula = "{Course Id} = '" + courseId + "'";
+        }
+
         base('Course Descriptions')
-        .select({ view: "Website View" })
+        .select(query)
         .eachPage(page, done);
 
         function page(records, next) {
@@ -42,7 +47,7 @@ function get() {
 
 module.exports = async (req, res) => {
     try {
-        var val = await get();
+        var val = await get(req.query.id);
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(val));
     }
