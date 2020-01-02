@@ -4,7 +4,7 @@
         <form v-on:submit.prevent="rsvp">
             <h1>R.S.V.P.</h1>
 
-            <p>Course: {{course && course.Title}}</p>
+            <p>Course: {{courseTitle}}</p>
 
             <div v-if="courseFull">
                 <p>Thanks for your interest in this class. This course is full.</p>
@@ -111,6 +111,9 @@ export default {
         }
     },
     computed: {
+        courseTitle() {
+            return this.course && this.course.Title;
+        },
         followSpots() {
             if (!this.reservations)
                 return;
@@ -155,7 +158,7 @@ export default {
             this.sending = true;
             var data = {
                 name: this.name,
-                class: 'Intro to Lindy Hop',
+                class: this.courseTitle,
                 role: this.role,
                 zip: this.zip,
                 email: this.email,
