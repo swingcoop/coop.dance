@@ -13,7 +13,8 @@ module.exports = async function (req, res) {
 		"Zip": req.body["zip"] || "",
 		"Email": req.body["email"] || "",
 		"Class": req.body["class"] || "",
-		"Staff notes": ""
+		"Staff notes": "",
+		"CourseId": req.body["courseId"]
 	};
 
 	var zapierPackage = {

@@ -84,8 +84,12 @@ export default {
             submitted: false,
             error: false,
             sending: false,
-            rsvpPressed: false
+            rsvpPressed: false,
+            courseId: null
         }
+    },
+    mounted() {
+        this.courseId = this.$route.query.course;
     },
     methods: {
         rsvp() {
@@ -97,7 +101,8 @@ export default {
                 role: this.role,
                 zip: this.zip,
                 email: this.email,
-                comments: this.comments
+                comments: this.comments,
+                courseId: this.courseId
             };
             axios.post('/api/reservations', data).then(() => {
                 this.submitted = true;
