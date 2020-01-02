@@ -5,8 +5,6 @@
             <h1>R.S.V.P.</h1>
 
             <p>Course: {{course && course.Title}}</p>
-            <div>Follow spots remaining: {{followSpots}}</div>
-            <div>Lead spots remaining: {{leadSpots}}</div>
 
             <p>
                 Please enter some information to reserve your spot in the class 
@@ -30,12 +28,20 @@
             <div>What dance role would you like to have during this class?</div>
 
             <p>Swing dancing is a conversation, typically between two people. The person who is responsible for moving first is referred to as a lead, whereas the person who moves second is referred to as a follow. Most people who dance long enough learn both roles.</p>
+            
+            <div>Follow spots remaining: {{followSpots}}</div>
+            <div style="margin-bottom: 1em">Lead spots remaining: {{leadSpots}}</div>
+
+            <p v-if="waitlistOpen">
+                If you'd like to be added to the waitlist for this course,
+                please <a href="/contact">contact us</a>.
+            </p>
 
             <select v-model="role">
                 <option value="null">-- Please select --</option>
-                <option value="Follow">Follow</option>
-                <option value="Lead">Lead</option>
-                <option value="Any">Any</option>
+                <option v-if="followSpots > 0" value="Follow">Follow</option>
+                <option v-if="leadSpots > 0" value="Lead">Lead</option>
+                <!-- <option value="Any">Any</option> -->
             </select>
 
             <div>What's your zip code?</div>
@@ -97,10 +103,19 @@ export default {
     },
     computed: {
         followSpots() {
+            if (!this.reservations)
+                return;
+
             return Math.max(0, 9 - this.reservations.filter(x => x.Role === 'Follow').length);
         },
         leadSpots() {
+            if (!this.reservations)
+                return;
+
             return Math.max(0, 9 - this.reservations.filter(x => x.Role === 'Lead').length);
+        },
+        waitlistOpen() {
+            return (this.followSpots === 0 || this.leadSpots === 0);
         }
     },
     created() {
