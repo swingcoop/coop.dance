@@ -18,7 +18,7 @@
             </section>
 
             <section class="post-title-section">
-               <h2>Next Dance: January 4</h2>
+               <h2>Next Dance: February 22</h2>
                <div class="fun-times">
                   <img src="../assets/swing-dance-banner.jpg" />
                </div>
@@ -37,7 +37,7 @@
                <div>
                   <h3 style="text-align: left">Schedule</h3>
                   <ul>
-                     <li>Saturday, January 4</li>
+                     <li>Saturday, February 22</li>
                      <li>7 p.m. Doors</li>
                      <li>7:30 p.m. Introductory lesson</li>
                      <li>8:30 - 10:30 p.m. Music and dancing</li>
@@ -117,7 +117,20 @@
 
                <p>Each dance begins with an introductory lesson. Individuals and partners welcome. All our events are open to the public, and we are an all ages venue.</p>
 
-               <p>Our next event is January 4.</p>
+               <p>Dates for 2020 include:</p>
+               <ul>
+                  <li>February 22-23</li>
+                  <li>March 28</li>
+                  <li>April 25</li>
+                  <li>May 16</li>
+                  <li>June 20-21</li>
+                  <li>July 25</li>
+                  <li>August 22</li>
+                  <li>September 26</li>
+                  <li>October 24-25</li>
+                  <li>November 14</li>
+                  <li>December 19</li>
+               </ul>
             </section>
 
             <!-- <section class="rsvp">
