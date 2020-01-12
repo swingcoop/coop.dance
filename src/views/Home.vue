@@ -56,7 +56,7 @@
                <p>By donation. $5-10 suggested.</p>
             </section>
 
-            <section class="post-title-section">
+            <section v-if="hasCourses" class="post-title-section">
                <h2>Swing Dance Lessons</h2>
                <noscript>
                   <h4>Regarding JavaScript</h4>
@@ -408,6 +408,9 @@ export default {
             'Follow': 'role1',
             'Lead': 'role2'
          };
+      },
+      hasCourses() {
+         return this.courses && this.courses.length;
       }
    },
    methods: {
