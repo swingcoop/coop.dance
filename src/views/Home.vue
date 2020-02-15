@@ -121,9 +121,9 @@
                <ul>
                   <li>February 22-23</li>
                   <li>March 28</li>
-                  <li>April 25</li>
+                  <li>April 18</li>
                   <li>May 16</li>
-                  <li>June 20-21</li>
+                  <li>June 13-14</li>
                   <li>July 25</li>
                   <li>August 22</li>
                   <li>September 26</li>
