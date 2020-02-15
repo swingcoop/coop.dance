@@ -18,10 +18,75 @@
             </section>
 
             <section class="post-title-section">
-               <h2>Next Dance: February 22</h2>
+               <h2>February 22-23</h2>
                <div class="fun-times">
                   <img src="../assets/swing-dance-banner.jpg" />
                </div>
+
+               <p>The Olympia Winter Swingout is our premier dance event of the season.</p>
+
+               <p>
+                  Featuring world-renowned instructors Bailey McCully and Damian Cade,
+                  our winter workshop weekend is seven dance classes and an evening swing 
+                  dance at the Olympia Ballroom.
+               </p>
+
+               <p>
+                  Classes are by donation, so please come to all of them. 
+                  Similar events typically cost about $60, or $15 per class.
+               </p>
+
+               <h2>Saturday, February 16</h2>
+               <p>
+                  The weekend begins with a day of workshops at the Olympia Ballroom, 116 Legion Way SE.
+               </p>
+
+               <h3>Saturday Workshops</h3>
+               <div>11:00 a.m. - Lindy hop workshop 1</div>
+               <div>Noon - Lunch break</div>
+               <div>1:30 p.m. - Lindy hop workshop 2</div>
+               <div>2:45 p.m. - Lindy hop workshop 3</div>
+               <div>4:00 p.m. - Break</div>
+
+               <h3>Evening Dance</h3>
+               <p>
+                  In the evening we will return to the historic Olympia Ballroom, dancing to the 
+                  sounds of the 1920s, 30s and 40s. Bailey and Damian will be the featured 
+                  instructors and DJs for the occasion.
+               </p>
+               <div>7:00 p.m. - Intro swing dance lesson</div>
+               <div>8 - 10 p.m. - Music and dancing</div>
+
+               <div style="text-align: center">
+                  <img 
+                     src="../assets/olympia-ballroom.jpg" 
+                     width="95%" 
+                     style="margin-top: 1rem; border: solid 3px #eee" />
+               </div>
+
+               <h2>Sunday, February 23</h2>
+               <p>
+                  Day two of the Olympia Winter Swingout will feature a series of solo jazz classes 
+                  with Bailey and Damian at the Olympia Eagles' Doc Becker room, which is
+                  on the third floor, at 805 4th Ave E (Plum &amp; 4th).
+               </p>
+
+               <h3>Sunday Workshops</h3>
+               <div>Noon - Solo jazz workshop 1</div>
+               <div>1:10 p.m. - Solo jazz workshop 2</div>
+               <div>2:20 p.m. - Solo jazz workshop 3</div>
+               <div>3:30 p.m. - Wrap</div>
+
+               <!-- <div style="text-align: center">
+                  <img 
+                     src="../assets/josh-ana-lisa-casual.jpg" 
+                     width="95%" 
+                     style="margin-top: 1rem; border: solid 3px #eee" /> 
+               </div> -->
+
+
+               <!-- 
+                  Fancy dance boilerplate:
                <p>
                   You are invited to an evening of swing dancing to the sounds 
                   of the 1920s, 30s and 40s. We're starting our second year of
@@ -53,7 +118,7 @@
                   </ul>
                </div>
 
-               <p>By donation. $5-10 suggested.</p>
+               <p>By donation. $5-10 suggested.</p> -->
             </section>
 
             <section v-if="hasCourses" class="post-title-section">
