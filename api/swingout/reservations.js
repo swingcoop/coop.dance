@@ -38,6 +38,6 @@ module.exports = async function (ctx) {
 	}
 	catch (err) {
 		console.log(err);
-		res.status(500).send('Error creating reservation');
+		res.status(500).send(err);
 	}
 };
