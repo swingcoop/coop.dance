@@ -19,6 +19,9 @@
 
             <section class="post-title-section">
                <h2>Olympia Winter Swingout / February 22-23</h2>
+               <div class="proto-nav-panel">
+                  <a class="button-link" href="/swingout-rsvp">R.S.V.P.</a>
+               </div>
                <div class="fun-times">
                   <img src="../assets/bailey-dance.jpg" />
                   <div class="credit">Photo by Sereina Blanchard</div>
@@ -71,6 +74,10 @@
                   As a soloist, we're responding to the band, responding to ourselves, 
                   creating a conversation, issuing a jazzy challenge, and saying what needs to be said.
                </p>
+
+               <div class="proto-nav-panel">
+                  <a class="button-link" href="/swingout-rsvp">R.S.V.P.</a>
+               </div>
 
                <div style="text-align: center">
                   <img 
@@ -132,6 +139,10 @@
                   and generally jam it out.
                </p>
 
+               <div class="proto-nav-panel">
+                  <a class="button-link" href="/swingout-rsvp">R.S.V.P.</a>
+               </div>
+
                <div class="fun-times">
                   <img src="../assets/bailey-solo.jpg" />
                   <div class="credit">Photo by Sereina Blanchard</div>
@@ -173,8 +184,30 @@
                <p>By donation. $5-10 suggested.</p> -->
             </section>
 
+            <section>
+               <h2>Monthly Saturday Swing Dances</h2>
+               <p>Once a month, we host swing dances at the Olympia Ballroom downtown.</p>
+
+               <p>Each dance begins with an introductory lesson. Individuals and partners welcome. All our events are open to the public, and we are an all ages venue.</p>
+
+               <p>Dates for 2020 include:</p>
+               <ul>
+                  <li>February 22-23</li>
+                  <li>March 28</li>
+                  <li>April 18</li>
+                  <li>May 16</li>
+                  <li>June 13-14</li>
+                  <li>July 25</li>
+                  <li>August 22</li>
+                  <li>September 26</li>
+                  <li>October 24-25</li>
+                  <li>November 14</li>
+                  <li>December 19</li>
+               </ul>
+            </section>
+
             <section v-if="hasCourses" class="post-title-section">
-               <h2>Swing Dance Lessons</h2>
+               <h2>Upcoming Swing Dance Lessons</h2>
                <noscript>
                   <h4>Regarding JavaScript</h4>
                   <p>Thanks for browsing the web without JavaScript. Our site
@@ -226,28 +259,6 @@
 
                   <p>Hosted by {{course['Organization']}}</p>
                </div>
-            </section>
-
-            <section>
-               <h2>Saturday Swing Dances</h2>
-               <p>Once a month, we host swing dances at the Olympia Ballroom downtown.</p>
-
-               <p>Each dance begins with an introductory lesson. Individuals and partners welcome. All our events are open to the public, and we are an all ages venue.</p>
-
-               <p>Dates for 2020 include:</p>
-               <ul>
-                  <li>February 22-23</li>
-                  <li>March 28</li>
-                  <li>April 18</li>
-                  <li>May 16</li>
-                  <li>June 13-14</li>
-                  <li>July 25</li>
-                  <li>August 22</li>
-                  <li>September 26</li>
-                  <li>October 24-25</li>
-                  <li>November 14</li>
-                  <li>December 19</li>
-               </ul>
             </section>
 
             <!-- <section class="rsvp">
