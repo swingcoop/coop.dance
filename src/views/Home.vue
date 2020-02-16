@@ -143,10 +143,18 @@
                   <a class="button-link" href="/swingout-rsvp">R.S.V.P.</a>
                </div>
 
-               <div class="fun-times">
+               <div style="text-align: center">
+                  <img 
+                     src="../assets/damian-solo.jpg" 
+                     width="95%" 
+                     style="margin-top: 1rem; border: solid 3px #eee" />
+                  <div class="credit">Photo by Philip Manijak</div>
+               </div>
+
+               <!-- <div class="fun-times">
                   <img src="../assets/bailey-solo.jpg" />
                   <div class="credit">Photo by Sereina Blanchard</div>
-               </div>
+               </div> -->
 
                <!-- 
                   Fancy dance boilerplate:
