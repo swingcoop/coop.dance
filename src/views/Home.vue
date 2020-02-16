@@ -332,22 +332,31 @@
 
             <section class="teachers">
                <h2>Swing Dance Cooperative Staff</h2>
-               <h4>Gabrielle</h4>
 
+               <h4>Lauren</h4>
                <div class="bio">
                   <div class="content">
-                     <p>Dancing has been part of her life for as long as she can remember. From little pink slippers to her suede soled heels, expressing herself through dance is one of her greatest passions. Her dance philosophy is that as long as you're smiling, you're doing something right.</p>
+                     <p>
+                        She has been dancing Lindy hop for six years, 
+                        developing her talents with the WWU Swing Kids 
+                        in Bellingham.
+                     </p>
 
                      <div class="photo">
-                        <img src="../assets/gabrielle-bio.jpg"/>
+                        <img src="../assets/lauren-bio.jpg"/>
                      </div>
 
-                     <p>With over 15 years of experience, Gabrielle has been teaching in Washington and learning all over the States. Despite knowing many styles of dance, Lindy hop is her first love. The pure energy of Lindy is hard to match!</p>
+                     <p>
+                        Lauren brings an unmistakeable enthusiasm to her
+                        teaching, sharing a joy that mixes precise technique 
+                        with artistic expression. She draws from her experience
+                        in ballet, fusion dancing, and as an opera singer.
+                     </p>
 
-                     <p>She lives for creating solid connections on the dance floor. Her favorite move is a well-executed outside turn, simple but so good!</p>
+                     <p>Her favorite move is a lock turn.</p>
                   </div>
                   <div class="photo-lg">
-                     <img src="../assets/gabrielle-bio.jpg"/>
+                     <img src="../assets/lauren-bio.jpg"/>
                   </div>
                </div>
 
@@ -373,6 +382,24 @@
                   </div>
                   <div class="photo-lg">
                      <img src="../assets/zoe-bio.jpg"/>
+                  </div>
+               </div>
+
+               <h4>Gabrielle</h4>
+               <div class="bio">
+                  <div class="content">
+                     <p>Dancing has been part of her life for as long as she can remember. From little pink slippers to her suede soled heels, expressing herself through dance is one of her greatest passions. Her dance philosophy is that as long as you're smiling, you're doing something right.</p>
+
+                     <div class="photo">
+                        <img src="../assets/gabrielle-bio.jpg"/>
+                     </div>
+
+                     <p>With over 15 years of experience, Gabrielle has been teaching in Washington and learning all over the States. Despite knowing many styles of dance, Lindy hop is her first love. The pure energy of Lindy is hard to match!</p>
+
+                     <p>She lives for creating solid connections on the dance floor. Her favorite move is a well-executed outside turn, simple but so good!</p>
+                  </div>
+                  <div class="photo-lg">
+                     <img src="../assets/gabrielle-bio.jpg"/>
                   </div>
                </div>
 
