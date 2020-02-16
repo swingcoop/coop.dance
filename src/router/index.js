@@ -4,6 +4,7 @@ import Contact from '../views/Contact.vue'
 import Home from '../views/Home.vue'
 import Mission from '../views/Mission.vue'
 import Rsvp from '../views/Rsvp.vue'
+import SwingoutRsvp from '../views/SwingoutRsvp.vue'
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,10 @@ const routes = [
     path: '/rsvp',
     name: 'rsvp',
     component: Rsvp
+  },{
+    path: '/swingout-rsvp',
+    name: 'swingout-rsvp',
+    component: SwingoutRsvp
   },
   {
     path: '/about',
