@@ -18,9 +18,10 @@
             </section>
 
             <section class="post-title-section">
-               <h2>February 22-23</h2>
+               <h2>Olympia Winter Swingout / February 22-23</h2>
                <div class="fun-times">
-                  <img src="../assets/swing-dance-banner.jpg" />
+                  <img src="../assets/bailey-dance.jpg" />
+                  <div class="credit">Photo by Sereina Blanchard</div>
                </div>
 
                <p>The Olympia Winter Swingout is our premier dance event of the season.</p>
@@ -36,17 +37,47 @@
                   Similar events typically cost about $60, or $15 per class.
                </p>
 
-               <h2>Saturday, February 16</h2>
+               <h2>Saturday, February 22</h2>
                <p>
                   The weekend begins with a day of workshops at the Olympia Ballroom, 116 Legion Way SE.
                </p>
 
-               <h3>Saturday Workshops</h3>
-               <div>11:00 a.m. - Lindy hop workshop 1</div>
+               <h3>Saturday Workshop Schedule</h3>
+               <div>11:00 a.m. - Workshop 1</div>
                <div>Noon - Lunch break</div>
-               <div>1:30 p.m. - Lindy hop workshop 2</div>
-               <div>2:45 p.m. - Lindy hop workshop 3</div>
+               <div>1:30 p.m. - Workshop 2</div>
+               <div>2:45 p.m. - Workshop 3</div>
                <div>4:00 p.m. - Break</div>
+
+               <h3>Workshop Descriptions</h3>
+               <p>
+                  These Saturday workshops situate dancers right 
+                  beside musicians as part of the whole ensemble that, 
+                  together, make the jazz.
+               </p>
+
+               <p>
+                  <strong>Workshops 1 &amp; 2:</strong> The first classes are all about 
+                  embodying the ensemble. How to lay it down, hold it down, build it up, 
+                  and support your partner. Musicians all listen to each other in order 
+                  to make the best jazz, and that applies doubly so to Lindy Hoppers: 
+                  we listen to the music AND each other. We'll be learning how to listen with 
+                  exquisite detail in both the lead and follow roles.
+               </p>
+
+               <p>
+                  <strong>Workshop 3:</strong> The third class is all about you, as a soloist. 
+                  How to step into the spotlight during a partner dance and twinkle and shine. 
+                  As a soloist, we're responding to the band, responding to ourselves, 
+                  creating a conversation, issuing a jazzy challenge, and saying what needs to be said.
+               </p>
+
+               <div style="text-align: center">
+                  <img 
+                     src="../assets/bailey-damian-lindy-bout.jpg" 
+                     width="95%" 
+                     style="margin-top: 1rem; border: solid 3px #eee" />
+               </div>
 
                <h3>Evening Dance</h3>
                <p>
@@ -71,19 +102,40 @@
                   on the third floor, at 805 4th Ave E (Plum &amp; 4th).
                </p>
 
-               <h3>Sunday Workshops</h3>
+               <h3>Sunday Workshop Schedule</h3>
                <div>Noon - Solo jazz workshop 1</div>
                <div>1:10 p.m. - Solo jazz workshop 2</div>
                <div>2:20 p.m. - Solo jazz workshop 3</div>
                <div>3:30 p.m. - Wrap</div>
 
-               <!-- <div style="text-align: center">
-                  <img 
-                     src="../assets/josh-ana-lisa-casual.jpg" 
-                     width="95%" 
-                     style="margin-top: 1rem; border: solid 3px #eee" /> 
-               </div> -->
+               <h3>Workshop Descriptions</h3>
 
+               <h5>Workshop 1: Snazzy Jazzy Supplements - Damian Cade</h5>
+               <p>
+                  Put the shish ka boom back in your dancing with Damian's supplements. 
+                  They might be vitamins, they might be a workout, and they might also be the
+                  flashy footworks you've been hankering to do with your very own feet. 
+                  Stretch and take care of yourself after Saturday night's dance. Be prepared to sweat.
+               </p>
+
+               <h5>Workshop 2: Bailey's Class Title! - Bailey McCully</h5>
+               <p>
+                  Bailey's class description is coming soon.
+               </p>
+
+               <h5>Workshop 3: Solo Jazz Isn't Done Alone in a Room - Bailey McCully & Damian Cade</h5>
+               <p>
+                  Wait, why is solo jazz called solo jazz, but I keep seeing people
+                  doing solo jazz in a way that definitely doesn't have much solitude 
+                  n it? Because it's jazz, and jazz is a conversation! We'll practice 
+                  the forms of solo jazz conversation, translate and riff on each other's moves, 
+                  and generally jam it out.
+               </p>
+
+               <div class="fun-times">
+                  <img src="../assets/bailey-solo.jpg" />
+                  <div class="credit">Photo by Sereina Blanchard</div>
+               </div>
 
                <!-- 
                   Fancy dance boilerplate:
@@ -546,6 +598,9 @@ export default {
 </script>
 
 <style scoped>
+h5 {
+   font-size: 1rem;
+}
 .tito-ticket-description {
   display: none;
 }
