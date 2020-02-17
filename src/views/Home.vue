@@ -23,8 +23,7 @@
                   <a class="button-link" href="/swingout-rsvp">R.S.V.P.</a>
                </div>
                <div class="fun-times">
-                  <img src="../assets/bailey-dance.jpg" />
-                  <div class="credit">Photo by Sereina Blanchard</div>
+                  <img src="../assets/winter-swingout-banner.jpg" />
                </div>
 
                <p>The Olympia Winter Swingout is our premier dance event of the season.</p>
@@ -44,6 +43,13 @@
                <p>
                   The weekend begins with a day of workshops at the Olympia Ballroom, 116 Legion Way SE.
                </p>
+
+               <div style="text-align: center">
+                  <img 
+                     src="../assets/bailey-damian-lindy-bout.jpg" 
+                     width="95%" 
+                     style="margin-top: 1rem; border: solid 3px #eee" />
+               </div>
 
                <h3>Saturday Workshop Schedule</h3>
                <div>11:00 a.m. - Workshop 1</div>
@@ -79,12 +85,11 @@
                   <a class="button-link" href="/swingout-rsvp">R.S.V.P.</a>
                </div>
 
-               <div style="text-align: center">
-                  <img 
-                     src="../assets/bailey-damian-lindy-bout.jpg" 
-                     width="95%" 
-                     style="margin-top: 1rem; border: solid 3px #eee" />
+               <div class="fun-times">
+                  <img src="../assets/bailey-dance.jpg" />
+                  <div class="credit">Photo by Sereina Blanchard</div>
                </div>
+
 
                <h3>Evening Dance</h3>
                <p>
@@ -92,15 +97,15 @@
                   sounds of the 1920s, 30s and 40s. Bailey and Damian will be the featured 
                   instructors and DJs for the occasion.
                </p>
-               <div>7:00 p.m. - Intro swing dance lesson</div>
-               <div>8 - 10 p.m. - Music and dancing</div>
+               <div>7:30 p.m. - Intro swing dance lesson</div>
+               <div>8:30 - 10:30 p.m. - Music and dancing</div>
 
-               <div style="text-align: center">
+               <!-- <div style="text-align: center">
                   <img 
                      src="../assets/olympia-ballroom.jpg" 
                      width="95%" 
                      style="margin-top: 1rem; border: solid 3px #eee" />
-               </div>
+               </div> -->
 
                <h2>Sunday, February 23</h2>
                <p>
