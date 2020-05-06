@@ -10,6 +10,8 @@
 
                <p>Hi. We're here to share swing dancing and host fancy dances and stuff. We're also here to be a part of the <a href="https://www.ica.coop/en/whats-co-op/co-operative-identity-values-principles">cooperative movement</a>.</p>
 
+               <p>Please note, during the COVID-19 pandemic we are not hosting any events in person.</p>
+
                <div class="proto-nav-panel">
                   <!-- <a class="button-link" href="/events">Events</a> -->
                   <a class="button-link" href="/mission">Mission</a>
@@ -17,207 +19,27 @@
                </div>
             </section>
 
-            <section class="post-title-section">
-               <h2>Olympia Winter Swingout / February 22-23</h2>
-               <div class="proto-nav-panel">
-                  <a class="button-link" href="/swingout-rsvp">R.S.V.P.</a>
-               </div>
-               <div class="fun-times">
-                  <img src="../assets/winter-swingout-banner.jpg" />
-               </div>
-
-               <p>The Olympia Winter Swingout is our premier dance event of the season.</p>
-
-               <p>
-                  Featuring world-renowned instructors Bailey McCully and Damian Cade,
-                  our winter workshop weekend is seven dance classes and an evening swing 
-                  dance at the Olympia Ballroom.
-               </p>
-
-               <p>
-                  Classes are by donation, so please come to all of them. 
-                  Similar events typically cost about $60, or $15 per class.
-               </p>
-
-               <h2>Saturday, February 22</h2>
-               <p>
-                  The weekend begins with a day of workshops at the Olympia Ballroom, 116 Legion Way SE.
-               </p>
-
-               <div style="text-align: center">
-                  <img 
-                     src="../assets/bailey-damian-lindy-bout.jpg" 
-                     width="95%" 
-                     style="margin-top: 1rem; border: solid 3px #eee" />
-               </div>
-
-               <h3>Saturday Workshop Schedule</h3>
-               <div>11:00 a.m. - Workshop 1</div>
-               <div>Noon - Lunch break</div>
-               <div>1:30 p.m. - Workshop 2</div>
-               <div>2:45 p.m. - Workshop 3</div>
-               <div>4:00 p.m. - Break</div>
-
-               <h3>Workshop Descriptions</h3>
-               <p>
-                  These Saturday workshops situate dancers right 
-                  beside musicians as part of the whole ensemble that, 
-                  together, make the jazz.
-               </p>
-
-               <p>
-                  <strong>Workshops 1 &amp; 2:</strong> The first classes are all about 
-                  embodying the ensemble. How to lay it down, hold it down, build it up, 
-                  and support your partner. Musicians all listen to each other in order 
-                  to make the best jazz, and that applies doubly so to Lindy Hoppers: 
-                  we listen to the music AND each other. We'll be learning how to listen with 
-                  exquisite detail in both the lead and follow roles.
-               </p>
-
-               <p>
-                  <strong>Workshop 3:</strong> The third class is all about you, as a soloist. 
-                  How to step into the spotlight during a partner dance and twinkle and shine. 
-                  As a soloist, we're responding to the band, responding to ourselves, 
-                  creating a conversation, issuing a jazzy challenge, and saying what needs to be said.
-               </p>
-
-               <div class="proto-nav-panel">
-                  <a class="button-link" href="/swingout-rsvp">R.S.V.P.</a>
-               </div>
-
-               <div class="fun-times">
-                  <img src="../assets/bailey-dance.jpg" />
-                  <div class="credit">Photo by Sereina Blanchard</div>
-               </div>
-
-
-               <h3>Evening Dance</h3>
-               <p>
-                  In the evening we will return to the historic Olympia Ballroom, dancing to the 
-                  sounds of the 1920s, 30s and 40s. Bailey and Damian will be the featured 
-                  instructors and DJs for the occasion.
-               </p>
-               <div>7:30 p.m. - Intro swing dance lesson</div>
-               <div>8:30 - 10:30 p.m. - Music and dancing</div>
-
-               <!-- <div style="text-align: center">
-                  <img 
-                     src="../assets/olympia-ballroom.jpg" 
-                     width="95%" 
-                     style="margin-top: 1rem; border: solid 3px #eee" />
-               </div> -->
-
-               <h2>Sunday, February 23</h2>
-               <p>
-                  Day two of the Olympia Winter Swingout will feature a series of solo jazz classes 
-                  with Bailey and Damian at the Olympia Eagles' Doc Becker room, which is
-                  on the third floor, at 805 4th Ave E (Plum &amp; 4th).
-               </p>
-
-               <h3>Sunday Workshop Schedule</h3>
-               <div>Noon - Solo jazz workshop 1</div>
-               <div>1:10 p.m. - Solo jazz workshop 2</div>
-               <div>2:20 p.m. - Solo jazz workshop 3</div>
-               <div>3:30 p.m. - Wrap</div>
-
-               <h3>Workshop Descriptions</h3>
-
-               <h5>Workshop 1: Snazzy Jazzy Supplements - Damian Cade</h5>
-               <p>
-                  Put the shish ka boom back in your dancing with Damian's supplements. 
-                  They might be vitamins, they might be a workout, and they might also be the
-                  flashy footworks you've been hankering to do with your very own feet. 
-                  Stretch and take care of yourself after Saturday night's dance. Be prepared to sweat.
-               </p>
-
-               <h5>Workshop 2: Bailey's Class Title! - Bailey McCully</h5>
-               <p>
-                  Bailey's class description is coming soon.
-               </p>
-
-               <h5>Workshop 3: Solo Jazz Isn't Done Alone in a Room - Bailey McCully & Damian Cade</h5>
-               <p>
-                  Wait, why is solo jazz called solo jazz, but I keep seeing people
-                  doing solo jazz in a way that definitely doesn't have much solitude 
-                  n it? Because it's jazz, and jazz is a conversation! We'll practice 
-                  the forms of solo jazz conversation, translate and riff on each other's moves, 
-                  and generally jam it out.
-               </p>
-
-               <div class="proto-nav-panel">
-                  <a class="button-link" href="/swingout-rsvp">R.S.V.P.</a>
-               </div>
-
-               <div style="text-align: center">
-                  <img 
-                     src="../assets/damian-solo.jpg" 
-                     width="95%" 
-                     style="margin-top: 1rem; border: solid 3px #eee" />
-                  <div class="credit">Photo by Philip Manijak</div>
-               </div>
-
-               <!-- <div class="fun-times">
-                  <img src="../assets/bailey-solo.jpg" />
-                  <div class="credit">Photo by Sereina Blanchard</div>
-               </div> -->
-
-               <!-- 
-                  Fancy dance boilerplate:
-               <p>
-                  You are invited to an evening of swing dancing to the sounds 
-                  of the 1920s, 30s and 40s. We're starting our second year of
-                  sharing dance classes, hosting fancy dances, and joining the
-                  cooperative movement.
-               </p>
-               <p>
-                  The occasion will begin at the historic Olympia Ballroom with 
-                  a one-hour intro lesson at 7:30 p.m., followed by music and dancing 
-                  from guest DJs.
-               </p>
-
-               <div>
-                  <h3 style="text-align: left">Schedule</h3>
-                  <ul>
-                     <li>Saturday, February 22</li>
-                     <li>7 p.m. Doors</li>
-                     <li>7:30 p.m. Introductory lesson</li>
-                     <li>8:30 - 10:30 p.m. Music and dancing</li>
-                  </ul>
-               </div>
-
-               <div>
-                  <h3 style="text-align: left">Location</h3>
-                  <ul>
-                     <li>Olympia Ballroom</li>
-                     <li>116 Legion Way SE, Olympia</li>
-                     <li>at Legion &amp; Washington</li>
-                  </ul>
-               </div>
-
-               <p>By donation. $5-10 suggested.</p> -->
-            </section>
-
-            <section>
+            <!-- COVID-19 
+               <section class="post-title-section">
                <h2>Monthly Saturday Swing Dances</h2>
                <p>Once a month, we host swing dances at the Olympia Ballroom downtown.</p>
 
                <p>Each dance begins with an introductory lesson. Individuals and partners welcome. All our events are open to the public, and we are an all ages venue.</p>
 
-               <p>Dates for 2020 include:</p>
+               <p>Upcoming dates for 2020 include:</p>
                <ul>
-                  <li>February 22-23</li>
-                  <li>March 28</li>
-                  <li>April 18</li>
+                  <li style="text-decoration: line-through">March 28</li>
+                  <li style="text-decoration: line-through">April 18</li>
                   <li>May 16</li>
                   <li>June 13-14</li>
                   <li>July 25</li>
                   <li>August 22</li>
-                  <li>September 26</li>
-                  <li>October 24-25</li>
+                  <li>September 26-27</li>
+                  <li>October 24</li>
                   <li>November 14</li>
                   <li>December 19</li>
                </ul>
-            </section>
+            </section> -->
 
             <section v-if="hasCourses" class="post-title-section">
                <h2>Upcoming Swing Dance Lessons</h2>
