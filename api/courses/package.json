@@ -9,6 +9,6 @@
   "author": "Philip Manijak",
   "license": "MIT",
   "dependencies": {
-    "airtable": "^0.6.0"
+    "airtable": "^0.7.2"
   }
 }
