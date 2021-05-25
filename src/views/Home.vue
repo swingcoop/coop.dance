@@ -19,8 +19,19 @@
                </div>
             </section>
 
-            <!-- COVID-19 
-               <section class="post-title-section">
+            <section class="post-title-section">
+               <h2>COVID-19 Info / 2021 Update</h2>
+               <p>
+                  We're waiting for vaccination rates to go up and case counts to go down in Thurston,
+                  Pierce, Lewis, Mason, and Grays Harbor counties.
+               </p>
+
+               <p>
+                  Currently we have no events planned for 2021. When we open back up, expect vaccinated-only
+                  events, so keep those vaccination cards handy.
+               </p>
+
+               <!-- COVID-19
                <h2>Monthly Saturday Swing Dances</h2>
                <p>Once a month, we host swing dances at the Olympia Ballroom downtown.</p>
 
@@ -39,7 +50,8 @@
                   <li>November 14</li>
                   <li>December 19</li>
                </ul>
-            </section> -->
+               -->
+            </section>
 
             <section v-if="hasCourses" class="post-title-section">
                <h2>Upcoming Swing Dance Lessons</h2>
