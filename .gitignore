@@ -47,3 +47,5 @@ typings/
 .kube
 
 .DS_Store
+
+.vercel
