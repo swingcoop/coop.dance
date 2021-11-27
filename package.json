@@ -1,0 +1,28 @@
+{
+  "name": "coop.dance",
+  "version": "1.0.0",
+  "description": "The www site for Swing Dance Cooperative",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite src",
+    "build": "vite build src",
+    "preview": "vite preview src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swingcoop/coop.dance.git"
+  },
+  "author": "Philip Manijak",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/swingcoop/coop.dance/issues"
+  },
+  "homepage": "https://github.com/swingcoop/coop.dance#readme",
+  "devDependencies": {
+    "vite": "^2.6.14"
+  },
+  "dependencies": {
+    "vue": "^3.2.23"
+  }
+}
